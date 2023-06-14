@@ -5,4 +5,4 @@ Product: https://www.ncjpn.com/en/products/crushers/
 
 Specification: https://www.ncjpn.com/wp-content/uploads/2022/06/SR_en_ver.2.06_20220523.pdf
 
-Video Youtube: https://www.youtube.com/watch?v=lnyVPcNI66I .
+Video Youtube: https://www.youtube.com/watch?v=lnyVPcNI66I 
