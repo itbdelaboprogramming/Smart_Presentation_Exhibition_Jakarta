@@ -1,4 +1,4 @@
-# Smart_Presentation_Exhibition_Jakarta
+# Smart Presentation (Exhibition Jakarta)
 Development of "Smart Presentation" Project by NIW &amp; ITB De Labo, focused on VSI Gyropactor Product (3D Model)
 
 Product: https://www.ncjpn.com/en/products/crushers/
