@@ -11,7 +11,7 @@
 <html lang="en">
     <head>
         <title>Smart Presentation</title>
-        <!-- <link rel="icon" type="image/x-icon" href="assets/logo.png"> -->
+        <link rel="icon" type="image/x-icon" href="assets/logo.png">
         <meta charset="UTF-8">
         <script type="importmap">
             {

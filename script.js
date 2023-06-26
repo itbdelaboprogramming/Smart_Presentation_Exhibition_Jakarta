@@ -24,7 +24,7 @@ plane.rotateX(-Math.PI / 2);
 scene.add(plane);
 
 export const camera = new THREE.PerspectiveCamera(
-	100,
+	50,
 	myCanvas.offsetWidth / myCanvas.offsetHeight
 );
 
@@ -63,7 +63,7 @@ dirLight.castShadow = true;
 scene.add(dirLight);
 
 // Camera position
-camera.position.set(3, 2, 2);
+camera.position.set(7, 7, 7);
 camera.lookAt(scene.position);
 
 const renderer = new THREE.WebGLRenderer({ canvas: myCanvas });
