@@ -84,6 +84,7 @@ loader.load(
 		let file3D = gltf.scene;
 		file3D.name = "file3D";
 		scene.add(file3D);
+		file3D.position.set(0, -1, 0);
 	},
 	undefined,
 	function (error) {
