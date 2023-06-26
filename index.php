@@ -26,7 +26,11 @@
     <body>
         <div class="home-page">
             <canvas id="myCanvas">    </canvas>
+            <div class="container-bottom-left">
+                <button class="explode-button"> Explode </button>
+            </div>
             <script type="module" src="script.js"> </script>
+            <script type="module" src="./js/home.js"></script>
         </div>
     </body>
 </html>

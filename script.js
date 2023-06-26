@@ -63,7 +63,7 @@ dirLight.castShadow = true;
 scene.add(dirLight);
 
 // Camera position
-camera.position.set(7, 7, 7);
+camera.position.set(6, 4, -4);
 camera.lookAt(scene.position);
 
 const renderer = new THREE.WebGLRenderer({ canvas: myCanvas });

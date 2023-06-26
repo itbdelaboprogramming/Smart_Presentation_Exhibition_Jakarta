@@ -1,3 +1,6 @@
+@import url("https://fonts.googleapis.com/css?family=Ubuntu:wght@100;200;300;400;500;600;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
 html {
 	width: 100%;
 	height: 100%;
@@ -24,4 +27,28 @@ body {
 canvas {
 	width: 100%;
 	min-height: 100%;
+}
+
+.container-bottom-left {
+	position: fixed;
+	z-index: 1;
+	bottom: 0;
+	left: 0;
+	margin-bottom: 23px;
+	margin-left: 23px;
+
+	display: flex;
+	align-items: flex-end;
+	flex-direction: column;
+	gap: 30px;
+}
+
+.explode-button {
+	font-family: "Inter";
+	font-style: normal;
+	font-weight: 500;
+	font-size: 13.9249px;
+	line-height: 21px;
+
+	text-align: center;
 }
