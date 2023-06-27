@@ -1,12 +1,13 @@
-import { scene, camera, orbitControls } from "../script.js";
+import { scene } from "../script.js";
 import * as THREE from "three";
 
 let explode_button = document.querySelector(".explode-button");
 
 explode_button.addEventListener("click", () => {
 	explode_button.classList.toggle("active");
+	
+	let obj = scene.getObjectByName("file3D").children;
 	if (explode_button.classList.contains("active")) {
-		let obj = scene.getObjectByName("file3D").children;
 		obj.forEach((child) => {
 			let target = new THREE.Vector3();
 			child.getWorldPosition(target);
@@ -28,7 +29,6 @@ explode_button.addEventListener("click", () => {
 			});
 		});
 	} else {
-		let obj = scene.getObjectByName("file3D").children;
 		obj.forEach((child) => {
 			let target = new THREE.Vector3();
 			child.getWorldPosition(target);
