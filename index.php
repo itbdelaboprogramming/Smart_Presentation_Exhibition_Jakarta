@@ -30,6 +30,12 @@
                 <button class="explode-button"> Explode </button>
             </div>
             <div class="container-bottom-right">
+                <div class="menu-container-blue-album">
+                    <img src="./assets/Album-Button.png">
+                </div>
+                <div class="menu-container-blue-lightning">
+                    <img src="./assets/Lightning-Button.png">
+                </div>
                 <div class="toggle"></div>
             </div>
             <script type="module" src="script.js"> </script>

@@ -101,3 +101,17 @@ toggle.addEventListener("click", () => {
 		localStorage.setItem("mode", "light");
 	}
 });
+
+// -------------------------------------- lightning --------------------------------------
+const menuLightning = document.querySelector(".menu-container-blue-lightning");
+
+menuLightning.addEventListener("click", () => {
+	menuLightning.classList.toggle("active");
+});
+
+// -------------------------------------- catalogue --------------------------------------
+const menuAlbum = document.querySelector(".menu-container-blue-album");
+
+menuAlbum.addEventListener("click", () => {
+	menuAlbum.classList.toggle("active");
+});
