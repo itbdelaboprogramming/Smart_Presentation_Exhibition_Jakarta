@@ -76,7 +76,7 @@ export const orbitControls = new OrbitControls(camera, renderer.domElement);
 export const loader = new GLTFLoader();
 loader.name = "loader";
 
-let path = "files/" + "SRユニット_v1.glb";
+let path = "files/" + "SR100C_v1.glb";
 
 loader.load(
 	path,

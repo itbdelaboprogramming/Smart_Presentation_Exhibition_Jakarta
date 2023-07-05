@@ -38,6 +38,13 @@
                 </div>
                 <div class="toggle"></div>
             </div>
+
+            <div class="item-name-container" id="item-category">
+                <p class="text-file-name">Nakayama's Product</p>
+                <div class="type-container">
+                    <div class="text-file-type">VSI Gyropactor</div>
+                </div>
+            </div>
             <script type="module" src="script.js"> </script>
             <script type="module" src="./js/home.js"></script>
         </div>

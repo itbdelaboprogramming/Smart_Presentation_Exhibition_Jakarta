@@ -1,6 +1,70 @@
 @import url("https://fonts.googleapis.com/css?family=Ubuntu:wght@100;200;300;400;500;600;700;800;900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
+:root {
+	--primary-color-main: #e6f5f8;
+
+	--primary-color-25: #d4f2f4;
+	--primary-color-50: #74e7d4;
+	--primary-color-100: #189ab4;
+	--primary-color-200: #04445f;
+
+	--secondary-color-25: #345d7d;
+	--secondary-color-50: #725b78;
+	--secondary-color-100: #c66e87;
+	--secondary-color-200: #ff7582;
+
+	--background-color-25: #f2f4f7;
+	--background-color-50: #98a2b3;
+	--background-color-100: #475467;
+	--background-color-200: #344054;
+
+	--text-color-25: #1d2538;
+	--text-color-50: #475b74;
+	--text-color-100: #7c8da5;
+	--text-color-200: #e0e1dc;
+
+	--text-color-primary-color-200: #04445f;
+	--text-color-background-color-200: #344054;
+
+	/* database table */
+	--background-header: #f2f4f7;
+	--text-color-database-data: #04445f;
+	--background-database-data-select: #d4f2f4;
+}
+
+.dark-theme {
+	--primary-color-main: #1d2538;
+
+	--primary-color-25: #d4f2f4;
+	--primary-color-50: #74e7d4;
+	--primary-color-100: #189ab4;
+	--primary-color-200: #04445f;
+
+	--secondary-color-25: #345d7d;
+	--secondary-color-50: #725b78;
+	--secondary-color-100: #c66e87;
+	--secondary-color-200: #ff7582;
+
+	--background-color-25: #f2f4f7;
+	--background-color-50: #98a2b3;
+	--background-color-100: #475467;
+	--background-color-200: #344054;
+
+	--text-color-25: #1d2538;
+	--text-color-50: #475b74;
+	--text-color-100: #7c8da5;
+	--text-color-200: #e0e1dc;
+
+	--text-color-primary-color-200: #04445f;
+	--text-color-background-color-200: #344054;
+
+	/* database table */
+	--background-header: #d4f2f4;
+	--text-color-database-data: #74e7d4;
+	--background-database-data-select: #7c8da5;
+}
+
 html {
 	width: 100%;
 	height: 100%;
@@ -146,4 +210,63 @@ canvas {
 
 .menu-container-blue-lightning.active {
 	background-color: #74e7d4;
+}
+
+/* nakayama's text */
+.item-name-container {
+	position: fixed;
+	z-index: 1;
+	top: 0;
+	left: 0;
+	right: 0;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 23px;
+
+	/* Need a specific value to work */
+	width: 228px;
+	background-color: var(--background-color-25);
+	border: 1.74061px solid var(--primary-color-100);
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding: 15px 12px;
+}
+
+.text-file-name {
+	position: relative;
+	/* Text style */
+	margin: 0px 0px 8px 0px;
+	height: 23.5px;
+	font-family: "Inter";
+	font-style: normal;
+	font-weight: 500;
+	font-size: 13.9249px;
+	line-height: 21px;
+
+	text-align: center;
+
+	color: var(--primary-color-200);
+}
+
+.type-container {
+	display: flex;
+	padding: 8.703px 12.184px;
+	align-items: center;
+	gap: 6.962px;
+	align-self: stretch;
+	justify-content: center;
+
+	border: 0.87px solid #189ab4;
+	background: #e6f5f8;
+}
+
+.text-file-type {
+	color: #475b74;
+	font-size: 13.925px;
+	font-family: Inter;
+	font-style: normal;
+	font-weight: 500;
+	line-height: 20.887px;
 }
