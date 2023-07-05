@@ -111,7 +111,78 @@ menuLightning.addEventListener("click", () => {
 
 // -------------------------------------- catalogue --------------------------------------
 const menuAlbum = document.querySelector(".menu-container-blue-album");
+const catalogueContainer = document.getElementById("catalogue-container-2");
+const catalogue_product_list = document.querySelectorAll(
+	".catalogue-product-list-2"
+);
+
+// ---------------------------- resize canvas width responsive ---------------------------
+let loader = new GLTFLoader();
+loader.name = "loader";
 
 menuAlbum.addEventListener("click", () => {
 	menuAlbum.classList.toggle("active");
+
+	if (menuAlbum.classList.contains("active")) {
+		catalogueContainer.style.display = "flex";
+	} else {
+		catalogueContainer.style.display = "none";
+	}
 });
+
+loadCatalogue(catalogue_product_list);
+
+function loadCatalogue(catalogue_product_list) {
+	catalogue_product_list.forEach(function (product_list) {
+		product_list.addEventListener("click", () => {
+			resetCatalogueSelect();
+			product_list.classList.toggle("active");
+
+			let product_list_text = product_list.querySelector(
+				".catalogue-product-list-text-2"
+			).innerText;
+			explode_button.classList.remove("active");
+			updateFile3D(product_list_text);
+		});
+
+		if (product_list.classList.contains("active")) {
+			let product_list_text = product_list.querySelector(
+				".catalogue-product-list-text-2"
+			).innerText;
+			explode_button.classList.remove("active");
+			updateFile3D(product_list_text);
+		}
+	});
+}
+
+function resetCatalogueSelect() {
+	catalogue_product_list.forEach(function (product_list) {
+		product_list.classList.remove("active");
+	});
+}
+
+function updateFile3D(file_name) {
+	try {
+		let file3D = scene.getObjectByName("file3D");
+		file3D.name = "file3D";
+
+		scene.remove(file3D);
+		let newFile3D = `files/${file_name}.glb`;
+
+		loader.load(
+			newFile3D,
+			function (gltf) {
+				file3D = gltf.scene;
+				file3D.name = "file3D";
+				scene.add(file3D);
+				file3D.position.set(0, -1, 0);
+			},
+			undefined,
+			function (error) {
+				console.error(error);
+			}
+		);
+	} catch (e) {
+		// do nothing
+	}
+}

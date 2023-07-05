@@ -29,6 +29,24 @@
             <div class="container-bottom-left">
                 <button class="explode-button"> Explode </button>
             </div>
+
+            <div class="catalogue-container-2" id="catalogue-container-2">
+                <div>
+                    <p class="catalogue-description-title-2">VSI Gyropactor Series</p>
+                </div>
+                <div class="catalogue-description-2">
+                    <div class="catalogue-product-list-2 active" id="model_name">
+                        <div class="catalogue-product-list-text-2"> SR100C_v1 </div>
+                        <img class="catalogue-image-preview-2" src="./files/SR100C_v1_preview.png" />
+                    </div>
+                    <div class="catalogue-product-list-2" id="model_name">
+                        <div class="catalogue-product-list-text-2"> SRユニット_v1 </div>
+                        <img class="catalogue-image-preview-2" src="./files/SRユニット_v1_preview.png" />
+                    </div>
+                </div>
+            </div>
+
+
             <div class="container-bottom-right">
                 <div class="menu-container-blue-album">
                     <img src="./assets/Album-Button.png">
