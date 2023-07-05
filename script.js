@@ -7,7 +7,7 @@ import { GLTFLoader } from "https://unpkg.com/three@0.139.2/examples/jsm/loaders
 
 // Creating a scene with background color
 export const scene = new THREE.Scene();
-scene.background = new THREE.Color(0x1d2538);
+scene.background = new THREE.Color(0xdbe9e9);
 // 0xdbe9e9 = light blue
 // 0xe0e4e7 = light gray
 
@@ -31,8 +31,8 @@ export const camera = new THREE.PerspectiveCamera(
 // create grid helper
 const size = 20;
 const divisions = 20;
-const colorCenterLine = 0x475b74;
-const colorGrid = 0x475b74;
+const colorCenterLine = 0xffffff;
+const colorGrid = 0xffffff;
 
 const grid = new THREE.GridHelper(size, divisions, colorCenterLine, colorGrid);
 grid.name = "grid";
@@ -84,7 +84,7 @@ loader.load(
 		let file3D = gltf.scene;
 		file3D.name = "file3D";
 		scene.add(file3D);
-		// file3D.position.set(0, -1, 0);
+		file3D.position.set(0, -1, 0);
 	},
 	undefined,
 	function (error) {

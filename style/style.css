@@ -43,6 +43,21 @@ canvas {
 	gap: 30px;
 }
 
+.container-bottom-right {
+	position: fixed;
+	z-index: 1;
+	bottom: 0;
+	right: 0;
+	padding-bottom: 23px;
+	padding-right: 23px;
+
+	display: flex;
+	align-items: flex-end;
+	flex-direction: column;
+	gap: 30px;
+}
+
+/* explode 3D file*/
 .explode-button {
 	font-family: "Inter";
 	font-style: normal;
@@ -51,4 +66,36 @@ canvas {
 	line-height: 21px;
 
 	text-align: center;
+}
+
+/* darkmode light mode toggle */
+.toggle {
+	position: relative;
+	width: 68.21px;
+	height: 34.11px;
+	background: #74e7d4;
+	border-radius: 34.1063px;
+	cursor: pointer;
+}
+
+.toggle.active {
+	background: #189ab4;
+}
+
+.toggle::before {
+	content: "";
+	position: absolute;
+	width: 26.53px;
+	height: 26.53px;
+	background: #189ab4;
+	border-radius: 50%;
+	top: 50%;
+	left: calc(50% - 26.53px / 2 - 15.54px);
+	transform: translateY(-50%);
+	transition: all 0.3s ease-in-out;
+}
+
+.toggle.active::before {
+	left: calc(100% - 26.53px - calc(50% - 26.53px / 2 - 15.54px));
+	background: #74e7d4;
 }

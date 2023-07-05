@@ -29,6 +29,9 @@
             <div class="container-bottom-left">
                 <button class="explode-button"> Explode </button>
             </div>
+            <div class="container-bottom-right">
+                <div class="toggle"></div>
+            </div>
             <script type="module" src="script.js"> </script>
             <script type="module" src="./js/home.js"></script>
         </div>
