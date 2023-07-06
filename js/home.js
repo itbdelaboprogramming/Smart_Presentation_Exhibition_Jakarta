@@ -104,10 +104,37 @@ toggle.addEventListener("click", () => {
 
 // -------------------------------------- lightning --------------------------------------
 const menuLightning = document.querySelector(".menu-container-blue-lightning");
+const lightning_expand = document.querySelector(
+	".menu-container-blue-lightning-expand"
+);
+const lightning_title = document.querySelector(".lightning-title");
+const opsi = lightning_title.querySelectorAll(".opsi");
 
 menuLightning.addEventListener("click", () => {
 	menuLightning.classList.toggle("active");
+
+	if (menuLightning.classList.contains("active")) {
+		lightning_expand.style.display = "block";
+	} else {
+		lightning_expand.style.display = "none";
+	}
 });
+
+opsi.forEach(function (opsi) {
+	opsi.addEventListener("click", () => {
+		resetOpsi();
+		opsi.classList.toggle("active");
+
+		// let opsi_text = opsi.querySelector(".opsi-text").innerText;
+		// updateLightning(opsi_text);
+	});
+});
+
+function resetOpsi() {
+	opsi.forEach(function (opsi) {
+		opsi.classList.remove("active");
+	});
+}
 
 // -------------------------------------- catalogue --------------------------------------
 const menuAlbum = document.querySelector(".menu-container-blue-album");

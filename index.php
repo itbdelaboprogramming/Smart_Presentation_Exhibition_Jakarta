@@ -1,12 +1,3 @@
-<?php
-    $global_variable = "MSD700_bucket_MCLA007A_00_2.glb";
-    // if (isset($_GET['value'])) {
-    //     $value = urldecode($_GET['value']);
-    //     $global_variable = $value;
-    // }
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -46,6 +37,23 @@
                 </div>
             </div>
 
+            <div class="container-bottom-right-mr2x" >
+                <div class="menu-container-blue-lightning-expand" style="display: none">
+                    <div class="menu-container-blue-lightning-expand-wrapper">
+                        <div class="lightning-component">
+                            <div class="lightning-title">
+                                Lightning:
+                                <div class="opsi active">
+                                    default
+                                </div>
+                                <div class="opsi">
+                                    custom
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
             <div class="container-bottom-right">
                 <div class="menu-container-blue-album">
