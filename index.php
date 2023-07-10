@@ -19,6 +19,17 @@
             <canvas id="myCanvas">    </canvas>
             <div class="container-bottom-left">
                 <button class="explode-button"> Explode </button>
+                <div class="menu-container-blue-information">
+                    <img src="./assets/Information-Button.png">
+                </div>
+                <div class="menu-container-blue-sound">
+                    <img src="./assets/Sound-Off-Button.png" id="sound-off">
+                    <img src="./assets/Sound-On-Button.png" id="sound-on" style="display: none;">
+                </div>
+                <div class="menu-container-blue-animation">
+                    <img src="./assets/Animation-Off-Button.png" id="animation-off">
+                    <img src="./assets/Animation-On-Button.png" id="animation-on" style="display: none;">
+                </div>
             </div>
 
             <div class="catalogue-container-2" id="catalogue-container-2">
