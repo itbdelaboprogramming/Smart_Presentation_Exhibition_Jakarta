@@ -151,13 +151,23 @@ function updateLightning(opsi_text) {
 	if (opsi_text === "custom") {
 		custom_lightning.style.display = "flex";
 
-		ambientLight.intensity = 0.3;
-		dirLight.intensity = 25;
+		ambientLight.intensity = 0.5;
+		dirLight.intensity = 20;
 
 		light1.intensity = 0;
 		light2.intensity = 0;
 		light3.intensity = 0;
 		light4.intensity = 0;
+
+		slider_env.value = 0.5;
+		updateSliderEnv();
+		updateEnvBrightness();
+		slider_lamp.value = 20;
+		updateSliderLamp();
+		updateLamp();
+		slider_lamp_pos.value = 210;
+		updateSliderLampPos();
+		updateLampPos();
 	} else {
 		custom_lightning.style.display = "none";
 
@@ -169,6 +179,75 @@ function updateLightning(opsi_text) {
 		light3.intensity = 1;
 		light4.intensity = 1;
 	}
+}
+
+// -------------------------------- slider env brightness --------------------------------
+const slider_env = document.getElementById("slider-env");
+const maxValue_env = slider_env.getAttribute("max");
+let value_env;
+const sliderFill_env = document.getElementById("fill-env");
+
+updateSliderEnv();
+slider_env.addEventListener("input", () => {
+	updateSliderEnv();
+	updateEnvBrightness();
+});
+
+function updateSliderEnv() {
+	value_env = (slider_env.value / maxValue_env) * 100 + "%";
+	sliderFill_env.style.width = value_env;
+}
+
+function updateEnvBrightness() {
+	console.log("ambient", slider_env.value);
+	let ambient = scene.getObjectByName("ambientLight");
+	ambient.intensity = slider_env.value;
+}
+
+// --------------------------------- slider lamp position --------------------------------
+const slider_lamp_pos = document.getElementById("slider-lamp-pos");
+const maxValue_lamp_pos = slider_lamp_pos.getAttribute("max");
+let value_lamp_pos;
+const sliderFill_lamp_pos = document.getElementById("fill-lamp-pos");
+
+updateSliderLampPos();
+slider_lamp_pos.addEventListener("input", () => {
+	updateSliderLampPos();
+	updateLampPos();
+});
+
+function updateSliderLampPos() {
+	value_lamp_pos = (slider_lamp_pos.value / maxValue_lamp_pos) * 100 + "%";
+	sliderFill_lamp_pos.style.width = value_lamp_pos;
+}
+
+function updateLampPos() {
+	console.log("lamp pos", slider_lamp_pos.value);
+	let lamp = scene.getObjectByName("dirLight");
+	lamp.position.set(100, 100, -(slider_lamp_pos.value - 200));
+}
+
+// ------------------------------- slider lamp brightness --------------------------------
+const slider_lamp = document.getElementById("slider-lamp");
+const maxValue_lamp = slider_lamp.getAttribute("max");
+let value_lamp;
+const sliderFill_lamp = document.getElementById("fill-lamp");
+
+updateSliderLamp();
+slider_lamp.addEventListener("input", () => {
+	updateSliderLamp();
+	updateLamp();
+});
+
+function updateSliderLamp() {
+	value_lamp = (slider_lamp.value / maxValue_lamp) * 100 + "%";
+	sliderFill_lamp.style.width = value_lamp;
+}
+
+function updateLamp() {
+	console.log("lamp intensity", slider_lamp.value);
+	let lamp = scene.getObjectByName("dirLight");
+	lamp.intensity = slider_lamp.value;
 }
 
 // -------------------------------------- catalogue --------------------------------------

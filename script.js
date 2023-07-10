@@ -57,7 +57,7 @@ scene.add(ambientLight);
 
 var dirLight = new THREE.DirectionalLight(0x404040, 0);
 dirLight.name = "dirLight";
-dirLight.position.set(100, 100, 50);
+dirLight.position.set(100, 100, -10);
 dirLight.castShadow = true;
 scene.add(dirLight);
 
