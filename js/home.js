@@ -107,7 +107,7 @@ const menuLightning = document.querySelector(".menu-container-blue-lightning");
 const lightning_expand = document.querySelector(
 	".menu-container-blue-lightning-expand"
 );
-const lightning_title = document.querySelector(".lightning-title");
+const lightning_title = document.querySelector(".lightning-title-2");
 const opsi = lightning_title.querySelectorAll(".opsi");
 
 const custom_lightning = document.querySelector(".custom-lightning");
@@ -151,6 +151,10 @@ function updateLightning(opsi_text) {
 	if (opsi_text === "custom") {
 		custom_lightning.style.display = "flex";
 
+		if (window.innerWidth < 900) {
+			lightning_expand.style.height = "230px";
+		}
+
 		ambientLight.intensity = 0.5;
 		dirLight.intensity = 20;
 
@@ -170,6 +174,7 @@ function updateLightning(opsi_text) {
 		updateLampPos();
 	} else {
 		custom_lightning.style.display = "none";
+		lightning_expand.style.height = "190px";
 
 		ambientLight.intensity = 0;
 		dirLight.intensity = 0;
@@ -180,6 +185,16 @@ function updateLightning(opsi_text) {
 		light4.intensity = 1;
 	}
 }
+
+window.addEventListener("resize", () => {
+	if (custom_lightning.style.display == "flex") {
+		if (window.innerWidth < 900) {
+			lightning_expand.style.height = "230px";
+		} else {
+			lightning_expand.style.height = "190px";
+		}
+	}
+});
 
 // -------------------------------- slider env brightness --------------------------------
 const slider_env = document.getElementById("slider-env");

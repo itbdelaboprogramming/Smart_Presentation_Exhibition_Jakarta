@@ -259,6 +259,15 @@ canvas {
 	justify-content: center;
 }
 
+.lightning-title-2 {
+	display: flex;
+	justify-content: center;
+}
+
+.opsi-container {
+	display: flex;
+}
+
 .opsi {
 	margin: 0px 0px 0px 8px;
 	font-weight: 400;
@@ -378,6 +387,15 @@ canvas {
 @media screen and (max-width: 900px) {
 	.lightning-title {
 		display: none;
+	}
+
+	.lightning-title-2 {
+		flex-direction: column;
+	}
+
+	.opsi-container {
+		justify-content: center;
+		margin: 3px 0px 5px 0px;
 	}
 
 	.menu-container-blue-lightning-expand-wrapper {

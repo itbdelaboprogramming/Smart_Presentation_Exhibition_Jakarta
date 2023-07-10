@@ -41,13 +41,15 @@
                 <div class="menu-container-blue-lightning-expand" style="display: none">
                     <div class="menu-container-blue-lightning-expand-wrapper">
                         <div class="lightning-component">
-                            <div class="lightning-title">
+                            <div class="lightning-title-2">
                                 Lightning:
-                                <div class="opsi active">
-                                    default
-                                </div>
-                                <div class="opsi">
-                                    custom
+                                <div class="opsi-container">
+                                    <div class="opsi active">
+                                        default
+                                    </div>
+                                    <div class="opsi">
+                                        custom
+                                    </div>
                                 </div>
                             </div>
                             <div class="lightning-component-container custom-lightning" style="display:none;">
