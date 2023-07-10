@@ -242,7 +242,7 @@ canvas {
 	height: 100%;
 	width: 100%;
 
-	padding: 5px 5px 5px 15px;
+	/* padding: 5px 5px 5px 15px; */
 
 	font-family: "Ubuntu";
 	font-style: normal;
@@ -256,6 +256,7 @@ canvas {
 
 .lightning-title {
 	display: flex;
+	justify-content: center;
 }
 
 .opsi {
@@ -277,6 +278,7 @@ canvas {
 .lightning-component {
 	display: flex;
 	width: 100%;
+	flex-direction: column;
 }
 
 .lightning-component-center {
@@ -366,10 +368,16 @@ canvas {
 	box-shadow: 0 0 0 5px rgba(116, 231, 212, 0.3);
 }
 
+.lightning-component-container {
+	display: flex;
+	margin: 10px 0px 0px 0px;
+	gap: 2px;
+	justify-content: center;
+}
+
 @media screen and (max-width: 900px) {
 	.lightning-title {
-		/* display: none; */
-		padding: 0px 3px;
+		display: none;
 	}
 
 	.menu-container-blue-lightning-expand-wrapper {
@@ -383,6 +391,11 @@ canvas {
 
 	.slider-group {
 		margin: 4px 0px;
+	}
+
+	.lightning-component-container {
+		flex-direction: column;
+		margin: 0px;
 	}
 }
 

@@ -38,6 +38,7 @@ const grid = new THREE.GridHelper(size, divisions, colorCenterLine, colorGrid);
 grid.name = "grid";
 scene.add(grid);
 
+// Lightning
 /*
 	Light in 3D scene
 	set(x,y,z)
@@ -45,22 +46,43 @@ scene.add(grid);
 		+y up
 		+z left
 */
-
+// custom lightning
 const ambientLight = new THREE.HemisphereLight(
 	"white", // bright sky color
 	"grey", // dim ground color
-	1 // intensity
+	0 // intensity
 );
 ambientLight.name = "ambientLight";
 scene.add(ambientLight);
 
-var dirLight = new THREE.DirectionalLight(0x404040, 2);
+var dirLight = new THREE.DirectionalLight(0x404040, 0);
 dirLight.name = "dirLight";
-dirLight.position.set(100, 100, 100);
-
+dirLight.position.set(100, 100, 50);
 dirLight.castShadow = true;
-
 scene.add(dirLight);
+
+// default lightning
+const r = 20;
+const light1 = new THREE.PointLight(0xffffff, 1, 0);
+light1.name = "light1";
+light1.position.set(r, r, 0);
+light1.shadowMapVisible = true;
+scene.add(light1);
+
+const light2 = new THREE.PointLight(0xffffff, 1, 0);
+light2.name = "light2";
+light2.position.set(-0.5 * r, r, 0.866 * r);
+scene.add(light2);
+
+const light3 = new THREE.PointLight(0xffffff, 1, 0);
+light3.name = "light3";
+light3.position.set(-0.5 * r, r, -0.866 * r);
+scene.add(light3);
+
+const light4 = new THREE.PointLight(0xffffff, 1, 0);
+light4.name = "light4";
+light4.position.set(0, -r, 0);
+scene.add(light4);
 
 // Camera position
 camera.position.set(6, 4, -4);

@@ -110,6 +110,8 @@ const lightning_expand = document.querySelector(
 const lightning_title = document.querySelector(".lightning-title");
 const opsi = lightning_title.querySelectorAll(".opsi");
 
+const custom_lightning = document.querySelector(".custom-lightning");
+
 menuLightning.addEventListener("click", () => {
 	menuLightning.classList.toggle("active");
 
@@ -125,8 +127,10 @@ opsi.forEach(function (opsi) {
 		resetOpsi();
 		opsi.classList.toggle("active");
 
-		// let opsi_text = opsi.querySelector(".opsi-text").innerText;
-		// updateLightning(opsi_text);
+		if (opsi.classList.contains("active")) {
+			let opsi_text = opsi.innerText;
+			updateLightning(opsi_text);
+		}
 	});
 });
 
@@ -134,6 +138,37 @@ function resetOpsi() {
 	opsi.forEach(function (opsi) {
 		opsi.classList.remove("active");
 	});
+}
+
+const ambientLight = scene.getObjectByName("ambientLight");
+const dirLight = scene.getObjectByName("dirLight");
+const light1 = scene.getObjectByName("light1");
+const light2 = scene.getObjectByName("light2");
+const light3 = scene.getObjectByName("light3");
+const light4 = scene.getObjectByName("light4");
+
+function updateLightning(opsi_text) {
+	if (opsi_text === "custom") {
+		custom_lightning.style.display = "flex";
+
+		ambientLight.intensity = 0.3;
+		dirLight.intensity = 25;
+
+		light1.intensity = 0;
+		light2.intensity = 0;
+		light3.intensity = 0;
+		light4.intensity = 0;
+	} else {
+		custom_lightning.style.display = "none";
+
+		ambientLight.intensity = 0;
+		dirLight.intensity = 0;
+
+		light1.intensity = 1;
+		light2.intensity = 1;
+		light3.intensity = 1;
+		light4.intensity = 1;
+	}
 }
 
 // -------------------------------------- catalogue --------------------------------------
