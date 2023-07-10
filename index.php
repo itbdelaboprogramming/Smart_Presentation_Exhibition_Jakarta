@@ -51,6 +51,22 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="lightning-component-center"> 
+                            <div class="lightning-title">
+                                Enlargement
+                            </div>
+                            <div class="lightning-component-container">
+                                <div class="slider-group">
+                                    Zoom
+                                    <div class="slider-container">
+                                        <span class="bar">
+                                            <span class="fill" id="fill-zoom"></span>
+                                        </span>
+                                        <input type="range" min="0.2" max="20" value="1" step="0.1" class="slider" id="slider-zoom"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

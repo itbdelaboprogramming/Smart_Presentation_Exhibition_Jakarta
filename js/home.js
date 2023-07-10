@@ -213,3 +213,26 @@ function updateFile3D(file_name) {
 		// do nothing
 	}
 }
+
+// ------------------------------------- slider zoom -------------------------------------
+const slider = document.getElementById("slider-zoom");
+const maxValue = slider.getAttribute("max");
+let value;
+const sliderFill = document.getElementById("fill-zoom");
+
+updateSlider();
+updateZoomCamera();
+slider.addEventListener("input", () => {
+	updateSlider();
+	updateZoomCamera();
+});
+
+function updateZoomCamera() {
+	camera.zoom = slider.value;
+	camera.updateProjectionMatrix();
+}
+
+function updateSlider() {
+	value = (slider.value / maxValue) * 100 + "%";
+	sliderFill.style.width = value;
+}
