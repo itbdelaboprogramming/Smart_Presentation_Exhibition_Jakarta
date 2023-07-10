@@ -394,9 +394,11 @@ menuAnimation.addEventListener("click", () => {
 	if (menuAnimation.classList.contains("active")) {
 		iconAnimationOff.style.display = "none";
 		iconAnimationOn.style.display = "block";
+		orbitControls.autoRotate = true;
 	} else {
 		iconAnimationOff.style.display = "block";
 		iconAnimationOn.style.display = "none";
+		orbitControls.autoRotate = false;
 	}
 });
 
