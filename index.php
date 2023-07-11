@@ -21,12 +21,12 @@
             <div class="information-container" id="information-container" style="display:none;">
                 <div class="information-description">
                     <p class="information-description-title">
-                        Dendoman Battery Jaw Crusher
+                        VSI (Gyropactor) SR
                     </p>
-                    <p class="information-description-model-number">NE100HBJ | NE200HBJ</p>
-                    <p class="information-description-description">Driven by the Lithium Ion battery With the power management function <br><br> Also equipped with the N-Link (IoT remote controlled management system) </p>
+                    <p class="information-description-model-number">SR100C</p>
+                    <p class="information-description-description">SR type can accept large material and increase the crushing efficiency at high speed rotating range. <br><br> Two types of crushing chamber are available ①Anvil type is mainly for crushing, ②Rock bed type is for better shaping. <br><br> Maintenance-focused 1-stage reversible-type vertical shaft crusher.</p>
                     <p class="information-description-specification">Specifications</p>
-                    <p class="information-description-specification-detail" >Processing ability is influenced by quality of material, block size thrown into, particle size <br><br> Specs and dimensions of this machine might be changed without any prior notice for the purpose of improvement</p>
+                    <p class="information-description-specification-detail" >Processing performance depends on quality of material, feeding chunks and particle size. <br><br> This machine’s spec and dimension might be changed without prior-notice for the improvement.</p>
                 </div>
                 <a class="information-link" target="_blank" href="https://www.ncjpn.com/en/products/dendoman/">Dendoman Series | Nakayama Iron Works (ncjpn.com)</a>
             </div>
