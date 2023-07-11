@@ -649,3 +649,103 @@ canvas {
 .menu-container-blue-animation.active {
 	background-color: #74e7d4;
 }
+
+/* information section */
+.information-container {
+	position: absolute;
+	z-index: 1;
+	top: 0;
+	bottom: 10%;
+	left: 0;
+	margin-left: 23px;
+	margin-top: auto;
+	margin-bottom: auto;
+
+	flex-direction: column;
+	justify-content: flex-start;
+	padding: 12px 0px 12px 16px;
+	gap: 5px;
+
+	width: 250px;
+	height: 40%;
+
+	background: rgba(212, 242, 244, 0.8);
+
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+	border-radius: 15px;
+
+	::-webkit-scrollbar {
+		width: 10px;
+	}
+
+	::-webkit-scrollbar-track {
+		background: transparent;
+	}
+
+	::-webkit-scrollbar-thumb {
+		background: #888;
+	}
+
+	::-webkit-scrollbar-thumb:hover {
+		background: #555;
+	}
+}
+
+.information-description {
+	overflow-y: scroll;
+
+	font-family: "Ubuntu";
+	font-style: normal;
+	font-weight: 400;
+	font-size: 16px;
+	line-height: 18px;
+	text-align: justify;
+	padding-right: 16px;
+
+	color: var(--text-color-50);
+}
+
+.information-description-title {
+	font-weight: 700;
+	font-size: 18px;
+	line-height: 21px;
+	display: flex;
+	align-items: center;
+	text-align: center;
+	justify-content: center;
+
+	color: var(--text-color-25);
+}
+
+.information-description-model-number {
+	display: flex;
+	align-items: center;
+	text-align: center;
+	justify-content: center;
+
+	color: var(--text-color-background-color-200);
+}
+
+.information-description-specification {
+	font-weight: 700;
+	display: flex;
+	align-items: center;
+	text-align: justify;
+}
+
+.information-specification-img {
+	width: 100%;
+}
+
+.information-link {
+	font-family: "Ubuntu";
+	font-style: normal;
+	font-weight: 400;
+	font-size: 16px;
+	line-height: 18px;
+	text-align: justify;
+	text-decoration-line: underline;
+
+	color: var(--text-color-primary-color-200);
+	padding-right: 16px;
+}

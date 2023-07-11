@@ -411,9 +411,9 @@ const informationContainer = document.getElementById("information-container");
 menuInformation.addEventListener("click", () => {
 	menuInformation.classList.toggle("active");
 
-	// if (menuInformation.classList.contains("active")) {
-	// 	informationContainer.style.display = "flex";
-	// } else {
-	// 	informationContainer.style.display = "none";
-	// }
+	if (menuInformation.classList.contains("active")) {
+		informationContainer.style.display = "flex";
+	} else {
+		informationContainer.style.display = "none";
+	}
 });

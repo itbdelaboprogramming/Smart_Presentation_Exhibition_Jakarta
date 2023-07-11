@@ -17,6 +17,20 @@
     <body>
         <div class="home-page">
             <canvas id="myCanvas">    </canvas>
+
+            <div class="information-container" id="information-container" style="display:none;">
+                <div class="information-description">
+                    <p class="information-description-title">
+                        Dendoman Battery Jaw Crusher
+                    </p>
+                    <p class="information-description-model-number">NE100HBJ | NE200HBJ</p>
+                    <p class="information-description-description">Driven by the Lithium Ion battery With the power management function <br><br> Also equipped with the N-Link (IoT remote controlled management system) </p>
+                    <p class="information-description-specification">Specifications</p>
+                    <p class="information-description-specification-detail" >Processing ability is influenced by quality of material, block size thrown into, particle size <br><br> Specs and dimensions of this machine might be changed without any prior notice for the purpose of improvement</p>
+                </div>
+                <a class="information-link" target="_blank" href="https://www.ncjpn.com/en/products/dendoman/">Dendoman Series | Nakayama Iron Works (ncjpn.com)</a>
+            </div>
+
             <div class="container-bottom-left">
                 <button class="explode-button"> Explode </button>
                 <div class="menu-container-blue-information">
