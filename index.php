@@ -27,8 +27,9 @@
                     <p class="information-description-description">SR type can accept large material and increase the crushing efficiency at high speed rotating range. <br><br> Two types of crushing chamber are available ①Anvil type is mainly for crushing, ②Rock bed type is for better shaping. <br><br> Maintenance-focused 1-stage reversible-type vertical shaft crusher.</p>
                     <p class="information-description-specification">Specifications</p>
                     <p class="information-description-specification-detail" >Processing performance depends on quality of material, feeding chunks and particle size. <br><br> This machine’s spec and dimension might be changed without prior-notice for the improvement.</p>
+                    <img class="information-specification-img" src="./files/specification.png" />
                 </div>
-                <a class="information-link" target="_blank" href="https://www.ncjpn.com/en/products/dendoman/">Dendoman Series | Nakayama Iron Works (ncjpn.com)</a>
+                <a class="information-link" target="_blank" href="https://www.ncjpn.com/en/products/crushers/">Crusher Series | Nakayama Iron Works (ncjpn.com)</a>
             </div>
 
             <div class="container-bottom-left">
