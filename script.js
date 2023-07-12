@@ -11,7 +11,7 @@ scene.background = new THREE.Color(0xdbe9e9);
 
 // ------------------------------------------- CAMERA -------------------------------------------
 export const camera = new THREE.PerspectiveCamera(
-	50,
+	60,
 	myCanvas.offsetWidth / myCanvas.offsetHeight
 );
 camera.position.set(6, 4, -4);
@@ -24,6 +24,7 @@ const colorCenterLine = 0xffffff;
 const colorGrid = 0xffffff;
 
 const grid = new THREE.GridHelper(size, divisions, colorCenterLine, colorGrid);
+grid.position.y = -1;
 grid.name = "grid";
 scene.add(grid);
 
@@ -99,7 +100,7 @@ loader.load(
 		let file3D = gltf.scene;
 		file3D.name = "file3D";
 		scene.add(file3D);
-		file3D.position.set(0, 0, 0);
+		file3D.position.set(0, -0.95, 0);
 	},
 	undefined,
 	function (error) {

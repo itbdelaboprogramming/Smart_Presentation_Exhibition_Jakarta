@@ -145,6 +145,7 @@ if (getMode && getMode === "dark-theme") {
 	scene.remove(scene.getObjectByName("grid"));
 
 	const grid = new THREE.GridHelper(20, 20, 0x475b74, 0x475b74);
+	grid.position.y = -1;
 	grid.name = "grid";
 	scene.add(grid);
 
@@ -162,6 +163,7 @@ toggle.addEventListener("click", () => {
 		scene.remove(scene.getObjectByName("grid"));
 
 		const grid = new THREE.GridHelper(20, 20, 0x475b74, 0x475b74);
+		grid.position.y = -1;
 		grid.name = "grid";
 		scene.add(grid);
 
@@ -171,6 +173,7 @@ toggle.addEventListener("click", () => {
 
 		scene.remove(scene.getObjectByName("grid"));
 		const grid = new THREE.GridHelper(20, 20, 0xffffff, 0xffffff);
+		grid.position.y = -1;
 		grid.name = "grid";
 		scene.add(grid);
 
@@ -418,7 +421,7 @@ function updateFile3D(file_name) {
 				file3D = gltf.scene;
 				file3D.name = "file3D";
 				scene.add(file3D);
-				file3D.position.set(0, 0, 0);
+				file3D.position.set(0, -0.95, 0);
 			},
 			undefined,
 			function (error) {
