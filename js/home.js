@@ -2,9 +2,90 @@ import { scene, camera, orbitControls } from "../script.js";
 import * as THREE from "three";
 import { GLTFLoader } from "https://unpkg.com/three@0.139.2/examples/jsm/loaders/GLTFLoader.js";
 
-// explode 3D file
+// ---------------------------------------------------------------------------------------
+// ----------------------------------- Const, Var, Let -----------------------------------
+// ---------------------------------------------------------------------------------------
+
+// ----------------------------------- Explode 3D File -----------------------------------
 let explode_button = document.querySelector(".explode-button");
 
+// ----------------------------------- dark/light mode -----------------------------------
+const toggle = document.querySelector(".toggle");
+
+let getMode = localStorage.getItem("mode");
+
+// -------------------------------------- lightning --------------------------------------
+const menuLightning = document.querySelector(".menu-container-blue-lightning");
+const lightning_expand = document.querySelector(
+	".menu-container-blue-lightning-expand"
+);
+const lightning_title = document.querySelector(".lightning-title-2");
+const opsi = lightning_title.querySelectorAll(".opsi");
+
+const custom_lightning = document.querySelector(".custom-lightning");
+
+const ambientLight = scene.getObjectByName("ambientLight");
+const dirLight = scene.getObjectByName("dirLight");
+const light1 = scene.getObjectByName("light1");
+const light2 = scene.getObjectByName("light2");
+const light3 = scene.getObjectByName("light3");
+const light4 = scene.getObjectByName("light4");
+
+// -------------------------------- slider env brightness --------------------------------
+const slider_env = document.getElementById("slider-env");
+const maxValue_env = slider_env.getAttribute("max");
+let value_env;
+const sliderFill_env = document.getElementById("fill-env");
+
+// --------------------------------- slider lamp position --------------------------------
+const slider_lamp_pos = document.getElementById("slider-lamp-pos");
+const maxValue_lamp_pos = slider_lamp_pos.getAttribute("max");
+let value_lamp_pos;
+const sliderFill_lamp_pos = document.getElementById("fill-lamp-pos");
+
+// ------------------------------- slider lamp brightness --------------------------------
+const slider_lamp = document.getElementById("slider-lamp");
+const maxValue_lamp = slider_lamp.getAttribute("max");
+let value_lamp;
+const sliderFill_lamp = document.getElementById("fill-lamp");
+
+// -------------------------------------- catalogue --------------------------------------
+const menuAlbum = document.querySelector(".menu-container-blue-album");
+const catalogueContainer = document.getElementById("catalogue-container-2");
+const catalogue_product_list = document.querySelectorAll(
+	".catalogue-product-list-2"
+);
+
+let loader = new GLTFLoader();
+loader.name = "loader";
+
+// ------------------------------------- slider zoom -------------------------------------
+const slider = document.getElementById("slider-zoom");
+const maxValue = slider.getAttribute("max");
+let value;
+const sliderFill = document.getElementById("fill-zoom");
+
+// ---------------------------------------- sound ----------------------------------------
+const menuSound = document.querySelector(".menu-container-blue-sound");
+const iconSoundOff = document.getElementById("sound-off");
+const iconSoundOn = document.getElementById("sound-on");
+
+// -------------------------------------- animation --------------------------------------
+const menuAnimation = document.querySelector(".menu-container-blue-animation");
+const iconAnimationOff = document.getElementById("animation-off");
+const iconAnimationOn = document.getElementById("animation-on");
+
+// ------------------------------------- information -------------------------------------
+const menuInformation = document.querySelector(
+	".menu-container-blue-information"
+);
+const informationContainer = document.getElementById("information-container");
+
+// ---------------------------------------------------------------------------------------
+// ------------------------------------- PROGRAM CODE ------------------------------------
+// ---------------------------------------------------------------------------------------
+
+// ----------------------------------- Explode 3D File -----------------------------------
 explode_button.addEventListener("click", () => {
 	explode_button.classList.toggle("active");
 
@@ -55,11 +136,6 @@ explode_button.addEventListener("click", () => {
 });
 
 // ----------------------------------- dark/light mode -----------------------------------
-const toggle = document.querySelector(".toggle");
-
-let getMode = localStorage.getItem("mode");
-
-// ----------------------------------- dark/light mode -----------------------------------
 if (getMode && getMode === "dark-theme") {
 	document.body.classList.add("dark-theme");
 	toggle.classList.add("active");
@@ -103,15 +179,6 @@ toggle.addEventListener("click", () => {
 });
 
 // -------------------------------------- lightning --------------------------------------
-const menuLightning = document.querySelector(".menu-container-blue-lightning");
-const lightning_expand = document.querySelector(
-	".menu-container-blue-lightning-expand"
-);
-const lightning_title = document.querySelector(".lightning-title-2");
-const opsi = lightning_title.querySelectorAll(".opsi");
-
-const custom_lightning = document.querySelector(".custom-lightning");
-
 menuLightning.addEventListener("click", () => {
 	menuLightning.classList.toggle("active");
 
@@ -134,18 +201,106 @@ opsi.forEach(function (opsi) {
 	});
 });
 
+window.addEventListener("resize", () => {
+	if (custom_lightning.style.display == "flex") {
+		if (window.innerWidth < 900) {
+			lightning_expand.style.height = "230px";
+		} else {
+			lightning_expand.style.height = "190px";
+		}
+	}
+});
+
+// -------------------------------- slider env brightness --------------------------------
+updateSliderEnv();
+slider_env.addEventListener("input", () => {
+	updateSliderEnv();
+	updateEnvBrightness();
+});
+
+// --------------------------------- slider lamp position --------------------------------
+updateSliderLampPos();
+slider_lamp_pos.addEventListener("input", () => {
+	updateSliderLampPos();
+	updateLampPos();
+});
+
+// ------------------------------- slider lamp brightness --------------------------------
+updateSliderLamp();
+slider_lamp.addEventListener("input", () => {
+	updateSliderLamp();
+	updateLamp();
+});
+
+// -------------------------------------- catalogue --------------------------------------
+menuAlbum.addEventListener("click", () => {
+	menuAlbum.classList.toggle("active");
+
+	if (menuAlbum.classList.contains("active")) {
+		catalogueContainer.style.display = "flex";
+	} else {
+		catalogueContainer.style.display = "none";
+	}
+});
+
+loadCatalogue(catalogue_product_list);
+
+// ------------------------------------- slider zoom -------------------------------------
+updateSlider();
+updateZoomCamera();
+slider.addEventListener("input", () => {
+	updateSlider();
+	updateZoomCamera();
+});
+
+// ---------------------------------------- sound ----------------------------------------
+menuSound.addEventListener("click", () => {
+	menuSound.classList.toggle("active");
+
+	if (menuSound.classList.contains("active")) {
+		iconSoundOff.style.display = "none";
+		iconSoundOn.style.display = "block";
+	} else {
+		iconSoundOff.style.display = "block";
+		iconSoundOn.style.display = "none";
+	}
+});
+
+// -------------------------------------- animation --------------------------------------
+menuAnimation.addEventListener("click", () => {
+	menuAnimation.classList.toggle("active");
+
+	if (menuAnimation.classList.contains("active")) {
+		iconAnimationOff.style.display = "none";
+		iconAnimationOn.style.display = "block";
+		orbitControls.autoRotate = true;
+	} else {
+		iconAnimationOff.style.display = "block";
+		iconAnimationOn.style.display = "none";
+		orbitControls.autoRotate = false;
+	}
+});
+
+// ------------------------------------- information -------------------------------------
+menuInformation.addEventListener("click", () => {
+	menuInformation.classList.toggle("active");
+
+	if (menuInformation.classList.contains("active")) {
+		informationContainer.style.display = "flex";
+	} else {
+		informationContainer.style.display = "none";
+	}
+});
+
+// ---------------------------------------------------------------------------------------
+// ---------------------------------- FUNCTION HELPER ------------------------------------
+// ---------------------------------------------------------------------------------------
+// -------------------------------------- lightning --------------------------------------
 function resetOpsi() {
 	opsi.forEach(function (opsi) {
 		opsi.classList.remove("active");
 	});
 }
-
-const ambientLight = scene.getObjectByName("ambientLight");
-const dirLight = scene.getObjectByName("dirLight");
-const light1 = scene.getObjectByName("light1");
-const light2 = scene.getObjectByName("light2");
-const light3 = scene.getObjectByName("light3");
-const light4 = scene.getObjectByName("light4");
 
 function updateLightning(opsi_text) {
 	if (opsi_text === "custom") {
@@ -186,28 +341,7 @@ function updateLightning(opsi_text) {
 	}
 }
 
-window.addEventListener("resize", () => {
-	if (custom_lightning.style.display == "flex") {
-		if (window.innerWidth < 900) {
-			lightning_expand.style.height = "230px";
-		} else {
-			lightning_expand.style.height = "190px";
-		}
-	}
-});
-
 // -------------------------------- slider env brightness --------------------------------
-const slider_env = document.getElementById("slider-env");
-const maxValue_env = slider_env.getAttribute("max");
-let value_env;
-const sliderFill_env = document.getElementById("fill-env");
-
-updateSliderEnv();
-slider_env.addEventListener("input", () => {
-	updateSliderEnv();
-	updateEnvBrightness();
-});
-
 function updateSliderEnv() {
 	value_env = (slider_env.value / maxValue_env) * 100 + "%";
 	sliderFill_env.style.width = value_env;
@@ -219,17 +353,6 @@ function updateEnvBrightness() {
 }
 
 // --------------------------------- slider lamp position --------------------------------
-const slider_lamp_pos = document.getElementById("slider-lamp-pos");
-const maxValue_lamp_pos = slider_lamp_pos.getAttribute("max");
-let value_lamp_pos;
-const sliderFill_lamp_pos = document.getElementById("fill-lamp-pos");
-
-updateSliderLampPos();
-slider_lamp_pos.addEventListener("input", () => {
-	updateSliderLampPos();
-	updateLampPos();
-});
-
 function updateSliderLampPos() {
 	value_lamp_pos = (slider_lamp_pos.value / maxValue_lamp_pos) * 100 + "%";
 	sliderFill_lamp_pos.style.width = value_lamp_pos;
@@ -241,17 +364,6 @@ function updateLampPos() {
 }
 
 // ------------------------------- slider lamp brightness --------------------------------
-const slider_lamp = document.getElementById("slider-lamp");
-const maxValue_lamp = slider_lamp.getAttribute("max");
-let value_lamp;
-const sliderFill_lamp = document.getElementById("fill-lamp");
-
-updateSliderLamp();
-slider_lamp.addEventListener("input", () => {
-	updateSliderLamp();
-	updateLamp();
-});
-
 function updateSliderLamp() {
 	value_lamp = (slider_lamp.value / maxValue_lamp) * 100 + "%";
 	sliderFill_lamp.style.width = value_lamp;
@@ -263,28 +375,6 @@ function updateLamp() {
 }
 
 // -------------------------------------- catalogue --------------------------------------
-const menuAlbum = document.querySelector(".menu-container-blue-album");
-const catalogueContainer = document.getElementById("catalogue-container-2");
-const catalogue_product_list = document.querySelectorAll(
-	".catalogue-product-list-2"
-);
-
-// ---------------------------- resize canvas width responsive ---------------------------
-let loader = new GLTFLoader();
-loader.name = "loader";
-
-menuAlbum.addEventListener("click", () => {
-	menuAlbum.classList.toggle("active");
-
-	if (menuAlbum.classList.contains("active")) {
-		catalogueContainer.style.display = "flex";
-	} else {
-		catalogueContainer.style.display = "none";
-	}
-});
-
-loadCatalogue(catalogue_product_list);
-
 function loadCatalogue(catalogue_product_list) {
 	catalogue_product_list.forEach(function (product_list) {
 		product_list.addEventListener("click", () => {
@@ -341,18 +431,6 @@ function updateFile3D(file_name) {
 }
 
 // ------------------------------------- slider zoom -------------------------------------
-const slider = document.getElementById("slider-zoom");
-const maxValue = slider.getAttribute("max");
-let value;
-const sliderFill = document.getElementById("fill-zoom");
-
-updateSlider();
-updateZoomCamera();
-slider.addEventListener("input", () => {
-	updateSlider();
-	updateZoomCamera();
-});
-
 function updateZoomCamera() {
 	camera.zoom = slider.value;
 	camera.updateProjectionMatrix();
@@ -362,55 +440,3 @@ function updateSlider() {
 	value = (slider.value / maxValue) * 100 + "%";
 	sliderFill.style.width = value;
 }
-
-// ---------------------------------------- sound ----------------------------------------
-const menuSound = document.querySelector(".menu-container-blue-sound");
-const iconSoundOff = document.getElementById("sound-off");
-const iconSoundOn = document.getElementById("sound-on");
-
-menuSound.addEventListener("click", () => {
-	menuSound.classList.toggle("active");
-
-	if (menuSound.classList.contains("active")) {
-		iconSoundOff.style.display = "none";
-		iconSoundOn.style.display = "block";
-	} else {
-		iconSoundOff.style.display = "block";
-		iconSoundOn.style.display = "none";
-	}
-});
-
-// -------------------------------------- animation --------------------------------------
-const menuAnimation = document.querySelector(".menu-container-blue-animation");
-const iconAnimationOff = document.getElementById("animation-off");
-const iconAnimationOn = document.getElementById("animation-on");
-
-menuAnimation.addEventListener("click", () => {
-	menuAnimation.classList.toggle("active");
-
-	if (menuAnimation.classList.contains("active")) {
-		iconAnimationOff.style.display = "none";
-		iconAnimationOn.style.display = "block";
-		orbitControls.autoRotate = true;
-	} else {
-		iconAnimationOff.style.display = "block";
-		iconAnimationOn.style.display = "none";
-		orbitControls.autoRotate = false;
-	}
-});
-
-// ------------------------------------- information -------------------------------------
-const menuInformation = document.querySelector(
-	".menu-container-blue-information"
-);
-const informationContainer = document.getElementById("information-container");
-
-menuInformation.addEventListener("click", () => {
-	menuInformation.classList.toggle("active");
-
-	if (menuInformation.classList.contains("active")) {
-		informationContainer.style.display = "flex";
-	} else {
-		informationContainer.style.display = "none";
-	}
-});

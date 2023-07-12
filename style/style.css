@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css?family=Ubuntu:wght@100;200;300;400;500;600;700;800;900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
+/* ---------------------------------------- DARK / LIGHT MODE COLOR ---------------------------------------- */
 :root {
 	--primary-color-main: #e6f5f8;
 
@@ -93,6 +94,7 @@ canvas {
 	min-height: 100%;
 }
 
+/* ------------------------------------------- FLOATING CONTAINER ------------------------------------------ */
 .container-bottom-left {
 	position: fixed;
 	z-index: 1;
@@ -134,7 +136,7 @@ canvas {
 	font-size: 13px;
 }
 
-/* explode 3D file*/
+/* -------------------------------------------- EXPLODE 3D FILE -------------------------------------------- */
 .explode-button {
 	font-family: "Inter";
 	font-style: normal;
@@ -145,7 +147,7 @@ canvas {
 	text-align: center;
 }
 
-/* darkmode light mode toggle */
+/* ---------------------------------------- DARK / LIGHT MODE COLOR ---------------------------------------- */
 .toggle {
 	position: relative;
 	width: 68.21px;
@@ -177,7 +179,7 @@ canvas {
 	background: #74e7d4;
 }
 
-/* For Button Album */
+/* -------------------------------------- FOR BUTTON ALBUM/CATALOGUE --------------------------------------- */
 .menu-container-blue-album {
 	display: flex;
 	justify-content: center;
@@ -201,7 +203,7 @@ canvas {
 	background-color: #74e7d4;
 }
 
-/* For Button Lightning Controller */
+/* ------------------------------------ FOR BUTTON LIGHTNING CONTROLLER ------------------------------------ */
 .menu-container-blue-lightning {
 	display: flex;
 	justify-content: center;
@@ -241,8 +243,6 @@ canvas {
 	align-items: center;
 	height: 100%;
 	width: 100%;
-
-	/* padding: 5px 5px 5px 15px; */
 
 	font-family: "Ubuntu";
 	font-style: normal;
@@ -417,7 +417,7 @@ canvas {
 	}
 }
 
-/* nakayama's text */
+/* -------------------------------------------- NAKAYAMA'S TEXT -------------------------------------------- */
 .item-name-container {
 	position: fixed;
 	z-index: 1;
@@ -428,7 +428,6 @@ canvas {
 	margin-right: auto;
 	margin-top: 23px;
 
-	/* Need a specific value to work */
 	width: 228px;
 	background-color: var(--background-color-25);
 	border: 1.74061px solid var(--primary-color-100);
@@ -441,7 +440,7 @@ canvas {
 
 .text-file-name {
 	position: relative;
-	/* Text style */
+
 	margin: 0px 0px 8px 0px;
 	height: 23.5px;
 	font-family: "Inter";
@@ -476,7 +475,7 @@ canvas {
 	line-height: 20.887px;
 }
 
-/* catalogue model number home */
+/* -------------------------------------- CATALOGUE MODEL NUMBER HOME -------------------------------------- */
 .catalogue-container-2 {
 	position: absolute;
 	z-index: 1;
@@ -584,7 +583,7 @@ canvas {
 	width: 100%;
 }
 
-/* For Button Information */
+/* ----------------------------------------- FOR BUTTON INFORMATION ---------------------------------------- */
 .menu-container-blue-information {
 	display: flex;
 	justify-content: center;
@@ -628,7 +627,7 @@ canvas {
 	background-color: #74e7d4;
 }
 
-/* For Button Animation */
+/* ------------------------------------------ FOR BUTTON ANIMATION ----------------------------------------- */
 .menu-container-blue-animation {
 	display: flex;
 	justify-content: center;
@@ -650,7 +649,7 @@ canvas {
 	background-color: #74e7d4;
 }
 
-/* information section */
+/* ------------------------------------------ INFORMATION SECTION ------------------------------------------ */
 .information-container {
 	position: absolute;
 	z-index: 1;
