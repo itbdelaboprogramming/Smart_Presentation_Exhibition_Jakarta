@@ -17,6 +17,12 @@
     <body>
         <div class="home-page">
             <canvas id="myCanvas">    </canvas>
+            <div class="container-top-left">
+                <img class="menu-pdf" src="./assets/Pdf.svg">
+                <div class="page-name-container">
+                    <div class="page-name-text">Nakayama VSI Grypactor</div>
+                </div>
+            </div>
 
             <div class="information-container" id="information-container" style="display:none;">
                 <div class="information-description">
@@ -136,13 +142,6 @@
                     <img src="./assets/Lightning-Button.png">
                 </div>
                 <div class="toggle"></div>
-            </div>
-
-            <div class="item-name-container" id="item-category">
-                <p class="text-file-name">Nakayama's Product</p>
-                <div class="type-container">
-                    <div class="text-file-type">VSI Gyropactor</div>
-                </div>
             </div>
             <script type="module" src="script.js"> </script>
             <script type="module" src="./js/home.js"></script>

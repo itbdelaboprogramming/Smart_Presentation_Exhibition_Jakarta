@@ -95,6 +95,19 @@ canvas {
 }
 
 /* ------------------------------------------- FLOATING CONTAINER ------------------------------------------ */
+.container-top-left {
+	position: fixed;
+	z-index: 1;
+	top: 0;
+	left: 0;
+	margin-top: 23px;
+	margin-left: 23px;
+
+	display: flex;
+	flex-direction: row;
+	gap: 30px;
+}
+
 .container-bottom-left {
 	position: fixed;
 	z-index: 1;
@@ -747,4 +760,41 @@ canvas {
 
 	color: var(--text-color-primary-color-200);
 	padding-right: 16px;
+}
+
+/* Page Name */
+.page-name-container {
+	padding: 18px 50px 18px 50px;
+	background: var(--primary-color-50);
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+	border-radius: 5px;
+}
+
+@media (max-width: 1000px) {
+	.page-name-container {
+		display: none;
+	}
+}
+
+.page-name-text {
+	font-family: "Ubuntu";
+	font-style: normal;
+	font-weight: 700;
+	font-size: 24px;
+	line-height: 28px;
+	text-align: center;
+	color: var(--primary-color-200);
+}
+
+/* pdf button */
+.menu-pdf {
+	cursor: pointer;
+	border-radius: 50%;
+}
+
+.menu-pdf:hover {
+	/* filter: drop-shadow(0 4 4 rgba(0, 0, 0, 0.75)); */
+	/* text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); */
+	/* box-shadow: 0px 4px 4px #00000040; */
+	filter: drop-shadow(0px 4px 4px rgba(24, 154, 180, 0.75));
 }
