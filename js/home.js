@@ -70,6 +70,14 @@ const menuSound = document.querySelector(".menu-container-blue-sound");
 const iconSoundOff = document.getElementById("sound-off");
 const iconSoundOn = document.getElementById("sound-on");
 
+const soundExpand = document.querySelector(".sound-expand");
+
+var audio = new Audio("./audio/podcast-18169.mp3");
+var audio_speech = new Audio("./audio/audio_speech1.wav");
+
+const toggle_music = document.querySelector(".toggle-music");
+const toggle_speech = document.querySelector(".toggle-speech");
+
 // -------------------------------------- animation --------------------------------------
 const menuAnimation = document.querySelector(".menu-container-blue-animation");
 const iconAnimationOff = document.getElementById("animation-off");
@@ -263,9 +271,32 @@ menuSound.addEventListener("click", () => {
 	if (menuSound.classList.contains("active")) {
 		iconSoundOff.style.display = "none";
 		iconSoundOn.style.display = "block";
+		soundExpand.style.display = "flex";
 	} else {
 		iconSoundOff.style.display = "block";
 		iconSoundOn.style.display = "none";
+		soundExpand.style.display = "none";
+	}
+});
+
+toggle_music.addEventListener("click", () => {
+	toggle_music.classList.toggle("active");
+
+	if (toggle_music.classList.contains("active")) {
+		audio.play();
+	} else {
+		audio.pause();
+	}
+});
+
+toggle_speech.addEventListener("click", () => {
+	toggle_speech.classList.toggle("active");
+
+	if (toggle_speech.classList.contains("active")) {
+		audio_speech.play();
+	} else {
+		audio_speech.pause();
+		audio_speech.currentTime = 0;
 	}
 });
 

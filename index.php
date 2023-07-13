@@ -41,21 +41,6 @@
                 <a class="information-link" target="_blank" href="https://www.ncjpn.com/en/products/crushers/">Crusher Series | Nakayama Iron Works (ncjpn.com)</a>
             </div>
 
-            <div class="container-bottom-left">
-                <button class="explode-button"> Explode </button>
-                <div class="menu-container-blue-information">
-                    <img src="./assets/Information-Button.png">
-                </div>
-                <div class="menu-container-blue-sound">
-                    <img src="./assets/Sound-Off-Button.png" id="sound-off">
-                    <img src="./assets/Sound-On-Button.png" id="sound-on" style="display: none;">
-                </div>
-                <div class="menu-container-blue-animation">
-                    <img src="./assets/Animation-Off-Button.png" id="animation-off">
-                    <img src="./assets/Animation-On-Button.png" id="animation-on" style="display: none;">
-                </div>
-            </div>
-
             <div class="catalogue-container-2" id="catalogue-container-2">
                 <div>
                     <p class="catalogue-description-title-2">VSI Gyropactor Series</p>
@@ -68,6 +53,27 @@
                     <div class="catalogue-product-list-2" id="model_name">
                         <div class="catalogue-product-list-text-2"> SRユニット_v1 </div>
                         <img class="catalogue-image-preview-2" src="./files/SRユニット_v1_preview.png" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="container-bottom-left-ml2x">
+                <div class="sound-expand" style="display:none;">
+                    <div class="sound-expand-component">
+                        Music
+                        <div class="toggle-container">
+                            Off
+                            <div class="toggle-music"></div>
+                            On
+                        </div>
+                    </div>
+                    <div class="sound-expand-component">
+                        Voice Over
+                        <div class="toggle-container">
+                            Off
+                            <div class="toggle-speech"></div>
+                            On
+                        </div>
                     </div>
                 </div>
             </div>
@@ -134,6 +140,21 @@
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+
+            <div class="container-bottom-left">
+                <button class="explode-button"> Explode </button>
+                <div class="menu-container-blue-information">
+                    <img src="./assets/Information-Button.png">
+                </div>
+                <div class="menu-container-blue-sound">
+                    <img src="./assets/Sound-Off-Button.png" id="sound-off">
+                    <img src="./assets/Sound-On-Button.png" id="sound-on" style="display: none;">
+                </div>
+                <div class="menu-container-blue-animation">
+                    <img src="./assets/Animation-Off-Button.png" id="animation-off">
+                    <img src="./assets/Animation-On-Button.png" id="animation-on" style="display: none;">
                 </div>
             </div>
 
