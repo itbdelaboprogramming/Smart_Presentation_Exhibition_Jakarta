@@ -172,6 +172,25 @@ canvas {
 	display: block;
 }
 
+.container-full-screen-video {
+	position: fixed;
+	z-index: 2;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	padding: 5% 7% 5% 7%;
+	backdrop-filter: blur(5px);
+
+	display: none;
+}
+
+.container-full-screen-video.active {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
 /* -------------------------------------------- EXPLODE 3D FILE -------------------------------------------- */
 .explode-button {
 	font-family: "Inter";
@@ -849,4 +868,13 @@ canvas {
 
 .menu-video:active {
 	filter: brightness(0.5);
+}
+
+/* video pop up */
+.pdf-pop-up-container-video {
+	border: 10px solid var(--secondary-color-side-theme-sunset-200, #ff7582);
+	height: fit-content;
+	width: fit-content;
+
+	display: flex;
 }

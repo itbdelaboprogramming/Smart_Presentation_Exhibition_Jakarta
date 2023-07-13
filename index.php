@@ -149,12 +149,16 @@
             
 
             <div class="container-full-screen-pdf">
-                <div class="pdf-pop-up-container" id="pdf-pop-up-container" style="overflow-x: hidden; overflow-y: hidden;">
+                <div class="pdf-pop-up-container" id="pdf-pop-up-container">
                     <embed src="./files/SR_en_ver.2.06_20220523.pdf#scrollbar=0&toolbar=0&view=FitH" type="application/pdf" width="100%" height="100%"/>
+                    Your browser does not support the video tag.
                 </div>
             </div>
-            
-
+            <div class="container-full-screen-video">
+                <div class="pdf-pop-up-container-video" id="pdf-pop-up-container-video">
+                    <video id="video" width="100%" height="auto" src="./files/中山鉄工所ジャイロパクタ SRシリーズ.mp4" type="video/mp4" controls></video>
+                </div>
+            </div>
             <script type="module" src="script.js"> </script>
             <script type="module" src="./js/home.js"></script>
         </div>
