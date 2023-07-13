@@ -18,7 +18,10 @@
         <div class="home-page">
             <canvas id="myCanvas">    </canvas>
             <div class="container-top-left">
-                <img class="menu-pdf" src="./assets/Pdf.svg">
+                <div class="pdf_container">
+                    <img class="menu-pdf" src="./assets/Pdf.svg">
+                    <img class="menu-video" src="./assets/Video.svg">
+                </div>
                 <div class="page-name-container">
                     <div class="page-name-text">Nakayama VSI Grypactor</div>
                 </div>
@@ -143,6 +146,15 @@
                 </div>
                 <div class="toggle"></div>
             </div>
+            
+
+            <div class="container-full-screen-pdf">
+                <div class="pdf-pop-up-container" id="pdf-pop-up-container" style="overflow-x: hidden; overflow-y: hidden;">
+                    <embed src="./files/SR_en_ver.2.06_20220523.pdf#scrollbar=0&toolbar=0&view=FitH" type="application/pdf" width="100%" height="100%"/>
+                </div>
+            </div>
+            
+
             <script type="module" src="script.js"> </script>
             <script type="module" src="./js/home.js"></script>
         </div>

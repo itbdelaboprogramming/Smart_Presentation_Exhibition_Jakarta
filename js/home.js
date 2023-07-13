@@ -443,3 +443,25 @@ function updateSlider() {
 	value = (slider.value / maxValue) * 100 + "%";
 	sliderFill.style.width = value;
 }
+
+// pdf button
+const pdf_button = document.querySelector(".menu-pdf");
+const pdf_pop_up = document.querySelector(".container-full-screen-pdf");
+
+pdf_button.addEventListener("click", () => {
+	console.log("clic");
+	pdf_pop_up.classList.toggle("active");
+	if (pdf_pop_up.classList.contains("active")) {
+		console.log("active");
+	} else {
+		console.log("not active");
+	}
+});
+
+pdf_pop_up.addEventListener("click", function (e) {
+	if (!document.getElementById("pdf-pop-up-container").contains(e.target)) {
+		if (pdf_pop_up.classList.contains("active")) {
+			pdf_pop_up.classList.remove("active");
+		}
+	}
+});
