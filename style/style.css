@@ -662,7 +662,7 @@ canvas {
 	background-color: #74e7d4;
 }
 
-/* For Button Sound*/
+/* ------------------------------------------- FOR BUTTON SOUND -------------------------------------------- */
 .menu-container-blue-sound {
 	display: flex;
 	justify-content: center;
@@ -684,13 +684,12 @@ canvas {
 	background-color: #74e7d4;
 }
 
-/* for sound container */
+/* ------------------------------------------ FOR SOUND CONTAINER ------------------------------------------ */
 .container-bottom-left-ml2x {
 	position: fixed;
 	z-index: 1;
 	bottom: 0;
 	left: 0%;
-	/* right: 65%; */
 	padding-bottom: 23px;
 	padding-left: 23px;
 	margin-left: 70px;
@@ -942,7 +941,7 @@ canvas {
 	padding-right: 16px;
 }
 
-/* Page Name */
+/* ----------------------------------------------- PAGE NAME ----------------------------------------------- */
 .page-name-container {
 	padding: 18px 50px 18px 50px;
 	background: var(--primary-color-50);
@@ -967,7 +966,7 @@ canvas {
 	color: var(--primary-color-200);
 }
 
-/* pdf button */
+/* ---------------------------------------------- PDF BUTTON ----------------------------------------------- */
 .pdf_container {
 	display: flex;
 	flex-direction: column;
@@ -987,15 +986,14 @@ canvas {
 	filter: brightness(0.5);
 }
 
-/* pdf pop up */
+/* ---------------------------------------------- PDF POP UP ----------------------------------------------- */
 .pdf-pop-up-container {
 	border: 10px solid var(--secondary-color-side-theme-sunset-200, #ff7582);
 	height: 100%;
 	width: 100%;
-	/* padding: 10px 10px 10px 10px; */
 }
 
-/* video button */
+/* --------------------------------------------- VIDEO BUTTON ---------------------------------------------- */
 .menu-video {
 	cursor: pointer;
 }
@@ -1008,7 +1006,7 @@ canvas {
 	filter: brightness(0.5);
 }
 
-/* video pop up */
+/* --------------------------------------------- VIDEO POP UP ---------------------------------------------- */
 .pdf-pop-up-container-video {
 	border: 10px solid var(--secondary-color-side-theme-sunset-200, #ff7582);
 	height: fit-content;
