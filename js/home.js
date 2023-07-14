@@ -105,45 +105,60 @@ explode_button.addEventListener("click", () => {
 	let obj = scene.getObjectByName("file3D").children;
 	if (explode_button.classList.contains("active")) {
 		obj.forEach((child) => {
-			let target = new THREE.Vector3();
-			child.getWorldPosition(target);
-			target.normalize();
-			target.setX(target.x + child.position.x);
-			target.setY(target.y + child.position.y);
-			target.setZ(target.z + child.position.z);
-			gsap.to(child.position, {
-				duration: 1,
-				x: target.x,
-			});
-			gsap.to(child.position, {
-				duration: 1,
-				y: target.y,
-			});
-			gsap.to(child.position, {
-				duration: 1,
-				z: target.z,
-			});
+			if (child.material.name == "tan sandstone") {
+				child.material.color.set(0x8b795e);
+			} else {
+				let target = new THREE.Vector3();
+				child.getWorldPosition(target);
+				target.normalize();
+				target.setX(target.x * 2 + child.position.x);
+				target.setY(target.y * 2 + child.position.y);
+				target.setZ(target.z * 2 + child.position.z);
+				gsap.to(child.position, {
+					duration: 1,
+					x: target.x,
+				});
+				gsap.to(child.position, {
+					duration: 1,
+					y: target.y,
+				});
+				gsap.to(child.position, {
+					duration: 1,
+					z: target.z,
+				});
+				if (child.material.name == "matte silver") {
+					child.material.color.set(0xc0c0c0);
+				} else if (child.material.name == "glossy rubber") {
+					child.material.color.set(0x3a363b);
+				}
+			}
 		});
 	} else {
 		obj.forEach((child) => {
-			let target = new THREE.Vector3();
-			child.getWorldPosition(target);
-			target.normalize();
-			target.setX(child.position.x - target.x);
-			target.setY(child.position.y - target.y);
-			target.setZ(child.position.z - target.z);
-			gsap.to(child.position, {
-				duration: 1,
-				x: target.x,
-			});
-			gsap.to(child.position, {
-				duration: 1,
-				y: target.y,
-			});
-			gsap.to(child.position, {
-				duration: 1,
-				z: target.z,
-			});
+			if (child.material.name == "tan sandstone") {
+				// do nothing
+			} else {
+				let target = new THREE.Vector3();
+				child.getWorldPosition(target);
+				target.normalize();
+				target.setX(child.position.x - target.x * 2);
+				target.setY(child.position.y - target.y * 2);
+				target.setZ(child.position.z - target.z * 2);
+				gsap.to(child.position, {
+					duration: 1,
+					x: target.x,
+				});
+				gsap.to(child.position, {
+					duration: 1,
+					y: target.y,
+				});
+				gsap.to(child.position, {
+					duration: 1,
+					z: target.z,
+				});
+			}
+			let color3 = new THREE.Color("rgb(0.2581828, 0.19120, 0.11193242)");
+			child.material.color.set(color3);
 		});
 	}
 });
