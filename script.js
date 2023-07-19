@@ -15,7 +15,6 @@ export const camera = new THREE.PerspectiveCamera(
 	myCanvas.offsetWidth / myCanvas.offsetHeight
 );
 camera.position.set(6, 4, -4);
-camera.lookAt(scene.position);
 
 // ----------------------------------------- GRID HELPER ----------------------------------------
 const size = 20;
@@ -111,7 +110,6 @@ loader.load(
 // ----------------------------------------- RENDER LOOP ----------------------------------------
 renderer.setAnimationLoop(() => {
 	orbitControls.update();
-
 	renderer.render(scene, camera);
 });
 

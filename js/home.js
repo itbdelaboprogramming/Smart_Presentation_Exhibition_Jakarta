@@ -7,7 +7,10 @@ import { GLTFLoader } from "https://unpkg.com/three@0.139.2/examples/jsm/loaders
 // ---------------------------------------------------------------------------------------
 
 // ----------------------------------- Explode 3D File -----------------------------------
-let explode_button = document.querySelector(".explode-button");
+const explode_button = document.querySelector(".explode-button");
+
+// -------------------------------------- Move Cam ---------------------------------------
+const move_cam_button = document.querySelector(".move-cam-button");
 
 // ----------------------------------- dark/light mode -----------------------------------
 const toggle = document.querySelector(".toggle");
@@ -159,6 +162,38 @@ explode_button.addEventListener("click", () => {
 			}
 			let color3 = new THREE.Color("rgb(0.2581828, 0.19120, 0.11193242)");
 			child.material.color.set(color3);
+		});
+	}
+});
+
+// -------------------------------------- Move Cam ---------------------------------------
+move_cam_button.addEventListener("click", () => {
+	move_cam_button.classList.toggle("active");
+	if (move_cam_button.classList.contains("active")) {
+		gsap.to(camera.position, {
+			duration: 1,
+			x: 2,
+		});
+		gsap.to(camera.position, {
+			duration: 1,
+			y: 2,
+		});
+		gsap.to(camera.position, {
+			duration: 1,
+			z: 2,
+		});
+	} else {
+		gsap.to(camera.position, {
+			duration: 1,
+			x: 6,
+		});
+		gsap.to(camera.position, {
+			duration: 1,
+			y: 4,
+		});
+		gsap.to(camera.position, {
+			duration: 1,
+			z: -4,
 		});
 	}
 });

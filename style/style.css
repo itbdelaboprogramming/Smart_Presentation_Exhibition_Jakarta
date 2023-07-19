@@ -204,6 +204,27 @@ canvas {
 	text-align: center;
 }
 
+/* -------------------------------------------- EXPLODE 3D FILE -------------------------------------------- */
+.move-cam-button {
+	font-family: "Inter";
+	font-style: normal;
+	font-weight: 500;
+	font-size: 13.9249px;
+	line-height: 21px;
+
+	text-align: center;
+}
+/* -------------------------------------------- EXPLODE 3D FILE -------------------------------------------- */
+.explode-button {
+	font-family: "Inter";
+	font-style: normal;
+	font-weight: 500;
+	font-size: 13.9249px;
+	line-height: 21px;
+
+	text-align: center;
+}
+
 /* ---------------------------------------- DARK / LIGHT MODE COLOR ---------------------------------------- */
 .toggle {
 	position: relative;
