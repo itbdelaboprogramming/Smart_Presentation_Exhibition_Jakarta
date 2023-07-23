@@ -8,6 +8,7 @@ import { GLTFLoader } from "https://unpkg.com/three@0.139.2/examples/jsm/loaders
 
 // ----------------------------------- Explode 3D File -----------------------------------
 const explode_button = document.querySelector(".explode-button");
+let product_list_text = "SR100C_v1";
 
 // -------------------------------------- Move Cam ---------------------------------------
 const move_cam_button = document.querySelector(".move-cam-button");
@@ -106,63 +107,11 @@ explode_button.addEventListener("click", () => {
 	explode_button.classList.toggle("active");
 
 	let obj = scene.getObjectByName("file3D").children;
-	if (explode_button.classList.contains("active")) {
-		obj.forEach((child) => {
-			if (child.material.name == "tan sandstone") {
-				child.material.color.set(0x8b795e);
-			} else {
-				let target = new THREE.Vector3();
-				child.getWorldPosition(target);
-				target.normalize();
-				target.setX(target.x * 2 + child.position.x);
-				target.setY(target.y * 2 + child.position.y);
-				target.setZ(target.z * 2 + child.position.z);
-				gsap.to(child.position, {
-					duration: 1,
-					x: target.x,
-				});
-				gsap.to(child.position, {
-					duration: 1,
-					y: target.y,
-				});
-				gsap.to(child.position, {
-					duration: 1,
-					z: target.z,
-				});
-				if (child.material.name == "matte silver") {
-					child.material.color.set(0xc0c0c0);
-				} else if (child.material.name == "glossy rubber") {
-					child.material.color.set(0x3a363b);
-				}
-			}
-		});
+
+	if (product_list_text == "SR100C_v1") {
+		SR100C_v1(obj);
 	} else {
-		obj.forEach((child) => {
-			if (child.material.name == "tan sandstone") {
-				// do nothing
-			} else {
-				let target = new THREE.Vector3();
-				child.getWorldPosition(target);
-				target.normalize();
-				target.setX(child.position.x - target.x * 2);
-				target.setY(child.position.y - target.y * 2);
-				target.setZ(child.position.z - target.z * 2);
-				gsap.to(child.position, {
-					duration: 1,
-					x: target.x,
-				});
-				gsap.to(child.position, {
-					duration: 1,
-					y: target.y,
-				});
-				gsap.to(child.position, {
-					duration: 1,
-					z: target.z,
-				});
-			}
-			let color3 = new THREE.Color("rgb(0.2581828, 0.19120, 0.11193242)");
-			child.material.color.set(color3);
-		});
+		SRユニット_v1(obj);
 	}
 });
 
@@ -401,6 +350,115 @@ video_pop_up.addEventListener("click", function (e) {
 // ---------------------------------------------------------------------------------------
 // ---------------------------------- FUNCTION HELPER ------------------------------------
 // ---------------------------------------------------------------------------------------
+
+// ----------------------------------- Explode 3D File -----------------------------------
+function SR100C_v1(obj) {
+	if (explode_button.classList.contains("active")) {
+		obj.forEach((child) => {
+			if (child.material.name == "tan sandstone") {
+				child.material.color.set(0x8b795e);
+			} else {
+				let target = new THREE.Vector3();
+				child.getWorldPosition(target);
+				target.normalize();
+				target.setX(target.x * 2 + child.position.x);
+				target.setY(target.y * 2 + child.position.y);
+				target.setZ(target.z * 2 + child.position.z);
+				gsap.to(child.position, {
+					duration: 1,
+					x: target.x,
+				});
+				gsap.to(child.position, {
+					duration: 1,
+					y: target.y,
+				});
+				gsap.to(child.position, {
+					duration: 1,
+					z: target.z,
+				});
+				if (child.material.name == "matte silver") {
+					child.material.color.set(0xc0c0c0);
+				} else if (child.material.name == "glossy rubber") {
+					child.material.color.set(0x3a363b);
+				}
+			}
+		});
+	} else {
+		obj.forEach((child) => {
+			if (child.material.name == "tan sandstone") {
+				// do nothing
+			} else {
+				let target = new THREE.Vector3();
+				child.getWorldPosition(target);
+				target.normalize();
+				target.setX(child.position.x - target.x * 2);
+				target.setY(child.position.y - target.y * 2);
+				target.setZ(child.position.z - target.z * 2);
+				gsap.to(child.position, {
+					duration: 1,
+					x: target.x,
+				});
+				gsap.to(child.position, {
+					duration: 1,
+					y: target.y,
+				});
+				gsap.to(child.position, {
+					duration: 1,
+					z: target.z,
+				});
+			}
+			let color3 = new THREE.Color("rgb(0.2581828, 0.19120, 0.11193242)");
+			child.material.color.set(color3);
+		});
+	}
+}
+
+function SRユニット_v1(obj) {
+	if (explode_button.classList.contains("active")) {
+		obj.forEach((child) => {
+			let target = new THREE.Vector3();
+			child.getWorldPosition(target);
+			target.normalize();
+			target.setX(target.x * 1 + child.position.x);
+			target.setY(target.y * 1 + child.position.y);
+			target.setZ(target.z * 1 + child.position.z);
+			gsap.to(child.position, {
+				duration: 1,
+				x: target.x,
+			});
+			gsap.to(child.position, {
+				duration: 1,
+				y: target.y,
+			});
+			gsap.to(child.position, {
+				duration: 1,
+				z: target.z,
+			});
+		});
+	} else {
+		obj.forEach((child) => {
+			let target = new THREE.Vector3();
+			child.getWorldPosition(target);
+			target.normalize();
+			target.setX(child.position.x - target.x * 1);
+			target.setY(child.position.y - target.y * 1);
+			target.setZ(child.position.z - target.z * 1);
+			gsap.to(child.position, {
+				duration: 1,
+				x: target.x,
+			});
+			gsap.to(child.position, {
+				duration: 1,
+				y: target.y,
+			});
+			gsap.to(child.position, {
+				duration: 1,
+				z: target.z,
+			});
+		});
+	}
+}
+
 // -------------------------------------- lightning --------------------------------------
 function resetOpsi() {
 	opsi.forEach(function (opsi) {
@@ -487,7 +545,7 @@ function loadCatalogue(catalogue_product_list) {
 			resetCatalogueSelect();
 			product_list.classList.toggle("active");
 
-			let product_list_text = product_list.querySelector(
+			product_list_text = product_list.querySelector(
 				".catalogue-product-list-text-2"
 			).innerText;
 			explode_button.classList.remove("active");
