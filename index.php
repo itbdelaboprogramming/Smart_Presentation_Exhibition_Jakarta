@@ -83,7 +83,7 @@
                     <div class="menu-container-blue-lightning-expand-wrapper">
                         <div class="lightning-component">
                             <div class="lightning-title-2">
-                                Lightning:
+                                Lighting:
                                 <div class="opsi-container">
                                     <div class="opsi active">
                                         default
