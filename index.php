@@ -23,7 +23,7 @@
                     <img class="menu-video" src="./assets/Video.svg">
                 </div>
                 <div class="page-name-container">
-                    <div class="page-name-text">Nakayama VSI Grypactor</div>
+                    <div class="page-name-text">Nakayama VSI Gyropactor</div>
                 </div>
             </div>
 
