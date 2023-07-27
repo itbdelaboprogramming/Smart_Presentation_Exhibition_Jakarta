@@ -23,7 +23,7 @@
                     <img class="menu-video" src="./assets/Video.svg">
                 </div>
                 <div class="page-name-container">
-                    <div class="page-name-text">Nakayama VSI Grypactor</div>
+                    <div class="page-name-text">Nakayama VSI Gyropactor</div>
                 </div>
             </div>
 
@@ -83,7 +83,7 @@
                     <div class="menu-container-blue-lightning-expand-wrapper">
                         <div class="lightning-component">
                             <div class="lightning-title-2">
-                                Lightning:
+                                Lighting:
                                 <div class="opsi-container">
                                     <div class="opsi active">
                                         default
@@ -173,7 +173,6 @@
             <div class="container-full-screen-pdf">
                 <div class="pdf-pop-up-container" id="pdf-pop-up-container">
                     <embed src="./files/SR_en_ver.2.06_20220523.pdf#scrollbar=0&toolbar=0&view=FitH" type="application/pdf" width="100%" height="100%"/>
-                    Your browser does not support the video tag.
                 </div>
             </div>
             <div class="container-full-screen-video">
