@@ -95,9 +95,6 @@ const moved_mesh = [
 	"組み合わせ1_(2)",
 ];
 
-// -------------------------------------- Move Cam ---------------------------------------
-const move_cam_button = document.querySelector(".move-cam-button");
-
 // ----------------------------------- dark/light mode -----------------------------------
 const toggle = document.querySelector(".toggle");
 
@@ -195,38 +192,6 @@ explode_button.addEventListener("click", () => {
 
 	if (product_list_text == "SR100C_v1") {
 		SR100C_v1(obj);
-	}
-});
-
-// -------------------------------------- Move Cam ---------------------------------------
-move_cam_button.addEventListener("click", () => {
-	move_cam_button.classList.toggle("active");
-	if (move_cam_button.classList.contains("active")) {
-		gsap.to(camera.position, {
-			duration: 1,
-			x: 2,
-		});
-		gsap.to(camera.position, {
-			duration: 1,
-			y: 2,
-		});
-		gsap.to(camera.position, {
-			duration: 1,
-			z: 2,
-		});
-	} else {
-		gsap.to(camera.position, {
-			duration: 1,
-			x: 6,
-		});
-		gsap.to(camera.position, {
-			duration: 1,
-			y: 4,
-		});
-		gsap.to(camera.position, {
-			duration: 1,
-			z: -4,
-		});
 	}
 });
 
@@ -442,11 +407,35 @@ function SR100C_v1(obj) {
 				child.visible = false;
 			}
 		});
+		gsap.to(camera.position, {
+			duration: 1,
+			x: -3.5,
+		});
+		gsap.to(camera.position, {
+			duration: 1,
+			y: 2,
+		});
+		gsap.to(camera.position, {
+			duration: 0.5,
+			z: 2.8,
+		});
 	} else {
 		obj.forEach((child) => {
 			if (moved_mesh.includes(child.name)) {
 				child.visible = true;
 			}
+		});
+		gsap.to(camera.position, {
+			duration: 1,
+			x: 6,
+		});
+		gsap.to(camera.position, {
+			duration: 0.5,
+			y: 4,
+		});
+		gsap.to(camera.position, {
+			duration: 1,
+			z: -4,
 		});
 	}
 }

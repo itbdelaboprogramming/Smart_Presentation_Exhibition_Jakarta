@@ -144,7 +144,6 @@
             </div>
 
             <div class="container-bottom-left">
-                <button class="move-cam-button"> Move camera </button>
                 <button class="explode-button"> Explode </button>
                 <div class="menu-container-blue-information">
                     <img src="./assets/Information-Button.png">
