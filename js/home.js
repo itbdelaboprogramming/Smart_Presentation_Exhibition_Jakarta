@@ -9,6 +9,91 @@ import { GLTFLoader } from "https://unpkg.com/three@0.139.2/examples/jsm/loaders
 // ----------------------------------- Explode 3D File -----------------------------------
 const explode_button = document.querySelector(".explode-button");
 let product_list_text = "SR100C_v1";
+const moved_mesh = [
+	"Mirror61",
+	"Mirror62",
+	"Mirror63",
+	"Mirror71",
+	"Mirror72",
+	"Mirror73",
+	"Mirror74",
+	"Mirror77",
+
+	"ﾌｨﾚｯﾄ5",
+	"ﾌｨﾚｯﾄ11",
+	"ﾌｨﾚｯﾄ12",
+
+	"ﾐﾗｰ2_(93)",
+	"ﾐﾗｰ3",
+	"ﾐﾗｰ51",
+	"ﾐﾗｰ52",
+	"ﾐﾗｰ141",
+	"ﾐﾗｰ142",
+	"ﾐﾗｰ143",
+	"ﾐﾗｰ144",
+	"ﾐﾗｰ145",
+	"ﾐﾗｰ201",
+
+	"直線ﾊﾟﾀｰﾝ21",
+	"直線ﾊﾟﾀｰﾝ22",
+	"直線ﾊﾟﾀｰﾝ23",
+	"直線ﾊﾟﾀｰﾝ23_1",
+	"直線ﾊﾟﾀｰﾝ31",
+	"直線ﾊﾟﾀｰﾝ32",
+	"直線ﾊﾟﾀｰﾝ33",
+	"直線ﾊﾟﾀｰﾝ51",
+	"直線ﾊﾟﾀｰﾝ52",
+	"直線ﾊﾟﾀｰﾝ54",
+	"直線ﾊﾟﾀｰﾝ241",
+	"直線ﾊﾟﾀｰﾝ244",
+
+	"円形ﾊﾟﾀｰﾝ2",
+	"円形ﾊﾟﾀｰﾝ2_(49)",
+	"円形ﾊﾟﾀｰﾝ3",
+	"円形ﾊﾟﾀｰﾝ10",
+	"円形ﾊﾟﾀｰﾝ14_(48)",
+	"円形ﾊﾟﾀｰﾝ15_(48)",
+	"円形ﾊﾟﾀｰﾝ33",
+	"円形ﾊﾟﾀｰﾝ52",
+	"円形ﾊﾟﾀｰﾝ53",
+	"円形ﾊﾟﾀｰﾝ55",
+	"円形ﾊﾟﾀｰﾝ56",
+	"円形ﾊﾟﾀｰﾝ61",
+	"円形ﾊﾟﾀｰﾝ62",
+	"円形ﾊﾟﾀｰﾝ81",
+	"円形ﾊﾟﾀｰﾝ82",
+	"円形ﾊﾟﾀｰﾝ83",
+	"円形ﾊﾟﾀｰﾝ102",
+	"円形ﾊﾟﾀｰﾝ103",
+	"円形ﾊﾟﾀｰﾝ111",
+	"円形ﾊﾟﾀｰﾝ112",
+	"円形ﾊﾟﾀｰﾝ118",
+	"円形ﾊﾟﾀｰﾝ119",
+
+	"押し出し1",
+	"押し出し4",
+	"押し出し6",
+	"押し出し7",
+	"押し出し8",
+	"押し出し11",
+
+	"回転1_(220)",
+	"回転1_(221)",
+	"回転21",
+
+	"M6x10_ねじ穴1",
+
+	"M8_丸平ねじ用座ぐり穴1",
+
+	"ﾎﾞｽ_-_押し出し1_(1)",
+	"ﾎﾞｽ_-_押し出し1_(2)",
+	"ﾎﾞｽ_-_押し出し1_(3)",
+	"ﾎﾞｽ_-_押し出し2",
+	"ﾎﾞｽ_-_押し出し4",
+
+	"組み合わせ1",
+	"組み合わせ1_(2)",
+];
 
 // -------------------------------------- Move Cam ---------------------------------------
 const move_cam_button = document.querySelector(".move-cam-button");
@@ -353,60 +438,15 @@ video_pop_up.addEventListener("click", function (e) {
 function SR100C_v1(obj) {
 	if (explode_button.classList.contains("active")) {
 		obj.forEach((child) => {
-			if (child.material.name == "tan sandstone") {
-				child.material.color.set(0x8b795e);
-			} else {
-				let target = new THREE.Vector3();
-				child.getWorldPosition(target);
-				target.normalize();
-				target.setX(target.x * 2 + child.position.x);
-				target.setY(target.y * 2 + child.position.y);
-				target.setZ(target.z * 2 + child.position.z);
-				gsap.to(child.position, {
-					duration: 1,
-					x: target.x,
-				});
-				gsap.to(child.position, {
-					duration: 1,
-					y: target.y,
-				});
-				gsap.to(child.position, {
-					duration: 1,
-					z: target.z,
-				});
-				if (child.material.name == "matte silver") {
-					child.material.color.set(0xc0c0c0);
-				} else if (child.material.name == "glossy rubber") {
-					child.material.color.set(0x3a363b);
-				}
+			if (moved_mesh.includes(child.name)) {
+				child.visible = false;
 			}
 		});
 	} else {
 		obj.forEach((child) => {
-			if (child.material.name == "tan sandstone") {
-				// do nothing
-			} else {
-				let target = new THREE.Vector3();
-				child.getWorldPosition(target);
-				target.normalize();
-				target.setX(child.position.x - target.x * 2);
-				target.setY(child.position.y - target.y * 2);
-				target.setZ(child.position.z - target.z * 2);
-				gsap.to(child.position, {
-					duration: 1,
-					x: target.x,
-				});
-				gsap.to(child.position, {
-					duration: 1,
-					y: target.y,
-				});
-				gsap.to(child.position, {
-					duration: 1,
-					z: target.z,
-				});
+			if (moved_mesh.includes(child.name)) {
+				child.visible = true;
 			}
-			let color3 = new THREE.Color("rgb(0.2581828, 0.19120, 0.11193242)");
-			child.material.color.set(color3);
 		});
 	}
 }
