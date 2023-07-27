@@ -110,8 +110,6 @@ explode_button.addEventListener("click", () => {
 
 	if (product_list_text == "SR100C_v1") {
 		SR100C_v1(obj);
-	} else {
-		SRユニット_v1(obj);
 	}
 });
 
