@@ -408,17 +408,21 @@ function SR100C_v1(obj) {
 			}
 		});
 		gsap.to(camera.position, {
-			duration: 1,
+			duration: 2.5,
 			x: -3.5,
 		});
 		gsap.to(camera.position, {
-			duration: 1,
+			duration: 2.5,
 			y: 2,
 		});
 		gsap.to(camera.position, {
-			duration: 0.5,
+			duration: 1,
 			z: 2.8,
 		});
+		document.getElementById("explode-button").disabled = true;
+		setTimeout(function () {
+			document.getElementById("explode-button").disabled = false;
+		}, 3000);
 	} else {
 		obj.forEach((child) => {
 			if (moved_mesh.includes(child.name)) {
@@ -430,13 +434,17 @@ function SR100C_v1(obj) {
 			x: 6,
 		});
 		gsap.to(camera.position, {
-			duration: 0.5,
+			duration: 2.5,
 			y: 4,
 		});
 		gsap.to(camera.position, {
-			duration: 1,
+			duration: 2.5,
 			z: -4,
 		});
+		document.getElementById("explode-button").disabled = true;
+		setTimeout(function () {
+			document.getElementById("explode-button").disabled = false;
+		}, 3000);
 	}
 }
 

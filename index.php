@@ -144,7 +144,7 @@
             </div>
 
             <div class="container-bottom-left">
-                <button class="explode-button"> Explode </button>
+                <button class="explode-button" id="explode-button"> Explode </button>
                 <div class="menu-container-blue-information">
                     <img src="./assets/Information-Button.png">
                 </div>
