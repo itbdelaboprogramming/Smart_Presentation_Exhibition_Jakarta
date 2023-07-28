@@ -2,8 +2,8 @@ const myCanvas = document.querySelector("#myCanvas");
 // var myText = document.getElementById("myText").textContent;
 
 import * as THREE from "three";
-import { OrbitControls } from "https://unpkg.com/three@0.139.2/examples/jsm/controls/OrbitControls.js";
-import { GLTFLoader } from "https://unpkg.com/three@0.139.2/examples/jsm/loaders/GLTFLoader.js";
+import { OrbitControls } from "three/addons/controls/OrbitControls.js";
+import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
 
 // ----------------------------------- SCENE BACKGROUND COLOR -----------------------------------
 export const scene = new THREE.Scene();
