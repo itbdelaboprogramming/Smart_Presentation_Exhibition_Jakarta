@@ -1,6 +1,10 @@
 import { scene, camera, orbitControls } from "../script.js";
 import * as THREE from "three";
 import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
+import {
+	CSS2DRenderer,
+	CSS2DObject,
+} from "three/addons/renderers/CSS2DRenderer.js";
 
 // ---------------------------------------------------------------------------------------
 // ----------------------------------- Const, Var, Let -----------------------------------
@@ -188,7 +192,7 @@ const video = document.getElementById("video");
 explode_button.addEventListener("click", () => {
 	explode_button.classList.toggle("active");
 
-	let obj = scene.getObjectByName("file3D").children;
+	let obj = scene.getObjectByName("file3D");
 
 	if (product_list_text == "SR100C_v1") {
 		SR100C_v1(obj);
@@ -401,18 +405,31 @@ video_pop_up.addEventListener("click", function (e) {
 
 // ----------------------------------- Explode 3D File -----------------------------------
 function SR100C_v1(obj) {
+	let object_children = obj.children;
 	if (explode_button.classList.contains("active")) {
-		obj.forEach((child) => {
+		object_children.forEach((child) => {
 			if (moved_mesh.includes(child.name)) {
 				child.visible = false;
 			}
 		});
+		const earthDiv = document.createElement("div");
+		// earthDiv.className = "label";
+		earthDiv.textContent = "Upper Casing";
+		// earthDiv.style.backgroundColor = "black";
+
+		const earthLabel = new CSS2DObject(earthDiv);
+		earthLabel.name = "earthLabel";
+		earthLabel.position.set(-1.3, 2.2, 0);
+		earthLabel.center.set(0, 1);
+		obj.add(earthLabel);
+		earthLabel.layers.set(5);
+
 		gsap.to(camera.position, {
-			duration: 2.5,
+			duration: 2,
 			x: -3.5,
 		});
 		gsap.to(camera.position, {
-			duration: 2.5,
+			duration: 2,
 			y: 2,
 		});
 		gsap.to(camera.position, {
@@ -422,15 +439,16 @@ function SR100C_v1(obj) {
 		document.getElementById("explode-button").disabled = true;
 		setTimeout(function () {
 			document.getElementById("explode-button").disabled = false;
-		}, 3000);
+		}, 2500);
 	} else {
-		obj.forEach((child) => {
+		object_children.forEach((child) => {
 			if (moved_mesh.includes(child.name)) {
 				child.visible = true;
 			}
 		});
+		obj.remove(obj.getObjectByName("earthLabel"));
 		gsap.to(camera.position, {
-			duration: 1,
+			duration: 2.8,
 			x: 6,
 		});
 		gsap.to(camera.position, {
@@ -438,13 +456,13 @@ function SR100C_v1(obj) {
 			y: 4,
 		});
 		gsap.to(camera.position, {
-			duration: 2.5,
+			duration: 1,
 			z: -4,
 		});
 		document.getElementById("explode-button").disabled = true;
 		setTimeout(function () {
 			document.getElementById("explode-button").disabled = false;
-		}, 3000);
+		}, 3500);
 	}
 }
 

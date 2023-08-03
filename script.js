@@ -4,6 +4,10 @@ const myCanvas = document.querySelector("#myCanvas");
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
+import {
+	CSS2DRenderer,
+	CSS2DObject,
+} from "three/addons/renderers/CSS2DRenderer.js";
 
 // ----------------------------------- SCENE BACKGROUND COLOR -----------------------------------
 export const scene = new THREE.Scene();
@@ -15,6 +19,7 @@ export const camera = new THREE.PerspectiveCamera(
 	myCanvas.offsetWidth / myCanvas.offsetHeight
 );
 camera.position.set(6, 4, -4);
+camera.layers.enableAll();
 
 // ----------------------------------------- GRID HELPER ----------------------------------------
 const size = 20;
@@ -85,7 +90,16 @@ renderer.setPixelRatio(window.devicePixelRatio);
 renderer.setSize(myCanvas.offsetWidth, myCanvas.offsetHeight);
 
 // --------------------------------------- ORBIT CONTROLS ---------------------------------------
-export const orbitControls = new OrbitControls(camera, renderer.domElement);
+const labelRenderer = new CSS2DRenderer();
+labelRenderer.setSize(window.innerWidth, window.innerHeight);
+labelRenderer.domElement.style.position = "absolute";
+labelRenderer.domElement.style.top = "0px";
+document.body.appendChild(labelRenderer.domElement);
+
+export const orbitControls = new OrbitControls(
+	camera,
+	labelRenderer.domElement
+);
 
 // --------------------------------------- 3D FILE LOADER ---------------------------------------
 export const loader = new GLTFLoader();
@@ -99,7 +113,11 @@ loader.load(
 		let file3D = gltf.scene;
 		file3D.name = "file3D";
 		scene.add(file3D);
+		file3D.layers.enableAll();
+
 		file3D.position.set(0, -0.95, 0);
+
+
 	},
 	undefined,
 	function (error) {
@@ -110,6 +128,7 @@ loader.load(
 // ----------------------------------------- RENDER LOOP ----------------------------------------
 renderer.setAnimationLoop(() => {
 	orbitControls.update();
+	labelRenderer.render(scene, camera);
 	renderer.render(scene, camera);
 });
 
