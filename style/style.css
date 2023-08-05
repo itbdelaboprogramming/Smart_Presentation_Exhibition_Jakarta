@@ -193,6 +193,24 @@ canvas {
 	justify-content: center;
 }
 
+.loadingScreenContainer {
+	position: fixed;
+	z-index: 3;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	top: 0;
+
+	/* background-color: rgba(0, 0, 0, 0.8); */
+	backdrop-filter: blur(3px);
+	display: flex;
+	gap: 10px;
+
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+
 /* -------------------------------------------- EXPLODE 3D FILE -------------------------------------------- */
 .explode-button {
 	font-family: "Inter";
@@ -1034,4 +1052,18 @@ canvas {
 	width: fit-content;
 
 	display: flex;
+}
+
+/* --------------------------------------------- LOADING SCREEN -------------------------------------------- */
+#loadingBarLabel {
+	font-family: "Ubuntu";
+	font-style: normal;
+	font-weight: 700;
+	font-size: 22px;
+	line-height: 17px;
+}
+
+#loadingBar {
+	height: 5%;
+	width: 30%;
 }

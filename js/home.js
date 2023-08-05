@@ -1,4 +1,4 @@
-import { scene, camera, orbitControls } from "../script.js";
+import { scene, camera, orbitControls, loader } from "../script.js";
 import * as THREE from "three";
 import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
 import {
@@ -145,9 +145,6 @@ const catalogueContainer = document.getElementById("catalogue-container-2");
 const catalogue_product_list = document.querySelectorAll(
 	".catalogue-product-list-2"
 );
-
-let loader = new GLTFLoader();
-loader.name = "loader";
 
 // ------------------------------------- slider zoom -------------------------------------
 const slider = document.getElementById("slider-zoom");

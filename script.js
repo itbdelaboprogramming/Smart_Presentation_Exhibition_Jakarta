@@ -102,7 +102,26 @@ export const orbitControls = new OrbitControls(
 );
 
 // --------------------------------------- 3D FILE LOADER ---------------------------------------
-export const loader = new GLTFLoader();
+const loadingScreenBar = document.getElementById("loadingBar");
+const loadingScreenContainer = document.querySelector(
+	".loadingScreenContainer"
+);
+const loadingManager = new THREE.LoadingManager();
+
+loadingManager.onStart = function () {
+	loadingScreenContainer.style.display = "flex";
+};
+
+loadingManager.onProgress = function (url, loaded, total) {
+	loadingScreenBar.value = (loaded / total) * 100;
+};
+
+loadingManager.onLoad = function () {
+	loadingScreenBar.value = 0;
+	loadingScreenContainer.style.display = "none";
+};
+
+export const loader = new GLTFLoader(loadingManager);
 loader.name = "loader";
 
 let path = "files/" + "SR100C_v1.glb";
@@ -116,8 +135,6 @@ loader.load(
 		file3D.layers.enableAll();
 
 		file3D.position.set(0, -0.95, 0);
-
-
 	},
 	undefined,
 	function (error) {

@@ -189,6 +189,11 @@
                     <video id="video" width="100%" height="auto" src="./files/中山鉄工所ジャイロパクタ SRシリーズ.mp4" type="video/mp4" controls></video>
                 </div>
             </div>
+            <div class="loadingScreenContainer" style="display: none">
+                <label for="loadingBar" id='loadingBarLabel'> Loading... </label>
+                <progress id='loadingBar' max='100' value='0'></progress>
+            </div>
+
             <script type="module" src="script.js"> </script>
             <script type="module" src="./js/home.js"></script>
         </div>
