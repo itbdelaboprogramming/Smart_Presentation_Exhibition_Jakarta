@@ -401,54 +401,68 @@ video_pop_up.addEventListener("click", function (e) {
 // ---------------------------------------------------------------------------------------
 
 // ----------------------------------- Explode 3D File -----------------------------------
+
+// // Function to create an annotation
+// function createAnnotation(obj, content, position, label) {
+//     const annotationDiv = document.createElement("div");
+//     annotationDiv.textContent = content;
+//     annotationDiv.style.backgroundColor = "#74E7D4";
+//     annotationDiv.style.fontFamily = "Ubuntu";
+
+//     const annotation = new CSS2DObject(annotationDiv);
+//     annotation.name = label;
+//     annotation.position.copy(position);
+//     annotation.center.set(0, 1, 0);
+//     obj.add(annotation);
+//     annotation.layers.set(5);
+// }
+
+// // Function to hide an annotation
+// function hideAnnotation(obj, label) {
+//     const annotationHide = obj.getObjectByName(label);
+//     if (annotationHide) {
+//         annotationHide.visible = false;
+//     }
+// }
+
 function SR100C_v1(obj) {
 	let object_children = obj.children;
 	if (explode_button.classList.contains("active")) {
+		console.log("Button clicked: explode active");
 		object_children.forEach((child) => {
 			if (moved_mesh.includes(child.name)) {
 				child.visible = false;
 			}
 		});
-
-		// Function annotation
-		function createAnnotation(content, position) {
+		
+		// Function to create an annotation
+		function createAnnotation(obj, content, position, label) {
+			console.log(`Creating annotation with label "${label}"`);
 			const annotationDiv = document.createElement("div");
 			annotationDiv.textContent = content;
 			annotationDiv.style.backgroundColor = "#74E7D4";
 			annotationDiv.style.fontFamily = "Ubuntu";
-		
-			const annotation = new CSS2DObject(annotationDiv);
-			annotation.position.copy(position);
-			annotation.center.set(0, 1, 0);
-			obj.add(annotation);
-			annotation.layers.set(5);
-		}
-		
-		// SR100 Annotation
-		createAnnotation("Upper Casing", new THREE.Vector3(-0.6, 2.2, 0));
-		createAnnotation("Material Feed", new THREE.Vector3(-0.3, 2.5, 0));
-		createAnnotation("Hydraulic Casing Opener", new THREE.Vector3(0.6, 2.2, 0));
-		createAnnotation("Guide Flange", new THREE.Vector3(-0.3, 1.5, 0));
-		createAnnotation("Air Circulation", new THREE.Vector3(0.1, 1.75, 0.75));
-		createAnnotation("Upper Frame", new THREE.Vector3(0.6, 1.5, 0.75));
-		createAnnotation("Crushing Chamber", new THREE.Vector3(0.1, 1, 0.75));
-		createAnnotation("Rotor", new THREE.Vector3(-0.1, 1, 0));
-		createAnnotation("Vertical Shaft", new THREE.Vector3(-0.25, 0.5, 0));
-		createAnnotation("Pulley", new THREE.Vector3(-0.1, -0.1, 0));
-		createAnnotation("Shaped Material", new THREE.Vector3(-0.1, -0.1, 0.75));
-		
-		// const earthDiv = document.createElement("div");
-		// // earthDiv.className = "label";
-		// earthDiv.textContent = "Upper Casing";
-		// earthDiv.style.backgroundColor = "#74E7D4";
 
-		// const earthLabel = new CSS2DObject(earthDiv);
-		// earthLabel.name = "earthLabel";
-		// // earthLabel.position.set(-1.3, 2.2, 0);
-		// earthLabel.position.set(-1.3, 2.2, 0);
-		// earthLabel.center.set(0, 1);
-		// obj.add(earthLabel);
-		// earthLabel.layers.set(5);
+    		const annotation = new CSS2DObject(annotationDiv);
+    		annotation.name = label;
+    		annotation.position.copy(position);
+    		annotation.center.set(0, 1, 0);
+    		obj.add(annotation);
+    		annotation.layers.set(5);
+		}
+
+		// SR100 Annotation
+		createAnnotation(obj,"Upper Casing", new THREE.Vector3(-0.6, 2.2, 0),"A");
+		createAnnotation(obj,"Material Feed", new THREE.Vector3(-0.3, 2.5, 0),"B");
+		createAnnotation(obj,"Hydraulic Casing Opener", new THREE.Vector3(0.6, 2.2, 0),"C");
+		createAnnotation(obj,"Guide Flange", new THREE.Vector3(-0.3, 1.5, 0),"D");
+		createAnnotation(obj,"Air Circulation", new THREE.Vector3(0.1, 1.75, 0.75),"E");
+		createAnnotation(obj,"Upper Frame", new THREE.Vector3(0.6, 1.5, 0.75),"F");
+		createAnnotation(obj,"Crushing Chamber", new THREE.Vector3(0.1, 1, 0.75),"G");
+		createAnnotation(obj,"Rotor", new THREE.Vector3(-0.1, 1, 0),"H");
+		createAnnotation(obj,"Vertical Shaft", new THREE.Vector3(-0.25, 0.5, 0),"I");
+		createAnnotation(obj,"Pulley", new THREE.Vector3(-0.1, -0.1, 0),"J");
+		createAnnotation(obj,"Shaped Material", new THREE.Vector3(-0.1, -0.1, 0.75),"K");
 
 		gsap.to(camera.position, {
 			duration: 2,
@@ -462,17 +476,48 @@ function SR100C_v1(obj) {
 			duration: 1,
 			z: 2.8,
 		});
+
 		document.getElementById("explode-button").disabled = true;
 		setTimeout(function () {
 			document.getElementById("explode-button").disabled = false;
 		}, 2500);
-	} else {
+	} 
+	
+	else {
+		console.log("Button clicked: explode inactive");
+		
 		object_children.forEach((child) => {
 			if (moved_mesh.includes(child.name)) {
 				child.visible = true;
 			}
 		});
-		obj.remove(obj.getObjectByName("earthLabel"));
+
+		// Function to hide an annotation
+		function hideAnnotation(obj, label) {
+			// console.log(`Hiding annotation with label "${label}"`);
+			const annotationHide = obj.getObjectByName(label);
+			if (annotationHide) {
+				annotationHide.visible = false;
+				console.log(`Hiding annotation with label "${label}"`);
+			}
+			else {
+				console.log(`Annotation with label "${label}" not found.`)
+			}
+		}
+
+		// SR100 Annotation
+		hideAnnotation(obj,"A");
+		hideAnnotation(obj,"B");
+		hideAnnotation(obj,"C");
+		hideAnnotation(obj,"D");
+		hideAnnotation(obj,"E");
+		hideAnnotation(obj,"F");
+		hideAnnotation(obj,"G");
+		hideAnnotation(obj,"H");
+		hideAnnotation(obj,"I");
+		hideAnnotation(obj,"J");
+		hideAnnotation(obj,"K");
+				
 		gsap.to(camera.position, {
 			duration: 2.8,
 			x: 6,
@@ -485,10 +530,11 @@ function SR100C_v1(obj) {
 			duration: 1,
 			z: -4,
 		});
+		
 		document.getElementById("explode-button").disabled = true;
 		setTimeout(function () {
 			document.getElementById("explode-button").disabled = false;
-		}, 3500);
+		}, 2500);
 	}
 }
 
