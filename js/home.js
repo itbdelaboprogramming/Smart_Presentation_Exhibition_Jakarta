@@ -409,17 +409,46 @@ function SR100C_v1(obj) {
 				child.visible = false;
 			}
 		});
-		const earthDiv = document.createElement("div");
-		// earthDiv.className = "label";
-		earthDiv.textContent = "Upper Casing";
-		// earthDiv.style.backgroundColor = "black";
 
-		const earthLabel = new CSS2DObject(earthDiv);
-		earthLabel.name = "earthLabel";
-		earthLabel.position.set(-1.3, 2.2, 0);
-		earthLabel.center.set(0, 1);
-		obj.add(earthLabel);
-		earthLabel.layers.set(5);
+		// Function annotation
+		function createAnnotation(content, position) {
+			const annotationDiv = document.createElement("div");
+			annotationDiv.textContent = content;
+			annotationDiv.style.backgroundColor = "#74E7D4";
+			annotationDiv.style.fontFamily = "Ubuntu";
+		
+			const annotation = new CSS2DObject(annotationDiv);
+			annotation.position.copy(position);
+			annotation.center.set(0, 1, 0);
+			obj.add(annotation);
+			annotation.layers.set(5);
+		}
+		
+		// SR100 Annotation
+		createAnnotation("Upper Casing", new THREE.Vector3(-0.6, 2.2, 0));
+		createAnnotation("Material Feed", new THREE.Vector3(-0.3, 2.5, 0));
+		createAnnotation("Hydraulic Casing Opener", new THREE.Vector3(0.6, 2.2, 0));
+		createAnnotation("Guide Flange", new THREE.Vector3(-0.3, 1.5, 0));
+		createAnnotation("Air Circulation", new THREE.Vector3(0.1, 1.75, 0.75));
+		createAnnotation("Upper Frame", new THREE.Vector3(0.6, 1.5, 0.75));
+		createAnnotation("Crushing Chamber", new THREE.Vector3(0.1, 1, 0.75));
+		createAnnotation("Rotor", new THREE.Vector3(-0.1, 1, 0));
+		createAnnotation("Vertical Shaft", new THREE.Vector3(-0.25, 0.5, 0));
+		createAnnotation("Pulley", new THREE.Vector3(-0.1, -0.1, 0));
+		createAnnotation("Shaped Material", new THREE.Vector3(-0.1, -0.1, 0.75));
+		
+		// const earthDiv = document.createElement("div");
+		// // earthDiv.className = "label";
+		// earthDiv.textContent = "Upper Casing";
+		// earthDiv.style.backgroundColor = "#74E7D4";
+
+		// const earthLabel = new CSS2DObject(earthDiv);
+		// earthLabel.name = "earthLabel";
+		// // earthLabel.position.set(-1.3, 2.2, 0);
+		// earthLabel.position.set(-1.3, 2.2, 0);
+		// earthLabel.center.set(0, 1);
+		// obj.add(earthLabel);
+		// earthLabel.layers.set(5);
 
 		gsap.to(camera.position, {
 			duration: 2,
