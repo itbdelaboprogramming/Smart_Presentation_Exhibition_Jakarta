@@ -9,7 +9,7 @@
                 "imports": {
                 "three": "https://unpkg.com/three@0.153.0/build/three.module.js"
                 }
-            }
+            } 
         </script> -->
         <script src="https://cdn.jsdelivr.net/npm/gsap@3.2.4/dist/gsap.js"></script>
         <link rel="stylesheet" href="./style/style.css" >
@@ -27,6 +27,8 @@
     <body>
         <div class="home-page">
             <canvas id="myCanvas">    </canvas>
+            <!-- line annotation -->
+            <!-- <canvas id="lineCanvas" style="position: absolute; top: 0; left: 0;"></canvas> -->
             <div class="container-top-left">
                 <div class="pdf_container">
                     <img class="menu-pdf" src="./assets/Pdf.svg">
@@ -45,7 +47,7 @@
                     <p class="information-description-model-number">SR100C</p>
                     <p class="information-description-description">SR type can accept large material and increase the crushing efficiency at high speed rotating range. <br><br> Two types of crushing chamber are available:<br>1. Anvil type is mainly for crushing.<br>2. Rock bed type is for better shaping.</p>
                     <p class="information-description-description">Features:<br>1. Anvil type can be adjusted both up and down side (reversible).<br>2. Assembled (sectionalized) rotor for easy parts replacement.<br>3. Hydraulic top cover opener for easy maintenance.<br>4. Vibration sensor to detect excessive vibration.<br>5. VSI unit can be loaded into a 40FT container.</p>
-                    <p class="information-description-specification">Specifications</p>
+                    <p class="information-description-specification">Specifications Unit (mm)</p>
                     <!-- <p class="information-description-specification-detail" >Processing performance depends on quality of material, feeding chunks and particle size. <br><br> This machine’s spec and dimension might be changed without prior-notice for the improvement.</p> -->
                     <img class="information-specification-img" src="./files/dimension_vsi.png" />
                     <img class="information-specification-img" src="./files/dimension_vsi_platform.png" />
