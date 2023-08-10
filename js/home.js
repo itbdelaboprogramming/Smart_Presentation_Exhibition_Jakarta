@@ -185,17 +185,6 @@ const video = document.getElementById("video");
 // ------------------------------------- PROGRAM CODE ------------------------------------
 // ---------------------------------------------------------------------------------------
 
-// ----------------------------------- Explode 3D File -----------------------------------
-explode_button.addEventListener("click", () => {
-	explode_button.classList.toggle("active");
-
-	let obj = scene.getObjectByName("file3D");
-
-	if (product_list_text == "SR100C_v1") {
-		SR100C_v1(obj);
-	}
-});
-
 // ----------------------------------- dark/light mode -----------------------------------
 if (getMode && getMode === "dark-theme") {
 	document.body.classList.add("dark-theme");
@@ -402,39 +391,21 @@ video_pop_up.addEventListener("click", function (e) {
 
 // ----------------------------------- Explode 3D File -----------------------------------
 
-// // Function to create an annotation
-// function createAnnotation(obj, content, position, label) {
-//     const annotationDiv = document.createElement("div");
-//     annotationDiv.textContent = content;
-//     annotationDiv.style.backgroundColor = "#74E7D4";
-//     annotationDiv.style.fontFamily = "Ubuntu";
-
-//     const annotation = new CSS2DObject(annotationDiv);
-//     annotation.name = label;
-//     annotation.position.copy(position);
-//     annotation.center.set(0, 1, 0);
-//     obj.add(annotation);
-//     annotation.layers.set(5);
-// }
-
-// // Function to hide an annotation
-// function hideAnnotation(obj, label) {
-//     const annotationHide = obj.getObjectByName(label);
-//     if (annotationHide) {
-//         annotationHide.visible = false;
-//     }
-// }
+// Define an array to keep track of active annotations
+const activeAnnotations = [];
 
 function SR100C_v1(obj) {
 	let object_children = obj.children;
+
 	if (explode_button.classList.contains("active")) {
 		console.log("Button clicked: explode active");
+
 		object_children.forEach((child) => {
 			if (moved_mesh.includes(child.name)) {
 				child.visible = false;
 			}
 		});
-		
+
 		// Function to create an annotation
 		function createAnnotation(obj, content, position, label) {
 			console.log(`Creating annotation with label "${label}"`);
@@ -449,6 +420,9 @@ function SR100C_v1(obj) {
     		annotation.center.set(0, 1, 0);
     		obj.add(annotation);
     		annotation.layers.set(5);
+
+			// Store the created annotation in the activeAnnotations array
+			activeAnnotations.push(annotation);
 		}
 
 		// SR100 Annotation
@@ -492,10 +466,9 @@ function SR100C_v1(obj) {
 			}
 		});
 
-		// Function to hide an annotation
-		function hideAnnotation(obj, label) {
-			// console.log(`Hiding annotation with label "${label}"`);
-			const annotationHide = obj.getObjectByName(label);
+		function hideAnnotation(label) {
+			// Find and hide the annotation by its label
+			const annotationHide = scene.getObjectByName(label);
 			if (annotationHide) {
 				annotationHide.visible = false;
 				console.log(`Hiding annotation with label "${label}"`);
@@ -583,6 +556,24 @@ function SRユニット_v1(obj) {
 		});
 	}
 }
+
+// ----------------------------------- Explode 3D File -----------------------------------
+explode_button.addEventListener("click", () => {
+	explode_button.classList.toggle("active");
+
+	let obj = scene.getObjectByName("file3D");
+
+	if (product_list_text == "SR100C_v1") {
+		SR100C_v1(obj);
+	}
+
+	// If the button is inactive, hide all active annotations
+    if (!explode_button.classList.contains("active")) {
+        activeAnnotations.forEach(annotation => {
+            annotation.visible = false;
+        });
+    }
+});
 
 // -------------------------------------- lightning --------------------------------------
 function resetOpsi() {
