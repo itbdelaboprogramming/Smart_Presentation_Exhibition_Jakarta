@@ -568,10 +568,10 @@ explode_button.addEventListener("click", () => {
 	}
 
 	// If the button is inactive, hide all active annotations
-    if (!explode_button.classList.contains("active")) {
-        activeAnnotations.forEach(annotation => {
-            annotation.visible = false;
-        });
+	if (!explode_button.classList.contains("active")) {
+		activeAnnotations.forEach(annotation => {
+			annotation.visible = false;
+		});
     }
 });
 
