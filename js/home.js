@@ -11,6 +11,10 @@ import {
 // ---------------------------------------------------------------------------------------
 
 // ----------------------------------- Explode 3D File -----------------------------------
+
+// Define an array to keep track of active annotations
+const activeAnnotations = [];
+
 const explode_button = document.querySelector(".explode-button");
 let product_list_text = "SR100C_v1";
 const moved_mesh = [
@@ -184,6 +188,32 @@ const video = document.getElementById("video");
 // ---------------------------------------------------------------------------------------
 // ------------------------------------- PROGRAM CODE ------------------------------------
 // ---------------------------------------------------------------------------------------
+
+// ----------------------------------- Explode 3D File -----------------------------------
+explode_button.addEventListener("click", () => {
+	explode_button.classList.toggle("active");
+
+	let obj = scene.getObjectByName("file3D");
+
+	if (product_list_text == "SR100C_v1") {
+		SR100C_v1(obj);
+	} 
+	else if (product_list_text == "SRユニット_v1") {
+        SRユニット_v1(obj);
+    }
+
+	// If the button is inactive, hide all active annotations
+	if (!explode_button.classList.contains("active")) {
+		activeAnnotations.forEach(annotation => {
+			annotation.visible = false;
+		});
+    }
+
+	// // Clear active annotations when toggling explode
+    	// activeAnnotations.forEach(annotation => {
+    	//     annotation.visible = false;
+    // });
+});
 
 // ----------------------------------- dark/light mode -----------------------------------
 if (getMode && getMode === "dark-theme") {
@@ -391,9 +421,6 @@ video_pop_up.addEventListener("click", function (e) {
 
 // ----------------------------------- Explode 3D File -----------------------------------
 
-// Define an array to keep track of active annotations
-const activeAnnotations = [];
-
 function SR100C_v1(obj) {
 	let object_children = obj.children;
 
@@ -465,31 +492,6 @@ function SR100C_v1(obj) {
 				child.visible = true;
 			}
 		});
-
-		function hideAnnotation(label) {
-			// Find and hide the annotation by its label
-			const annotationHide = scene.getObjectByName(label);
-			if (annotationHide) {
-				annotationHide.visible = false;
-				console.log(`Hiding annotation with label "${label}"`);
-			}
-			else {
-				console.log(`Annotation with label "${label}" not found.`)
-			}
-		}
-
-		// SR100 Annotation
-		hideAnnotation(obj,"A");
-		hideAnnotation(obj,"B");
-		hideAnnotation(obj,"C");
-		hideAnnotation(obj,"D");
-		hideAnnotation(obj,"E");
-		hideAnnotation(obj,"F");
-		hideAnnotation(obj,"G");
-		hideAnnotation(obj,"H");
-		hideAnnotation(obj,"I");
-		hideAnnotation(obj,"J");
-		hideAnnotation(obj,"K");
 				
 		gsap.to(camera.position, {
 			duration: 2.8,
@@ -556,24 +558,6 @@ function SRユニット_v1(obj) {
 		});
 	}
 }
-
-// ----------------------------------- Explode 3D File -----------------------------------
-explode_button.addEventListener("click", () => {
-	explode_button.classList.toggle("active");
-
-	let obj = scene.getObjectByName("file3D");
-
-	if (product_list_text == "SR100C_v1") {
-		SR100C_v1(obj);
-	}
-
-	// If the button is inactive, hide all active annotations
-	if (!explode_button.classList.contains("active")) {
-		activeAnnotations.forEach(annotation => {
-			annotation.visible = false;
-		});
-    }
-});
 
 // -------------------------------------- lightning --------------------------------------
 function resetOpsi() {
@@ -655,6 +639,14 @@ function updateLamp() {
 }
 
 // -------------------------------------- catalogue --------------------------------------
+function clearAnnotations() {
+    activeAnnotations.forEach(annotation => {
+        scene.remove(annotation);
+    });
+    activeAnnotations.length = 0;
+}
+
+// Inside the loadCatalogue function
 function loadCatalogue(catalogue_product_list) {
 	catalogue_product_list.forEach(function (product_list) {
 		product_list.addEventListener("click", () => {
@@ -665,6 +657,7 @@ function loadCatalogue(catalogue_product_list) {
 				".catalogue-product-list-text-2"
 			).innerText;
 			explode_button.classList.remove("active");
+			clearAnnotations(); // Clear annotations when switching models
 			updateFile3D(product_list_text);
 		});
 
@@ -673,6 +666,7 @@ function loadCatalogue(catalogue_product_list) {
 				".catalogue-product-list-text-2"
 			).innerText;
 			explode_button.classList.remove("active");
+			clearAnnotations(); // Clear annotations when switching models
 			updateFile3D(product_list_text);
 		}
 	});
@@ -685,6 +679,7 @@ function resetCatalogueSelect() {
 }
 
 function updateFile3D(file_name) {
+
 	try {
 		let file3D = scene.getObjectByName("file3D");
 		file3D.name = "file3D";
