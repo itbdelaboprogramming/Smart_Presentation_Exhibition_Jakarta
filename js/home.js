@@ -193,13 +193,19 @@ const video = document.getElementById("video");
 explode_button.addEventListener("click", () => {
 	explode_button.classList.toggle("active");
 
-	let obj = scene.getObjectByName("file3D");
+	// let obj = scene.getObjectByName("file3D");
+	// let obj = scene.getObjectByName("file3D").children;
+
+	// Get the main 3D object by name, assuming your scene contains an object named "file3D"
+    let file3D = scene.getObjectByName("file3D");
 
 	if (product_list_text == "SR100C_v1") {
-		SR100C_v1(obj);
+		// SR100C_v1(obj);
+		SR100C_v1(file3D);
 	} 
 	else if (product_list_text == "SRユニット_v1") {
-        SRユニット_v1(obj);
+        // SRユニット_v1(obj);
+		SRユニット_v1(file3D.children);
     }
 
 	// If the button is inactive, hide all active annotations
@@ -210,8 +216,8 @@ explode_button.addEventListener("click", () => {
     }
 
 	// // Clear active annotations when toggling explode
-    	// activeAnnotations.forEach(annotation => {
-    	//     annotation.visible = false;
+    // activeAnnotations.forEach(annotation => {
+    //     annotation.visible = false;
     // });
 });
 
@@ -514,47 +520,63 @@ function SR100C_v1(obj) {
 }
 
 function SRユニット_v1(obj) {
+	// let object_children = obj.children;
+
 	if (explode_button.classList.contains("active")) {
 		obj.forEach((child) => {
-			let target = new THREE.Vector3();
-			child.getWorldPosition(target);
-			target.normalize();
-			target.setX(target.x * 1 + child.position.x);
-			target.setY(target.y * 1 + child.position.y);
-			target.setZ(target.z * 1 + child.position.z);
-			gsap.to(child.position, {
-				duration: 1,
-				x: target.x,
-			});
-			gsap.to(child.position, {
-				duration: 1,
-				y: target.y,
-			});
-			gsap.to(child.position, {
-				duration: 1,
-				z: target.z,
-			});
+			// Check if the child's name is in the list of objects to hide
+            if (moved_mesh.includes(child.name)) {
+                // Hide the child object
+                child.visible = false;
+			}
+			else{
+				let target = new THREE.Vector3();
+				child.getWorldPosition(target);
+				target.normalize();
+				target.setX(target.x * 1 + child.position.x);
+				target.setY(target.y * 1 + child.position.y);
+				target.setZ(target.z * 1 + child.position.z);
+				gsap.to(child.position, {
+					duration: 1,
+					x: target.x,
+				});
+				gsap.to(child.position, {
+					duration: 1,
+					y: target.y,
+				});
+				gsap.to(child.position, {
+					duration: 1,
+					z: target.z,
+				});
+			}
 		});
 	} else {
 		obj.forEach((child) => {
-			let target = new THREE.Vector3();
-			child.getWorldPosition(target);
-			target.normalize();
-			target.setX(child.position.x - target.x * 1);
-			target.setY(child.position.y - target.y * 1);
-			target.setZ(child.position.z - target.z * 1);
-			gsap.to(child.position, {
-				duration: 1,
-				x: target.x,
-			});
-			gsap.to(child.position, {
-				duration: 1,
-				y: target.y,
-			});
-			gsap.to(child.position, {
-				duration: 1,
-				z: target.z,
-			});
+			// Toggle visibility for child objects
+            if (moved_mesh.includes(child.name)) {
+                // Show the child object
+                child.visible = true;
+			} 
+			else {
+				let target = new THREE.Vector3();
+				child.getWorldPosition(target);
+				target.normalize();
+				target.setX(child.position.x - target.x * 1);
+				target.setY(child.position.y - target.y * 1);
+				target.setZ(child.position.z - target.z * 1);
+				gsap.to(child.position, {
+					duration: 1,
+					x: target.x,
+				});
+				gsap.to(child.position, {
+					duration: 1,
+					y: target.y,
+				});
+				gsap.to(child.position, {
+					duration: 1,
+					z: target.z,
+				});			
+			}
 		});
 	}
 }
@@ -651,7 +673,8 @@ function loadCatalogue(catalogue_product_list) {
 	catalogue_product_list.forEach(function (product_list) {
 		product_list.addEventListener("click", () => {
 			resetCatalogueSelect();
-			product_list.classList.toggle("active");
+			// product_list.classList.toggle("active");
+			product_list.classList.add("active"); // Add the "active" class here
 
 			product_list_text = product_list.querySelector(
 				".catalogue-product-list-text-2"
@@ -661,6 +684,7 @@ function loadCatalogue(catalogue_product_list) {
 			updateFile3D(product_list_text);
 		});
 
+		// Check if the current product list is active
 		if (product_list.classList.contains("active")) {
 			let product_list_text = product_list.querySelector(
 				".catalogue-product-list-text-2"
@@ -671,6 +695,12 @@ function loadCatalogue(catalogue_product_list) {
 		}
 	});
 }
+
+// if (!explode_button.classList.contains("active")) {
+// 	activeAnnotations.forEach(annotation => {
+// 		annotation.visible = false;
+// 	});
+// }
 
 function resetCatalogueSelect() {
 	catalogue_product_list.forEach(function (product_list) {
