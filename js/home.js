@@ -12,9 +12,6 @@ import {
 
 // ----------------------------------- Explode 3D File -----------------------------------
 
-// Define an array to keep track of active annotations
-const activeAnnotations = [];
-
 const explode_button = document.querySelector(".explode-button");
 let product_list_text = "SR100C_v1";
 const moved_mesh = [
@@ -192,11 +189,7 @@ const video = document.getElementById("video");
 // ----------------------------------- Explode 3D File -----------------------------------
 explode_button.addEventListener("click", () => {
 	explode_button.classList.toggle("active");
-
-	// let obj = scene.getObjectByName("file3D");
-	// let obj = scene.getObjectByName("file3D").children;
-
-	// Get the main 3D object by name, assuming your scene contains an object named "file3D"
+	
     let file3D = scene.getObjectByName("file3D");
 
 	if (product_list_text == "SR100C_v1") {
@@ -208,17 +201,6 @@ explode_button.addEventListener("click", () => {
 		SRユニット_v1(file3D.children);
     }
 
-	// If the button is inactive, hide all active annotations
-	if (!explode_button.classList.contains("active")) {
-		activeAnnotations.forEach(annotation => {
-			annotation.visible = false;
-		});
-    }
-
-	// // Clear active annotations when toggling explode
-    // activeAnnotations.forEach(annotation => {
-    //     annotation.visible = false;
-    // });
 });
 
 // ----------------------------------- dark/light mode -----------------------------------
@@ -427,6 +409,53 @@ video_pop_up.addEventListener("click", function (e) {
 
 // ----------------------------------- Explode 3D File -----------------------------------
 
+// Function to create an annotation
+function createAnnotation(obj, content, position, label) {
+	console.log(`Creating annotation with label "${label}"`);
+	const annotationDiv = document.createElement("div");
+	annotationDiv.textContent = content;
+	annotationDiv.style.backgroundColor = "#74E7D4";
+	annotationDiv.style.fontFamily = "Ubuntu";
+
+	const annotation = new CSS2DObject(annotationDiv);
+	annotation.name = label;
+	annotation.position.copy(position);
+	annotation.center.set(0, 1, 0);
+	obj.add(annotation);
+}
+
+// Function to remove an annotation
+function removeAnnotation(obj, label){
+	console.log(`Removing annotation with label "${label}"`);
+	const annotation = obj.getObjectByName(label);
+	obj.remove(annotation)
+}
+
+// Function to reset the state of the 3D model and annotations
+function resetModelAndAnnotations(obj,label) {
+    // Reset object visibility
+    object_children.forEach((child) => {
+        child.visible = true;
+    });
+
+	//i am tiredddddd :(
+
+    // Remove existing annotations
+    obj.remove(obj.getObjectByName(label));
+    // obj.remove(obj.getObjectByName("B"));
+	// obj.remove(obj.getObjectByName("C"));
+    // obj.remove(obj.getObjectByName("D"));
+	// obj.remove(obj.getObjectByName("E"));
+    // obj.remove(obj.getObjectByName("F"));
+	// obj.remove(obj.getObjectByName("G"));
+    // obj.remove(obj.getObjectByName("H"));
+	// obj.remove(obj.getObjectByName("I"));
+    // obj.remove(obj.getObjectByName("J"));
+	// obj.remove(obj.getObjectByName("K"));
+    // obj.remove(obj.getObjectByName("L"));
+    // // ... remove other annotations as needed
+}
+
 function SR100C_v1(obj) {
 	let object_children = obj.children;
 
@@ -438,25 +467,6 @@ function SR100C_v1(obj) {
 				child.visible = false;
 			}
 		});
-
-		// Function to create an annotation
-		function createAnnotation(obj, content, position, label) {
-			console.log(`Creating annotation with label "${label}"`);
-			const annotationDiv = document.createElement("div");
-			annotationDiv.textContent = content;
-			annotationDiv.style.backgroundColor = "#74E7D4";
-			annotationDiv.style.fontFamily = "Ubuntu";
-
-    		const annotation = new CSS2DObject(annotationDiv);
-    		annotation.name = label;
-    		annotation.position.copy(position);
-    		annotation.center.set(0, 1, 0);
-    		obj.add(annotation);
-    		annotation.layers.set(5);
-
-			// Store the created annotation in the activeAnnotations array
-			activeAnnotations.push(annotation);
-		}
 
 		// SR100 Annotation
 		createAnnotation(obj,"Upper Casing", new THREE.Vector3(-0.6, 2.2, 0),"A");
@@ -498,7 +508,20 @@ function SR100C_v1(obj) {
 				child.visible = true;
 			}
 		});
-				
+		
+		// SR100 Annotation
+		removeAnnotation(obj,"A")
+		removeAnnotation(obj,"B")
+		removeAnnotation(obj,"C")
+		removeAnnotation(obj,"D")
+		removeAnnotation(obj,"E")
+		removeAnnotation(obj,"F")
+		removeAnnotation(obj,"G")
+		removeAnnotation(obj,"H")
+		removeAnnotation(obj,"I")
+		removeAnnotation(obj,"J")
+		removeAnnotation(obj,"K")
+
 		gsap.to(camera.position, {
 			duration: 2.8,
 			x: 6,
@@ -661,12 +684,6 @@ function updateLamp() {
 }
 
 // -------------------------------------- catalogue --------------------------------------
-function clearAnnotations() {
-    activeAnnotations.forEach(annotation => {
-        scene.remove(annotation);
-    });
-    activeAnnotations.length = 0;
-}
 
 // Inside the loadCatalogue function
 function loadCatalogue(catalogue_product_list) {
@@ -680,7 +697,13 @@ function loadCatalogue(catalogue_product_list) {
 				".catalogue-product-list-text-2"
 			).innerText;
 			explode_button.classList.remove("active");
-			clearAnnotations(); // Clear annotations when switching models
+		 	
+			// Find the current 3D model object
+		 	let file3D = scene.getObjectByName("file3D");
+
+		 	// Reset the model and annotations for the current 3D model
+		 	resetModelAndAnnotations(file3D);
+
 			updateFile3D(product_list_text);
 		});
 
@@ -690,17 +713,17 @@ function loadCatalogue(catalogue_product_list) {
 				".catalogue-product-list-text-2"
 			).innerText;
 			explode_button.classList.remove("active");
-			clearAnnotations(); // Clear annotations when switching models
+			
+			// Find the current 3D model object
+			let file3D = scene.getObjectByName("file3D");
+			
+			// Reset the model and annotations for the current 3D model
+			resetModelAndAnnotations(file3D);
+			
 			updateFile3D(product_list_text);
 		}
 	});
 }
-
-// if (!explode_button.classList.contains("active")) {
-// 	activeAnnotations.forEach(annotation => {
-// 		annotation.visible = false;
-// 	});
-// }
 
 function resetCatalogueSelect() {
 	catalogue_product_list.forEach(function (product_list) {
