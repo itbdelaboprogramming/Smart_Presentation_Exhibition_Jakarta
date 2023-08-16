@@ -189,18 +189,15 @@ const video = document.getElementById("video");
 // ----------------------------------- Explode 3D File -----------------------------------
 explode_button.addEventListener("click", () => {
 	explode_button.classList.toggle("active");
-	
-    let file3D = scene.getObjectByName("file3D");
+
+	let obj = scene.getObjectByName("file3D");
 
 	if (product_list_text == "SR100C_v1") {
-		// SR100C_v1(obj);
-		SR100C_v1(file3D);
+		SR100C_v1(obj);
 	} 
 	else if (product_list_text == "SRユニット_v1") {
-        // SRユニット_v1(obj);
-		SRユニット_v1(file3D.children);
+        SRユニット_v1(obj);
     }
-
 });
 
 // ----------------------------------- dark/light mode -----------------------------------
@@ -431,31 +428,6 @@ function removeAnnotation(obj, label){
 	obj.remove(annotation)
 }
 
-// Function to reset the state of the 3D model and annotations
-function resetModelAndAnnotations(obj,label) {
-    // Reset object visibility
-    object_children.forEach((child) => {
-        child.visible = true;
-    });
-
-	//i am tiredddddd :(
-
-    // Remove existing annotations
-    obj.remove(obj.getObjectByName(label));
-    // obj.remove(obj.getObjectByName("B"));
-	// obj.remove(obj.getObjectByName("C"));
-    // obj.remove(obj.getObjectByName("D"));
-	// obj.remove(obj.getObjectByName("E"));
-    // obj.remove(obj.getObjectByName("F"));
-	// obj.remove(obj.getObjectByName("G"));
-    // obj.remove(obj.getObjectByName("H"));
-	// obj.remove(obj.getObjectByName("I"));
-    // obj.remove(obj.getObjectByName("J"));
-	// obj.remove(obj.getObjectByName("K"));
-    // obj.remove(obj.getObjectByName("L"));
-    // // ... remove other annotations as needed
-}
-
 function SR100C_v1(obj) {
 	let object_children = obj.children;
 
@@ -543,63 +515,53 @@ function SR100C_v1(obj) {
 }
 
 function SRユニット_v1(obj) {
-	// let object_children = obj.children;
+	let object_children = obj.children;
 
 	if (explode_button.classList.contains("active")) {
-		obj.forEach((child) => {
-			// Check if the child's name is in the list of objects to hide
-            if (moved_mesh.includes(child.name)) {
-                // Hide the child object
-                child.visible = false;
-			}
-			else{
-				let target = new THREE.Vector3();
-				child.getWorldPosition(target);
-				target.normalize();
-				target.setX(target.x * 1 + child.position.x);
-				target.setY(target.y * 1 + child.position.y);
-				target.setZ(target.z * 1 + child.position.z);
-				gsap.to(child.position, {
-					duration: 1,
-					x: target.x,
-				});
-				gsap.to(child.position, {
-					duration: 1,
-					y: target.y,
-				});
-				gsap.to(child.position, {
-					duration: 1,
-					z: target.z,
-				});
-			}
+		console.log("Button clicked: explode active");
+
+		object_children.forEach((child) => {
+			let target = new THREE.Vector3();
+			child.getWorldPosition(`target`);
+			target.normalize();
+			target.setX(target.x * 1 + child.position.x);
+			target.setY(target.y * 1 + child.position.y);
+			target.setZ(target.z * 1 + child.position.z);
+			gsap.to(child.position, {
+				duration: 1,
+				x: target.x,
+			});
+			gsap.to(child.position, {
+				duration: 1,
+				y: target.y,
+			});
+			gsap.to(child.position, {
+				duration: 1,
+				z: target.z,
+			});
 		});
 	} else {
+		console.log("Button clicked: explode inactive");
+
 		obj.forEach((child) => {
-			// Toggle visibility for child objects
-            if (moved_mesh.includes(child.name)) {
-                // Show the child object
-                child.visible = true;
-			} 
-			else {
-				let target = new THREE.Vector3();
-				child.getWorldPosition(target);
-				target.normalize();
-				target.setX(child.position.x - target.x * 1);
-				target.setY(child.position.y - target.y * 1);
-				target.setZ(child.position.z - target.z * 1);
-				gsap.to(child.position, {
-					duration: 1,
-					x: target.x,
-				});
-				gsap.to(child.position, {
-					duration: 1,
-					y: target.y,
-				});
-				gsap.to(child.position, {
-					duration: 1,
-					z: target.z,
-				});			
-			}
+			let target = new THREE.Vector3();
+			child.getWorldPosition(target);
+			target.normalize();
+			target.setX(child.position.x - target.x * 1);
+			target.setY(child.position.y - target.y * 1);
+			target.setZ(child.position.z - target.z * 1);
+			gsap.to(child.position, {
+				duration: 1,
+				x: target.x,
+			});
+			gsap.to(child.position, {
+				duration: 1,
+				y: target.y,
+			});
+			gsap.to(child.position, {
+				duration: 1,
+				z: target.z,
+			});
 		});
 	}
 }
@@ -690,36 +652,22 @@ function loadCatalogue(catalogue_product_list) {
 	catalogue_product_list.forEach(function (product_list) {
 		product_list.addEventListener("click", () => {
 			resetCatalogueSelect();
-			// product_list.classList.toggle("active");
-			product_list.classList.add("active"); // Add the "active" class here
+			product_list.classList.toggle("active");
 
 			product_list_text = product_list.querySelector(
 				".catalogue-product-list-text-2"
 			).innerText;
 			explode_button.classList.remove("active");
-		 	
-			// Find the current 3D model object
-		 	let file3D = scene.getObjectByName("file3D");
-
-		 	// Reset the model and annotations for the current 3D model
-		 	resetModelAndAnnotations(file3D);
-
+			// clearAnnotations(); // Clear annotations when switching models
 			updateFile3D(product_list_text);
 		});
 
-		// Check if the current product list is active
 		if (product_list.classList.contains("active")) {
 			let product_list_text = product_list.querySelector(
 				".catalogue-product-list-text-2"
 			).innerText;
 			explode_button.classList.remove("active");
-			
-			// Find the current 3D model object
-			let file3D = scene.getObjectByName("file3D");
-			
-			// Reset the model and annotations for the current 3D model
-			resetModelAndAnnotations(file3D);
-			
+			// clearAnnotations(); // Clear annotations when switching models
 			updateFile3D(product_list_text);
 		}
 	});
