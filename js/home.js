@@ -190,14 +190,18 @@ const video = document.getElementById("video");
 explode_button.addEventListener("click", () => {
 	explode_button.classList.toggle("active");
 
-	let obj = scene.getObjectByName("file3D");
+	let file3D = scene.getObjectByName("file3D");
 
 	if (product_list_text == "SR100C_v1") {
-		SR100C_v1(obj);
-	} 
+
+		// SR100C_v1(obj);
+		SR100C_v1(file3D);
+	}
 	else if (product_list_text == "SRユニット_v1") {
-        SRユニット_v1(obj);
-    }
+		// SRユニット_v1(obj);
+		SRユニット_v1(file3D);
+	}
+
 });
 
 // ----------------------------------- dark/light mode -----------------------------------
@@ -408,8 +412,9 @@ video_pop_up.addEventListener("click", function (e) {
 
 // Function to create an annotation
 function createAnnotation(obj, content, position, label) {
-	console.log(`Creating annotation with label "${label}"`);
 	const annotationDiv = document.createElement("div");
+	annotationDiv.id = "annotationDiv"
+
 	annotationDiv.textContent = content;
 	annotationDiv.style.backgroundColor = "#74E7D4";
 	annotationDiv.style.fontFamily = "Ubuntu";
@@ -422,10 +427,18 @@ function createAnnotation(obj, content, position, label) {
 }
 
 // Function to remove an annotation
-function removeAnnotation(obj, label){
-	console.log(`Removing annotation with label "${label}"`);
+function removeAnnotation(obj, label) {
+	// console.log(`Removing annotation with label "${label}"`);
 	const annotation = obj.getObjectByName(label);
 	obj.remove(annotation)
+}
+
+// Function to reset the state of the 3D model and annotations
+function resetModelAndAnnotations(obj, label) {
+	SR100C_v1(obj)
+
+	// Remove existing annotations
+	obj.remove(obj.getObjectByName(label));
 }
 
 function SR100C_v1(obj) {
@@ -441,17 +454,17 @@ function SR100C_v1(obj) {
 		});
 
 		// SR100 Annotation
-		createAnnotation(obj,"Upper Casing", new THREE.Vector3(-0.6, 2.2, 0),"A");
-		createAnnotation(obj,"Material Feed", new THREE.Vector3(-0.3, 2.5, 0),"B");
-		createAnnotation(obj,"Hydraulic Casing Opener", new THREE.Vector3(0.6, 2.2, 0),"C");
-		createAnnotation(obj,"Guide Flange", new THREE.Vector3(-0.3, 1.5, 0),"D");
-		createAnnotation(obj,"Air Circulation", new THREE.Vector3(0.1, 1.75, 0.75),"E");
-		createAnnotation(obj,"Upper Frame", new THREE.Vector3(0.6, 1.5, 0.75),"F");
-		createAnnotation(obj,"Crushing Chamber", new THREE.Vector3(0.1, 1, 0.75),"G");
-		createAnnotation(obj,"Rotor", new THREE.Vector3(-0.1, 1, 0),"H");
-		createAnnotation(obj,"Vertical Shaft", new THREE.Vector3(-0.25, 0.5, 0),"I");
-		createAnnotation(obj,"Pulley", new THREE.Vector3(-0.1, -0.1, 0),"J");
-		createAnnotation(obj,"Shaped Material", new THREE.Vector3(-0.1, -0.1, 0.75),"K");
+		createAnnotation(obj, "Upper Casing", new THREE.Vector3(-0.6, 2.2, 0), "A");
+		createAnnotation(obj, "Material Feed", new THREE.Vector3(-0.3, 2.5, 0), "B");
+		createAnnotation(obj, "Hydraulic Casing Opener", new THREE.Vector3(0.6, 2.2, 0), "C");
+		createAnnotation(obj, "Guide Flange", new THREE.Vector3(-0.3, 1.5, 0), "D");
+		createAnnotation(obj, "Air Circulation", new THREE.Vector3(0.1, 1.75, 0.75), "E");
+		createAnnotation(obj, "Upper Frame", new THREE.Vector3(0.6, 1.5, 0.75), "F");
+		createAnnotation(obj, "Crushing Chamber", new THREE.Vector3(0.1, 1, 0.75), "G");
+		createAnnotation(obj, "Rotor", new THREE.Vector3(-0.1, 1, 0), "H");
+		createAnnotation(obj, "Vertical Shaft", new THREE.Vector3(-0.25, 0.5, 0), "I");
+		createAnnotation(obj, "Pulley", new THREE.Vector3(-0.1, -0.1, 0), "J");
+		createAnnotation(obj, "Shaped Material", new THREE.Vector3(-0.1, -0.1, 0.75), "K");
 
 		gsap.to(camera.position, {
 			duration: 2,
@@ -470,29 +483,29 @@ function SR100C_v1(obj) {
 		setTimeout(function () {
 			document.getElementById("explode-button").disabled = false;
 		}, 2500);
-	} 
-	
+	}
+
 	else {
 		console.log("Button clicked: explode inactive");
-		
+
 		object_children.forEach((child) => {
 			if (moved_mesh.includes(child.name)) {
 				child.visible = true;
 			}
 		});
-		
+
 		// SR100 Annotation
-		removeAnnotation(obj,"A")
-		removeAnnotation(obj,"B")
-		removeAnnotation(obj,"C")
-		removeAnnotation(obj,"D")
-		removeAnnotation(obj,"E")
-		removeAnnotation(obj,"F")
-		removeAnnotation(obj,"G")
-		removeAnnotation(obj,"H")
-		removeAnnotation(obj,"I")
-		removeAnnotation(obj,"J")
-		removeAnnotation(obj,"K")
+		removeAnnotation(obj, "A")
+		removeAnnotation(obj, "B")
+		removeAnnotation(obj, "C")
+		removeAnnotation(obj, "D")
+		removeAnnotation(obj, "E")
+		removeAnnotation(obj, "F")
+		removeAnnotation(obj, "G")
+		removeAnnotation(obj, "H")
+		removeAnnotation(obj, "I")
+		removeAnnotation(obj, "J")
+		removeAnnotation(obj, "K")
 
 		gsap.to(camera.position, {
 			duration: 2.8,
@@ -506,7 +519,6 @@ function SR100C_v1(obj) {
 			duration: 1,
 			z: -4,
 		});
-		
 		document.getElementById("explode-button").disabled = true;
 		setTimeout(function () {
 			document.getElementById("explode-button").disabled = false;
@@ -518,50 +530,62 @@ function SRユニット_v1(obj) {
 	let object_children = obj.children;
 
 	if (explode_button.classList.contains("active")) {
-		console.log("Button clicked: explode active");
-
-		object_children.forEach((child) => {
-			let target = new THREE.Vector3();
-			child.getWorldPosition(`target`);
-			target.normalize();
-			target.setX(target.x * 1 + child.position.x);
-			target.setY(target.y * 1 + child.position.y);
-			target.setZ(target.z * 1 + child.position.z);
-			gsap.to(child.position, {
-				duration: 1,
-				x: target.x,
-			});
-			gsap.to(child.position, {
-				duration: 1,
-				y: target.y,
-			});
-			gsap.to(child.position, {
-				duration: 1,
-				z: target.z,
-			});
+		// console.log("55555",obj);
+		obj.forEach((child) => {
+			// Check if the child's name is in the list of objects to hide
+			if (moved_mesh.includes(child.name)) {
+				// Hide the child object
+				child.visible = false;
+			}
+			else {
+				let target = new THREE.Vector3();
+				child.getWorldPosition(target);
+				target.normalize();
+				target.setX(target.x * 1 + child.position.x);
+				target.setY(target.y * 1 + child.position.y);
+				target.setZ(target.z * 1 + child.position.z);
+				gsap.to(child.position, {
+					duration: 1,
+					x: target.x,
+				});
+				gsap.to(child.position, {
+					duration: 1,
+					y: target.y,
+				});
+				gsap.to(child.position, {
+					duration: 1,
+					z: target.z,
+				});
+			}
 		});
 	} else {
-		console.log("Button clicked: explode inactive");
-
+		console.log("666");
 		obj.forEach((child) => {
-			let target = new THREE.Vector3();
-			child.getWorldPosition(target);
-			target.normalize();
-			target.setX(child.position.x - target.x * 1);
-			target.setY(child.position.y - target.y * 1);
-			target.setZ(child.position.z - target.z * 1);
-			gsap.to(child.position, {
-				duration: 1,
-				x: target.x,
-			});
-			gsap.to(child.position, {
-				duration: 1,
-				y: target.y,
-			});
-			gsap.to(child.position, {
-				duration: 1,
-				z: target.z,
-			});
+			// Toggle visibility for child objects
+			if (moved_mesh.includes(child.name)) {
+				// Show the child object
+				child.visible = true;
+			}
+			else {
+				let target = new THREE.Vector3();
+				child.getWorldPosition(target);
+				target.normalize();
+				target.setX(child.position.x - target.x * 1);
+				target.setY(child.position.y - target.y * 1);
+				target.setZ(child.position.z - target.z * 1);
+				gsap.to(child.position, {
+					duration: 1,
+					x: target.x,
+				});
+				gsap.to(child.position, {
+					duration: 1,
+					y: target.y,
+				});
+				gsap.to(child.position, {
+					duration: 1,
+					z: target.z,
+				});
+			}
 		});
 	}
 }
@@ -652,22 +676,38 @@ function loadCatalogue(catalogue_product_list) {
 	catalogue_product_list.forEach(function (product_list) {
 		product_list.addEventListener("click", () => {
 			resetCatalogueSelect();
-			product_list.classList.toggle("active");
+			// product_list.classList.toggle("active");
+			product_list.classList.add("active"); // Add the "active" class here
 
 			product_list_text = product_list.querySelector(
 				".catalogue-product-list-text-2"
 			).innerText;
 			explode_button.classList.remove("active");
-			// clearAnnotations(); // Clear annotations when switching models
+
+			// Find the current 3D model object
+			let file3D = scene.getObjectByName("file3D");
+
+			// Reset the model and annotations for the current 3D model
+			resetModelAndAnnotations(file3D);
+
 			updateFile3D(product_list_text);
 		});
 
+		// Check if the current product list is active
 		if (product_list.classList.contains("active")) {
 			let product_list_text = product_list.querySelector(
 				".catalogue-product-list-text-2"
 			).innerText;
-			explode_button.classList.remove("active");
-			// clearAnnotations(); // Clear annotations when switching models
+
+			// explode_button.classList.remove("active");
+
+			// // Find the current 3D model object
+			// let file3D = scene.getObjectByName("file3D");
+			// console.log("HHH",file3D);
+
+			// // Reset the model and annotations for the current 3D model
+			// resetModelAndAnnotations(file3D);
+
 			updateFile3D(product_list_text);
 		}
 	});
@@ -722,6 +762,15 @@ const pdf_button = document.querySelector(".menu-pdf");
 const pdf_pop_up = document.querySelector(".container-full-screen-pdf");
 
 pdf_button.addEventListener("click", () => {
+	const annotationDivs = document.querySelectorAll("#annotationDiv");
+	console.log("1111");
+	if (annotationDivs) {
+		console.log("2222",annotationDivs);
+		annotationDivs.forEach(div => {
+			console.log("333333");
+			div.style.display = "none";
+		});
+	}
 	pdf_pop_up.classList.toggle("active");
 });
 
