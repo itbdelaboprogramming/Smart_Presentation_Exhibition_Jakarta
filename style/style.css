@@ -103,7 +103,7 @@ canvas {
 /* ------------------------------------------- FLOATING CONTAINER ------------------------------------------ */
 .container-top-left {
 	position: fixed;
-	z-index: 1;
+	z-index: 2;
 	top: 0;
 	left: 0;
 	margin-top: 23px;
@@ -116,7 +116,7 @@ canvas {
 
 .container-bottom-left {
 	position: fixed;
-	z-index: 1;
+	z-index: 2;
 	bottom: 0;
 	left: 0;
 	margin-bottom: 23px;
@@ -130,7 +130,7 @@ canvas {
 
 .container-bottom-right {
 	position: fixed;
-	z-index: 1;
+	z-index: 2;
 	bottom: 0;
 	right: 0;
 	padding-bottom: 23px;
@@ -144,7 +144,7 @@ canvas {
 
 .container-bottom-right-mr2x {
 	position: fixed;
-	z-index: 1;
+	z-index: 2;
 	bottom: 0;
 	/* left: 55%; */
 	/* left: 40%; */
@@ -157,7 +157,7 @@ canvas {
 
 .container-full-screen-pdf {
 	position: fixed;
-	z-index: 2;
+	z-index: 3;
 	top: 0;
 	right: 0;
 	bottom: 0;
@@ -175,7 +175,7 @@ canvas {
 
 .container-full-screen-video {
 	position: fixed;
-	z-index: 2;
+	z-index: 3;
 	top: 0;
 	right: 0;
 	bottom: 0;
@@ -195,7 +195,7 @@ canvas {
 
 .loadingScreenContainer {
 	position: fixed;
-	z-index: 3;
+	z-index: 4;
 	bottom: 0;
 	left: 0;
 	right: 0;
@@ -416,7 +416,7 @@ canvas {
 
 .bar {
 	position: absolute;
-	z-index: 1;
+	z-index: 2;
 	left: 2px;
 	top: 2px;
 	width: 97%;
@@ -447,7 +447,7 @@ canvas {
 	border-radius: 5.64516px;
 
 	position: relative;
-	z-index: 2;
+	z-index: 3;
 
 	background-color: transparent;
 }
@@ -516,7 +516,7 @@ canvas {
 /* -------------------------------------------- NAKAYAMA'S TEXT -------------------------------------------- */
 .item-name-container {
 	position: fixed;
-	z-index: 1;
+	z-index: 2;
 	top: 0;
 	left: 0;
 	right: 0;
@@ -574,7 +574,7 @@ canvas {
 /* -------------------------------------- CATALOGUE MODEL NUMBER HOME -------------------------------------- */
 .catalogue-container-2 {
 	position: absolute;
-	z-index: 1;
+	z-index: 2;
 	top: 0;
 	bottom: 15%;
 	right: 0;
@@ -726,7 +726,7 @@ canvas {
 /* ------------------------------------------ FOR SOUND CONTAINER ------------------------------------------ */
 .container-bottom-left-ml2x {
 	position: fixed;
-	z-index: 1;
+	z-index: 2;
 	bottom: 0;
 	left: 0%;
 	padding-bottom: 23px;
@@ -843,7 +843,7 @@ canvas {
 @media screen and (max-width: 650px) {
 	.container-bottom-left-ml2x {
 		position: fixed;
-		z-index: 1;
+		z-index: 2;
 		bottom: 0;
 		left: 17%;
 		right: 65%;
@@ -883,7 +883,7 @@ canvas {
 /* ------------------------------------------ INFORMATION SECTION ------------------------------------------ */
 .information-container {
 	position: absolute;
-	z-index: 1;
+	z-index: 2;
 	top: 0;
 	bottom: 10%;
 	left: 0;

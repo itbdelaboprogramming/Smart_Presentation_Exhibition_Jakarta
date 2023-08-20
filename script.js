@@ -93,6 +93,7 @@ renderer.setSize(myCanvas.offsetWidth, myCanvas.offsetHeight);
 const labelRenderer = new CSS2DRenderer();
 labelRenderer.setSize(window.innerWidth, window.innerHeight);
 labelRenderer.domElement.style.position = "absolute";
+labelRenderer.domElement.style.zIndex = 1;
 labelRenderer.domElement.style.top = "0px";
 document.body.appendChild(labelRenderer.domElement);
 
