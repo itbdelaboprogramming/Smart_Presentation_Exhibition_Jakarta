@@ -428,7 +428,6 @@ function createAnnotation(obj, content, position, label) {
 
 // Function to remove an annotation
 function removeAnnotation(obj, label) {
-	// console.log(`Removing annotation with label "${label}"`);
 	const annotation = obj.getObjectByName(label);
 	obj.remove(annotation)
 }
@@ -445,7 +444,6 @@ function SR100C_v1(obj) {
 	let object_children = obj.children;
 
 	if (explode_button.classList.contains("active")) {
-		console.log("Button clicked: explode active");
 
 		object_children.forEach((child) => {
 			if (moved_mesh.includes(child.name)) {
@@ -530,7 +528,6 @@ function SRユニット_v1(obj) {
 	let object_children = obj.children;
 
 	if (explode_button.classList.contains("active")) {
-		// console.log("55555",obj);
 		obj.forEach((child) => {
 			// Check if the child's name is in the list of objects to hide
 			if (moved_mesh.includes(child.name)) {
@@ -703,7 +700,6 @@ function loadCatalogue(catalogue_product_list) {
 
 			// // Find the current 3D model object
 			// let file3D = scene.getObjectByName("file3D");
-			// console.log("HHH",file3D);
 
 			// // Reset the model and annotations for the current 3D model
 			// resetModelAndAnnotations(file3D);
@@ -763,11 +759,9 @@ const pdf_pop_up = document.querySelector(".container-full-screen-pdf");
 
 pdf_button.addEventListener("click", () => {
 	const annotationDivs = document.querySelectorAll("#annotationDiv");
-	console.log("1111");
+
 	if (annotationDivs) {
-		console.log("2222",annotationDivs);
 		annotationDivs.forEach(div => {
-			console.log("333333");
 			div.style.display = "none";
 		});
 	}
