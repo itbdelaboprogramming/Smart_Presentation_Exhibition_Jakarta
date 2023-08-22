@@ -433,7 +433,18 @@ function removeAnnotation(obj, label) {
 function resetModelAndAnnotations(obj, label) {
 	// explode_button.classList.contains("active");
 	explode_button.classList.remove("active");
-	SR100C_v1(obj);
+
+	removeAnnotation(obj, "A");
+	removeAnnotation(obj, "B");
+	removeAnnotation(obj, "C");
+	removeAnnotation(obj, "D");
+	removeAnnotation(obj, "E");
+	removeAnnotation(obj, "F");
+	removeAnnotation(obj, "G");
+	removeAnnotation(obj, "H");
+	removeAnnotation(obj, "I");
+	removeAnnotation(obj, "J");
+	removeAnnotation(obj, "K");
 }
 
 function SR100C_v1(obj) {
@@ -728,6 +739,8 @@ function updateFile3D(file_name) {
 
 		scene.remove(file3D);
 		let newFile3D = `files/${file_name}.glb`;
+
+		camera.position.set(6, 4, -4);
 
 		loader.load(
 			newFile3D,
