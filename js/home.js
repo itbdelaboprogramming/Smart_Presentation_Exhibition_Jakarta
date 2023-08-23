@@ -566,63 +566,101 @@ function SR100C_v1(obj) {
 }
 
 function SRユニット_v1(obj) {
-	let object_children = obj.children;
-
 	if (explode_button.classList.contains("active")) {
-		obj.forEach((child) => {
-			// Check if the child's name is in the list of objects to hide
-			if (moved_mesh.includes(child.name)) {
-				// Hide the child object
-				child.visible = false;
-			} else {
-				let target = new THREE.Vector3();
-				child.getWorldPosition(target);
-				target.normalize();
-				target.setX(target.x * 1 + child.position.x);
-				target.setY(target.y * 1 + child.position.y);
-				target.setZ(target.z * 1 + child.position.z);
-				gsap.to(child.position, {
-					duration: 1,
-					x: target.x,
-				});
-				gsap.to(child.position, {
-					duration: 1,
-					y: target.y,
-				});
-				gsap.to(child.position, {
-					duration: 1,
-					z: target.z,
-				});
-			}
+		gsap.to(camera.position, {
+			duration: 2,
+			x: -3.5,
 		});
+		gsap.to(camera.position, {
+			duration: 2,
+			y: 2,
+		});
+		gsap.to(camera.position, {
+			duration: 1,
+			z: 2.8,
+		});
+		document.getElementById("explode-button").disabled = true;
+		orbitControls.enabled = false;
+		setTimeout(function () {
+			document.getElementById("explode-button").disabled = false;
+			orbitControls.enabled = true;
+		}, 2500);
 	} else {
-		obj.forEach((child) => {
-			// Toggle visibility for child objects
-			if (moved_mesh.includes(child.name)) {
-				// Show the child object
-				child.visible = true;
-			} else {
-				let target = new THREE.Vector3();
-				child.getWorldPosition(target);
-				target.normalize();
-				target.setX(child.position.x - target.x * 1);
-				target.setY(child.position.y - target.y * 1);
-				target.setZ(child.position.z - target.z * 1);
-				gsap.to(child.position, {
-					duration: 1,
-					x: target.x,
-				});
-				gsap.to(child.position, {
-					duration: 1,
-					y: target.y,
-				});
-				gsap.to(child.position, {
-					duration: 1,
-					z: target.z,
-				});
-			}
+		gsap.to(camera.position, {
+			duration: 2.8,
+			x: 6,
 		});
+		gsap.to(camera.position, {
+			duration: 2.5,
+			y: 4,
+		});
+		gsap.to(camera.position, {
+			duration: 1,
+			z: -4,
+		});
+		document.getElementById("explode-button").disabled = true;
+		orbitControls.enabled = false;
+		setTimeout(function () {
+			document.getElementById("explode-button").disabled = false;
+			orbitControls.enabled = true;
+		}, 2500);
 	}
+	// let object_children = obj.children;
+	// if (explode_button.classList.contains("active")) {
+	// 	obj.forEach((child) => {
+	// 		// Check if the child's name is in the list of objects to hide
+	// 		if (moved_mesh.includes(child.name)) {
+	// 			// Hide the child object
+	// 			child.visible = false;
+	// 		} else {
+	// 			let target = new THREE.Vector3();
+	// 			child.getWorldPosition(target);
+	// 			target.normalize();
+	// 			target.setX(target.x * 1 + child.position.x);
+	// 			target.setY(target.y * 1 + child.position.y);
+	// 			target.setZ(target.z * 1 + child.position.z);
+	// 			gsap.to(child.position, {
+	// 				duration: 1,
+	// 				x: target.x,
+	// 			});
+	// 			gsap.to(child.position, {
+	// 				duration: 1,
+	// 				y: target.y,
+	// 			});
+	// 			gsap.to(child.position, {
+	// 				duration: 1,
+	// 				z: target.z,
+	// 			});
+	// 		}
+	// 	});
+	// } else {
+	// 	obj.forEach((child) => {
+	// 		// Toggle visibility for child objects
+	// 		if (moved_mesh.includes(child.name)) {
+	// 			// Show the child object
+	// 			child.visible = true;
+	// 		} else {
+	// 			let target = new THREE.Vector3();
+	// 			child.getWorldPosition(target);
+	// 			target.normalize();
+	// 			target.setX(child.position.x - target.x * 1);
+	// 			target.setY(child.position.y - target.y * 1);
+	// 			target.setZ(child.position.z - target.z * 1);
+	// 			gsap.to(child.position, {
+	// 				duration: 1,
+	// 				x: target.x,
+	// 			});
+	// 			gsap.to(child.position, {
+	// 				duration: 1,
+	// 				y: target.y,
+	// 			});
+	// 			gsap.to(child.position, {
+	// 				duration: 1,
+	// 				z: target.z,
+	// 			});
+	// 		}
+	// 	});
+	// }
 }
 
 // -------------------------------------- lightning --------------------------------------
