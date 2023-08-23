@@ -198,6 +198,8 @@ explode_button.addEventListener("click", () => {
 	} else if (product_list_text == "SRユニット_v1") {
 		// SRユニット_v1(obj);
 		SRユニット_v1(file3D);
+	} else if (product_list_text == "Sand Manufacturing Plant") {
+		SandManufacturingPlant(file3D);
 	}
 });
 
@@ -426,7 +428,9 @@ function createAnnotation(obj, content, position, label) {
 // Function to remove an annotation
 function removeAnnotation(obj, label) {
 	const annotation = obj.getObjectByName(label);
-	obj.remove(annotation);
+	if (annotation != null) {
+		obj.remove(annotation);
+	}
 }
 
 // Function to reset the state of the 3D model and annotations
@@ -661,6 +665,47 @@ function SRユニット_v1(obj) {
 	// 		}
 	// 	});
 	// }
+}
+function SandManufacturingPlant(obj) {
+	if (explode_button.classList.contains("active")) {
+		gsap.to(camera.position, {
+			duration: 2,
+			x: -3.5,
+		});
+		gsap.to(camera.position, {
+			duration: 2,
+			y: 2,
+		});
+		gsap.to(camera.position, {
+			duration: 1,
+			z: 2.8,
+		});
+		document.getElementById("explode-button").disabled = true;
+		orbitControls.enabled = false;
+		setTimeout(function () {
+			document.getElementById("explode-button").disabled = false;
+			orbitControls.enabled = true;
+		}, 2500);
+	} else {
+		gsap.to(camera.position, {
+			duration: 2.8,
+			x: 6,
+		});
+		gsap.to(camera.position, {
+			duration: 2.5,
+			y: 4,
+		});
+		gsap.to(camera.position, {
+			duration: 1,
+			z: -4,
+		});
+		document.getElementById("explode-button").disabled = true;
+		orbitControls.enabled = false;
+		setTimeout(function () {
+			document.getElementById("explode-button").disabled = false;
+			orbitControls.enabled = true;
+		}, 2500);
+	}
 }
 
 // -------------------------------------- lightning --------------------------------------
