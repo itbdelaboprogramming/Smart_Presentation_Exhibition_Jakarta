@@ -417,6 +417,8 @@ function createAnnotation(obj, content, position, label) {
 	annotationDiv.textContent = content;
 	annotationDiv.style.backgroundColor = "#74E7D4";
 	annotationDiv.style.fontFamily = "Ubuntu";
+	annotationDiv.style.borderRadius = "5px";
+	annotationDiv.style.padding = "4px";
 
 	const annotation = new CSS2DObject(annotationDiv);
 	annotation.name = label;
