@@ -596,7 +596,6 @@ function SRユニット_v1(obj) {
 			}
 		});
 	} else {
-		console.log("666");
 		obj.forEach((child) => {
 			// Toggle visibility for child objects
 			if (moved_mesh.includes(child.name)) {
@@ -742,7 +741,12 @@ function updateFile3D(file_name) {
 		file3D.name = "file3D";
 
 		scene.remove(file3D);
-		let newFile3D = `files/${file_name}.glb`;
+		let newFile3D;
+		if (file_name == "Sand Manufacturing Plant") {
+			newFile3D = `files/SandManufacturingPlant.glb`;
+		} else {
+			newFile3D = `files/${file_name}.glb`;
+		}
 
 		camera.position.set(6, 4, -4);
 

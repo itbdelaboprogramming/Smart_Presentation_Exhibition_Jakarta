@@ -71,6 +71,10 @@
                         <div class="catalogue-product-list-text-2"> SRユニット_v1 </div>
                         <img class="catalogue-image-preview-2" src="./files/SRユニット_v1_preview.png" />
                     </div>
+                    <div class="catalogue-product-list-2" id="model_name">
+                        <div class="catalogue-product-list-text-2"> Sand Manufacturing Plant </div>
+                        <img class="catalogue-image-preview-2" src="./files/sand_manufacturing_plant.png" />
+                    </div>
                 </div>
             </div>
 
