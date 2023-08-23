@@ -519,8 +519,10 @@ function SR100C_v1(obj) {
 		});
 
 		document.getElementById("explode-button").disabled = true;
+		orbitControls.enabled = false;
 		setTimeout(function () {
 			document.getElementById("explode-button").disabled = false;
+			orbitControls.enabled = true;
 		}, 2500);
 	} else {
 		object_children.forEach((child) => {
@@ -555,8 +557,10 @@ function SR100C_v1(obj) {
 			z: -4,
 		});
 		document.getElementById("explode-button").disabled = true;
+		orbitControls.enabled = false;
 		setTimeout(function () {
 			document.getElementById("explode-button").disabled = false;
+			orbitControls.enabled = true;
 		}, 2500);
 	}
 }
