@@ -99,6 +99,93 @@ const moved_mesh = [
 	"組み合わせ1",
 	"組み合わせ1_(2)",
 ];
+const moved_mesh_SR100C_v1 = [
+	"¶¯Ä_-_µ_(2)",
+	"¶¯Ä_-_µoµ_(20)",
+	"¶¯Ä_-_µoµ_(10)",
+	"~`ÊßÀ°_(6)",
+	"Mirror61",
+	"Mirror77",
+	"Mirror76",
+	"¶¯Ä_-_µoµ_(9)",
+	"gÝ_(11)",
+	"Ð×°11_(2)",
+	"µ_(40)",
+	"Mirror41",
+	"Mirror75",
+	"Mirror64",
+	"Mirror62",
+	"Mirror63",
+	"Mirror74",
+	"Extrude5",
+	"Ð×°2_(1)",
+	"µ_(41)",
+	"Mirror73",
+	"¶¯Ä_-_µ_(23)",
+	"¶¯Ä_-_µ_(22)",
+	"¶¯Ä_-_µ_(16)",
+	"¶¯Ä_-_µ_(17)",
+	"¶¯Ä_-_µ_(18)",
+	"¶¯Ä_-_µ_(19)",
+	"¶¯Ä_-_µ_(21)",
+	"¶¯Ä_-_µ_(20)",
+	"µ_(97)",
+	"µ_(98)",
+	"µ_(96)",
+	"µ_(95)",
+	"µ_(99)",
+	"µ_(100)",
+	"µ_(101)",
+	"µ_(94)",
+	"<APKB024A>-<DrilledHole>_(2)",
+	"DrilledHole_(2)",
+	"<APKB024A>-<DrilledHole>_(1)",
+	"DrilledHole_(1)",
+	"<APKB024A>-<DrilledHole>",
+	"DrilledHole",
+	"<APKB024A>-<DrilledHole>_(3)",
+	"DrilledHole_(3)",
+	"<APKB024A>-<CoverPattern5>_(2)",
+	"CoverPattern4_(2)",
+	"<APKB024A>-<CoverPattern4>_(1)",
+	"<APKB024A>-<CoverPattern5>_(1)",
+	"<APKB024A>-<CoverPattern1>_(2)",
+	"CoverPattern3_(2)",
+	"<APKB024A>-<CoverPattern3>_(1)",
+	"<APKB024A>-<CoverPattern1>",
+	"<APKB024A>-<CoverPattern5>",
+	"<APKB024A>-<CoverPattern3>_(2)",
+	"<APKB024A>-<CoverPattern2>_(2)",
+	"<APKB024A>-<CoverPattern5>_(3)",
+	"<APKB024A>-<CoverPattern4>_(3)",
+	"<APKB024A>-<CoverPattern3>_(3)",
+	"<APKB024A>-<CoverPattern2>_(3)",
+	"<APKB024A>-<CoverPattern1>_(3)",
+	"CoverPattern2_(2)",
+	"<APKB024A>-<CoverPattern4>_(2)",
+	"CoverPattern4_(3)",
+	"CoverPattern1_(2)",
+	"CoverPattern5_(2)",
+	"CoverPattern5_(3)",
+	"CoverPattern1_(3)",
+	"CoverPattern3_(3)",
+	"CoverPattern2_(3)",
+	"<APKB024A>-<CoverPattern1>_(1)",
+	"<APKB024A>-<CoverPattern2>_(1)",
+	"CoverPattern1_(1)",
+	"CoverPattern2_(1)",
+	"CoverPattern3_(1)",
+	"CoverPattern5_(1)",
+	"CoverPattern4_(1)",
+	"<APKB024A>-<CoverPattern4>",
+	"<APKB024A>-<CoverPattern3>",
+	"<APKB024A>-<CoverPattern2>",
+	"CoverPattern5",
+	"CoverPattern4",
+	"CoverPattern1",
+	"CoverPattern3",
+	"CoverPattern2",
+];
 
 // ----------------------------------- dark/light mode -----------------------------------
 const toggle = document.querySelector(".toggle");
@@ -572,44 +659,64 @@ function SR100C_v1(obj) {
 }
 
 function SRユニット_v1(obj) {
+	let object_children = obj.children;
+
 	if (explode_button.classList.contains("active")) {
-		gsap.to(camera.position, {
-			duration: 2,
-			x: -3.5,
+		object_children.forEach((child) => {
+			if (moved_mesh_SR100C_v1.includes(child.name)) {
+				let new_pos = child.position.y + 2;
+				gsap.to(child.position, {
+					duration: 1,
+					y: new_pos,
+				});
+			}
 		});
-		gsap.to(camera.position, {
-			duration: 2,
-			y: 2,
-		});
-		gsap.to(camera.position, {
-			duration: 1,
-			z: 2.8,
-		});
+		// gsap.to(camera.position, {
+		// 	duration: 2,
+		// 	x: -4,
+		// });
+		// gsap.to(camera.position, {
+		// 	duration: 2,
+		// 	y: 2.5,
+		// });
+		// gsap.to(camera.position, {
+		// 	duration: 1,
+		// 	z: 3.3,
+		// });
 		document.getElementById("explode-button").disabled = true;
 		orbitControls.enabled = false;
 		setTimeout(function () {
 			document.getElementById("explode-button").disabled = false;
 			orbitControls.enabled = true;
-		}, 2500);
+		}, 1500);
 	} else {
-		gsap.to(camera.position, {
-			duration: 2.8,
-			x: 6,
+		object_children.forEach((child) => {
+			if (moved_mesh_SR100C_v1.includes(child.name)) {
+				let new_pos = child.position.y - 2;
+				gsap.to(child.position, {
+					duration: 1,
+					y: new_pos,
+				});
+			}
 		});
-		gsap.to(camera.position, {
-			duration: 2.5,
-			y: 4,
-		});
-		gsap.to(camera.position, {
-			duration: 1,
-			z: -4,
-		});
+		// gsap.to(camera.position, {
+		// 	duration: 2.8,
+		// 	x: 6,
+		// });
+		// gsap.to(camera.position, {
+		// 	duration: 2.5,
+		// 	y: 4,
+		// });
+		// gsap.to(camera.position, {
+		// 	duration: 1,
+		// 	z: -4,
+		// });
 		document.getElementById("explode-button").disabled = true;
 		orbitControls.enabled = false;
 		setTimeout(function () {
 			document.getElementById("explode-button").disabled = false;
 			orbitControls.enabled = true;
-		}, 2500);
+		}, 1500);
 	}
 	// let object_children = obj.children;
 	// if (explode_button.classList.contains("active")) {
