@@ -13,7 +13,7 @@ import {
 // ----------------------------------- Explode 3D File -----------------------------------
 
 const explode_button = document.querySelector(".explode-button");
-let product_list_text = "SR100C_v1";
+let product_list_text = "VSI Gyropactor";
 const moved_mesh = [
 	"Mirror61",
 	"Mirror62",
