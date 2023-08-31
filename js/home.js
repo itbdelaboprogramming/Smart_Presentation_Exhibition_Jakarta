@@ -299,7 +299,7 @@ if (getMode && getMode === "dark-theme") {
 
 	scene.remove(scene.getObjectByName("grid"));
 
-	const grid = new THREE.GridHelper(20, 20, 0x475b74, 0x475b74);
+	const grid = new THREE.GridHelper(50, 50, 0x475b74, 0x475b74);
 	grid.position.y = -1;
 	grid.name = "grid";
 	scene.add(grid);
@@ -317,7 +317,7 @@ toggle.addEventListener("click", () => {
 
 		scene.remove(scene.getObjectByName("grid"));
 
-		const grid = new THREE.GridHelper(20, 20, 0x475b74, 0x475b74);
+		const grid = new THREE.GridHelper(50, 50, 0x475b74, 0x475b74);
 		grid.position.y = -1;
 		grid.name = "grid";
 		scene.add(grid);
@@ -327,7 +327,7 @@ toggle.addEventListener("click", () => {
 		scene.background = new THREE.Color(0xdbe9e9);
 
 		scene.remove(scene.getObjectByName("grid"));
-		const grid = new THREE.GridHelper(20, 20, 0xffffff, 0xffffff);
+		const grid = new THREE.GridHelper(50, 50, 0xffffff, 0xffffff);
 		grid.position.y = -1;
 		grid.name = "grid";
 		scene.add(grid);
@@ -935,7 +935,7 @@ function updateFile3D(file_name) {
 		scene.remove(file3D);
 		let newFile3D;
 		if (file_name == "Sand Manufacturing Plant") {
-			newFile3D = `files/SandManufacturingPlant.glb`;
+			newFile3D = `files/Full_Plant_NIW.glb`;
 		} else {
 			newFile3D = `files/${file_name}.glb`;
 		}
