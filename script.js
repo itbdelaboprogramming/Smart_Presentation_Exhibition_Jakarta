@@ -125,7 +125,7 @@ loadingManager.onLoad = function () {
 export const loader = new GLTFLoader(loadingManager);
 loader.name = "loader";
 
-let path = "files/" + "SR100C_v1.glb";
+let path = "files/" + "VSI Gyropactor.glb";
 
 loader.load(
 	path,
