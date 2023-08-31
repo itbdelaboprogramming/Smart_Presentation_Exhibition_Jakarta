@@ -279,10 +279,10 @@ explode_button.addEventListener("click", () => {
 
 	let file3D = scene.getObjectByName("file3D");
 
-	if (product_list_text == "SR100C_v1") {
+	if (product_list_text == "VSI Gyropactor") {
 		// SR100C_v1(obj);
 		SR100C_v1(file3D);
-	} else if (product_list_text == "SRユニット_v1") {
+	} else if (product_list_text == "VSI Gyropactor & Platform") {
 		// SRユニット_v1(obj);
 		SRユニット_v1(file3D);
 	} else if (product_list_text == "Sand Manufacturing Plant") {
