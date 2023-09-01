@@ -515,7 +515,7 @@ function createAnnotation(obj, content, position, label) {
 }
 
 function createAnnotation2(img, position, scaleX, scaleY, scaleZ, label) {
-	let path = "files/SR100C_V1/" + img;
+	let path = "files/SRユニット_v1/" + img;
 	const map = new THREE.TextureLoader().load(path);
 	const material = new THREE.SpriteMaterial({ map: map, color: 0xffffff });
 
