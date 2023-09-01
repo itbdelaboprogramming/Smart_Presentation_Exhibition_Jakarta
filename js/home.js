@@ -514,6 +514,18 @@ function createAnnotation(obj, content, position, label) {
 	obj.add(annotation);
 }
 
+function createAnnotation2(img, position, scaleX, scaleY, scaleZ, label) {
+	let path = "files/SR100C_V1/" + img;
+	const map = new THREE.TextureLoader().load(path);
+	const material = new THREE.SpriteMaterial({ map: map, color: 0xffffff });
+
+	var sprite = new THREE.Sprite(material);
+	sprite.name = label;
+	sprite.scale.set(scaleX, scaleY, scaleZ);
+	sprite.position.copy(position);
+	scene.add(sprite);
+}
+
 // Function to remove an annotation
 function removeAnnotation(obj, label) {
 	const annotation = obj.getObjectByName(label);
@@ -538,6 +550,12 @@ function resetModelAndAnnotations(obj, label) {
 	removeAnnotation(obj, "I");
 	removeAnnotation(obj, "J");
 	removeAnnotation(obj, "K");
+
+	removeAnnotation(scene, "A");
+	removeAnnotation(scene, "B");
+	removeAnnotation(scene, "C");
+	removeAnnotation(scene, "D");
+	removeAnnotation(scene, "E");
 }
 
 function SR100C_v1(obj) {
@@ -671,18 +689,58 @@ function SRユニット_v1(obj) {
 				});
 			}
 		});
-		// gsap.to(camera.position, {
-		// 	duration: 2,
-		// 	x: -4,
-		// });
-		// gsap.to(camera.position, {
-		// 	duration: 2,
-		// 	y: 2.5,
-		// });
-		// gsap.to(camera.position, {
-		// 	duration: 1,
-		// 	z: 3.3,
-		// });
+		createAnnotation2(
+			"Belt.png",
+			new THREE.Vector3(0.2, 0.2, 1.4),
+			0.4,
+			0.14,
+			1,
+			"A"
+		);
+		createAnnotation2(
+			"Motor.png",
+			new THREE.Vector3(-0.8, 2, 0.4),
+			0.4,
+			0.14,
+			1,
+			"B"
+		);
+		createAnnotation2(
+			"Motor_casing.png",
+			new THREE.Vector3(-0.8, 2.8, 0.7),
+			0.4,
+			0.14,
+			1,
+			"C"
+		);
+		createAnnotation2(
+			"Platform.png",
+			new THREE.Vector3(3, 0.1, 1.3),
+			0.4,
+			0.14,
+			1,
+			"D"
+		);
+		createAnnotation2(
+			"vsi.png",
+			new THREE.Vector3(1.2, 0.9, 1.3),
+			0.46,
+			0.21,
+			1,
+			"E"
+		);
+		gsap.to(camera.position, {
+			duration: 1.2,
+			x: -4.1,
+		});
+		gsap.to(camera.position, {
+			duration: 1,
+			y: 2.5,
+		});
+		gsap.to(camera.position, {
+			duration: 1.3,
+			z: 3.4,
+		});
 		document.getElementById("explode-button").disabled = true;
 		orbitControls.enabled = false;
 		setTimeout(function () {
@@ -699,18 +757,19 @@ function SRユニット_v1(obj) {
 				});
 			}
 		});
-		// gsap.to(camera.position, {
-		// 	duration: 2.8,
-		// 	x: 6,
-		// });
-		// gsap.to(camera.position, {
-		// 	duration: 2.5,
-		// 	y: 4,
-		// });
-		// gsap.to(camera.position, {
-		// 	duration: 1,
-		// 	z: -4,
-		// });
+		resetModelAndAnnotations(scene);
+		gsap.to(camera.position, {
+			duration: 1.1,
+			x: 6,
+		});
+		gsap.to(camera.position, {
+			duration: 1.4,
+			y: 4,
+		});
+		gsap.to(camera.position, {
+			duration: 1,
+			z: -4,
+		});
 		document.getElementById("explode-button").disabled = true;
 		orbitControls.enabled = false;
 		setTimeout(function () {
