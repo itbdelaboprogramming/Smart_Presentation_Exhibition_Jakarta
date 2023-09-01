@@ -731,15 +731,15 @@ function SRユニット_v1(obj) {
 		);
 		gsap.to(camera.position, {
 			duration: 1.2,
-			x: -4.1,
+			x: -1.9,
 		});
 		gsap.to(camera.position, {
 			duration: 1,
-			y: 2.5,
+			y: 2.2,
 		});
 		gsap.to(camera.position, {
 			duration: 1.3,
-			z: 3.4,
+			z: 3.7,
 		});
 		document.getElementById("explode-button").disabled = true;
 		orbitControls.enabled = false;
