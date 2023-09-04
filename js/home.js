@@ -247,8 +247,35 @@ const iconSoundOn = document.getElementById("sound-on");
 
 const soundExpand = document.querySelector(".sound-expand");
 
+let change_audio = 1;
+let soundStatus = 0;
+
 var audio = new Audio("./audio/podcast-18169.mp3");
-var audio_speech = new Audio("./audio/audio_speech1.wav");
+var audio_speech = new Audio("./audio/Play.ht - VSI Gyropactor.wav");
+var audio_speech_2 = new Audio("./audio/Play.ht - VSI Gyropactor & Platform.wav")
+var audio_speech_3 = new Audio("./audio/Play.ht - Full Plant.wav")
+
+var sound = audio_speech;
+
+function audioPlayer() {
+	if (change_audio == 1) {
+		sound = audio_speech
+	} else if (change_audio == 2) {
+		sound = audio_speech_2
+	} else if (change_audio == 3) {
+		sound = audio_speech_3
+	}
+
+	sound.addEventListener("Ended", function () {		
+		if (soundStatus == 1) {
+			setTimeout(() => {
+				audioPlayer(); // ms
+			}, 3000);
+		}
+	});
+
+	sound.play()
+}
 
 const toggle_music = document.querySelector(".toggle-music");
 const toggle_speech = document.querySelector(".toggle-speech");
@@ -439,11 +466,21 @@ toggle_music.addEventListener("click", () => {
 toggle_speech.addEventListener("click", () => {
 	toggle_speech.classList.toggle("active");
 
+	if (change_audio == 1){
+		sound = audio_speech
+	} else if (change_audio == 2){
+		sound = audio_speech_2
+	} else if (change_audio == 3){
+		sound = audio_speech_3
+	}
+
 	if (toggle_speech.classList.contains("active")) {
-		audio_speech.play();
+		soundStatus = 1;
+		audioPlayer()
 	} else {
-		audio_speech.pause();
-		audio_speech.currentTime = 0;
+		soundStatus = 0;
+		sound.pause();
+		sound.currentTime = 0;
 	}
 });
 
@@ -902,7 +939,16 @@ function updateLamp() {
 function loadCatalogue(catalogue_product_list) {
 	catalogue_product_list.forEach(function (product_list) {
 		product_list.addEventListener("click", () => {
+
+			if (product_list.id != change_audio) {
+				change_audio = product_list.id
+				sound.pause()
+				sound.currentTime = 0;
+				toggle_speech.classList.contains("active") ? audioPlayer() : ""
+			}
+
 			resetCatalogueSelect();
+			
 			// product_list.classList.toggle("active");
 			product_list.classList.add("active"); // Add the "active" class here
 
