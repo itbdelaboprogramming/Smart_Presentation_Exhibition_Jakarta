@@ -969,8 +969,6 @@ function loadCatalogue(catalogue_product_list) {
 				".catalogue-product-list-text-2"
 			).innerText;
 
-			console.log(product_list_text);
-
 			// Find the current 3D model object
 			let file3D = scene.getObjectByName("file3D");
 

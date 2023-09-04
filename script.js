@@ -207,5 +207,5 @@ window.addEventListener("resize", () => {
 	myCanvas.style.height = window.innerHeight + "px";
 	camera.aspect = window.innerWidth / window.innerHeight;
 	camera.updateProjectionMatrix();
-	labelRenderer.setSize(window.innerWidth, window.innerHeight);
+	labelRenderer.setSize(window.innerWidth - 0.5, window.innerHeight - 0.5);
 });
