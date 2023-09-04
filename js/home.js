@@ -247,7 +247,7 @@ const iconSoundOn = document.getElementById("sound-on");
 
 const soundExpand = document.querySelector(".sound-expand");
 
-let change_audio = 1;
+let change_audio = "model_name_1";
 let soundStatus = 0;
 
 var audio = new Audio("./audio/podcast-18169.mp3");
@@ -258,21 +258,22 @@ var audio_speech_3 = new Audio("./audio/Play.ht - Full Plant.wav")
 var sound = audio_speech;
 
 function audioPlayer() {
-	if (change_audio == 1) {
+	if (change_audio === "model_name_1") {
 		sound = audio_speech
-	} else if (change_audio == 2) {
+	} else if (change_audio === "model_name_2") {
 		sound = audio_speech_2
-	} else if (change_audio == 3) {
+	} else if (change_audio === "model_name_3") {
 		sound = audio_speech_3
 	}
 
-	sound.addEventListener("Ended", function () {		
-		if (soundStatus == 1) {
-			setTimeout(() => {
-				audioPlayer(); // ms
-			}, 3000);
-		}
-	});
+	if (typeof soundStatus !== 'undefined' && soundStatus === 1) {
+		sound.addEventListener("ended", function () {
+		  // Delay the next call to audioPlayer by 30000 milliseconds
+		  setTimeout(() => {
+			audioPlayer();
+		  }, 30000);
+		});
+	  }
 
 	sound.play()
 }
@@ -466,11 +467,11 @@ toggle_music.addEventListener("click", () => {
 toggle_speech.addEventListener("click", () => {
 	toggle_speech.classList.toggle("active");
 
-	if (change_audio == 1){
+	if (change_audio === "model_name_1"){
 		sound = audio_speech
-	} else if (change_audio == 2){
+	} else if (change_audio === "model_name_2"){
 		sound = audio_speech_2
-	} else if (change_audio == 3){
+	} else if (change_audio === "model_name_3"){
 		sound = audio_speech_3
 	}
 

@@ -63,15 +63,15 @@
                     <p class="catalogue-description-title-2">VSI Gyropactor Series</p>
                 </div>
                 <div class="catalogue-description-2">
-                    <div class="catalogue-product-list-2 active" id="1">
+                    <div class="catalogue-product-list-2 active" id="model_name_1">
                         <div class="catalogue-product-list-text-2"> VSI Gyropactor </div>
                         <img class="catalogue-image-preview-2" src="./files/SR100C_v1_preview.png" />
                     </div>
-                    <div class="catalogue-product-list-2" id="2">
+                    <div class="catalogue-product-list-2" id="model_name_2">
                         <div class="catalogue-product-list-text-2"> VSI Gyropactor & Platform </div>
                         <img class="catalogue-image-preview-2" src="./files/SRユニット_v1_preview.png" />
                     </div>
-                    <div class="catalogue-product-list-2" id="3">
+                    <div class="catalogue-product-list-2" id="model_name_3">
                         <div class="catalogue-product-list-text-2"> Sand Manufacturing Plant </div>
                         <img class="catalogue-image-preview-2" src="./files/sand_manufacturing_plant.png" />
                     </div>
