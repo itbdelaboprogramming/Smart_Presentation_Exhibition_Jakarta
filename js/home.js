@@ -252,30 +252,32 @@ let soundStatus = 0;
 
 var audio = new Audio("./audio/podcast-18169.mp3");
 var audio_speech = new Audio("./audio/Play.ht - VSI Gyropactor.wav");
-var audio_speech_2 = new Audio("./audio/Play.ht - VSI Gyropactor & Platform.wav")
-var audio_speech_3 = new Audio("./audio/Play.ht - Full Plant.wav")
+var audio_speech_2 = new Audio(
+	"./audio/Play.ht - VSI Gyropactor & Platform.wav"
+);
+var audio_speech_3 = new Audio("./audio/Play.ht - Full Plant.wav");
 
 var sound = audio_speech;
 
 function audioPlayer() {
 	if (change_audio === "model_name_1") {
-		sound = audio_speech
+		sound = audio_speech;
 	} else if (change_audio === "model_name_2") {
-		sound = audio_speech_2
+		sound = audio_speech_2;
 	} else if (change_audio === "model_name_3") {
-		sound = audio_speech_3
+		sound = audio_speech_3;
 	}
 
-	if (typeof soundStatus !== 'undefined' && soundStatus === 1) {
+	if (typeof soundStatus !== "undefined" && soundStatus === 1) {
 		sound.addEventListener("ended", function () {
-		  // Delay the next call to audioPlayer by 30000 milliseconds
-		  setTimeout(() => {
-			audioPlayer();
-		  }, 30000);
+			// Delay the next call to audioPlayer by 30000 milliseconds
+			setTimeout(() => {
+				audioPlayer();
+			}, 30000);
 		});
-	  }
+	}
 
-	sound.play()
+	sound.play();
 }
 
 const toggle_music = document.querySelector(".toggle-music");
@@ -467,17 +469,17 @@ toggle_music.addEventListener("click", () => {
 toggle_speech.addEventListener("click", () => {
 	toggle_speech.classList.toggle("active");
 
-	if (change_audio === "model_name_1"){
-		sound = audio_speech
-	} else if (change_audio === "model_name_2"){
-		sound = audio_speech_2
-	} else if (change_audio === "model_name_3"){
-		sound = audio_speech_3
+	if (change_audio === "model_name_1") {
+		sound = audio_speech;
+	} else if (change_audio === "model_name_2") {
+		sound = audio_speech_2;
+	} else if (change_audio === "model_name_3") {
+		sound = audio_speech_3;
 	}
 
 	if (toggle_speech.classList.contains("active")) {
 		soundStatus = 1;
-		audioPlayer()
+		audioPlayer();
 	} else {
 		soundStatus = 0;
 		sound.pause();
@@ -876,16 +878,17 @@ function SandManufacturingPlant(obj) {
 	if (explode_button.classList.contains("active")) {
 		gsap.to(camera.position, {
 			duration: 2,
-			x: -3.5,
+			x: -8,
 		});
 		gsap.to(camera.position, {
 			duration: 2,
-			y: 2,
+			y: 5,
 		});
 		gsap.to(camera.position, {
 			duration: 1,
-			z: 2.8,
+			z: 11,
 		});
+		orbitControls.target.set(-1, 3, 17);
 		document.getElementById("explode-button").disabled = true;
 		orbitControls.enabled = false;
 		setTimeout(function () {
@@ -894,17 +897,18 @@ function SandManufacturingPlant(obj) {
 		}, 2500);
 	} else {
 		gsap.to(camera.position, {
-			duration: 2.8,
-			x: 6,
+			duration: 1,
+			x: -19,
 		});
 		gsap.to(camera.position, {
 			duration: 2.5,
-			y: 4,
+			y: 12,
 		});
 		gsap.to(camera.position, {
 			duration: 1,
-			z: -4,
+			z: -17,
 		});
+		orbitControls.target.set(0, 0, 0);
 		document.getElementById("explode-button").disabled = true;
 		orbitControls.enabled = false;
 		setTimeout(function () {
@@ -999,16 +1003,15 @@ function updateLamp() {
 function loadCatalogue(catalogue_product_list) {
 	catalogue_product_list.forEach(function (product_list) {
 		product_list.addEventListener("click", () => {
-
 			if (product_list.id != change_audio) {
-				change_audio = product_list.id
-				sound.pause()
+				change_audio = product_list.id;
+				sound.pause();
 				sound.currentTime = 0;
-				toggle_speech.classList.contains("active") ? audioPlayer() : ""
+				toggle_speech.classList.contains("active") ? audioPlayer() : "";
 			}
 
 			resetCatalogueSelect();
-			
+
 			// product_list.classList.toggle("active");
 			product_list.classList.add("active"); // Add the "active" class here
 
@@ -1046,7 +1049,16 @@ function updateFile3D(file_name) {
 			newFile3D = `files/${file_name}.glb`;
 		}
 
-		camera.position.set(6, 4, -4);
+		if (product_list_text == "Sand Manufacturing Plant") {
+			camera.position.set(-19, 12, -17);
+			// camera.position.set(-9, 8, 19);
+			// camera.position.set(-1, 3, 17);
+			// orbitControls.target.set(-1, 3, 17);
+			orbitControls.target.set(0, 0, 0);
+		} else {
+			camera.position.set(6, 4, -4);
+			orbitControls.target.set(0, 0, 0);
+		}
 
 		loader.load(
 			newFile3D,
