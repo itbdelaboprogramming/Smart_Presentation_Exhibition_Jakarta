@@ -860,7 +860,23 @@ function SandManufacturingPlant(obj) {
 			duration: 1,
 			z: 11,
 		});
-		orbitControls.target.set(-1, 3, 17);
+		createAnnotation(
+			obj,
+			"Vibrating Screen",
+			new THREE.Vector3(-6, 6.8, -0.6),
+			"A"
+		);
+		createAnnotation(obj, "Cone Crusher", new THREE.Vector3(-0.5, 3, -0), "B");
+		createAnnotation(obj, "Surge Bin", new THREE.Vector3(4, 8, 0), "C");
+		createAnnotation(
+			obj,
+			"Impact Crusher (VSI)",
+			new THREE.Vector3(-1, 5, 19),
+			"D"
+		);
+		createAnnotation(obj, "Vibro Feeder", new THREE.Vector3(1, 4.5, 0), "E");
+
+		orbitControls.target.set(-1, 3, 19);
 		document.getElementById("explode-button").disabled = true;
 		orbitControls.enabled = false;
 		setTimeout(function () {
@@ -880,6 +896,7 @@ function SandManufacturingPlant(obj) {
 			duration: 1,
 			z: -17,
 		});
+		resetModelAndAnnotations(obj);
 		orbitControls.target.set(0, 0, 0);
 		document.getElementById("explode-button").disabled = true;
 		orbitControls.enabled = false;
