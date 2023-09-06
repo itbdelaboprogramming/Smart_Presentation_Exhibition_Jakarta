@@ -1033,7 +1033,7 @@ function updateFile3D(file_name) {
 		scene.remove(file3D);
 		let newFile3D;
 		if (file_name == "Sand Manufacturing Plant") {
-			newFile3D = `files/Full_Plant_NIW.glb`;
+			newFile3D = `files/Full_Plant_NIW_2.glb`;
 		} else {
 			newFile3D = `files/${file_name}.glb`;
 		}
