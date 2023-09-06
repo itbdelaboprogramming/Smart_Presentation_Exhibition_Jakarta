@@ -1064,8 +1064,9 @@ canvas {
 	justify-content: center;
 	align-items: center;
 	background-color: #189ab4;
-	padding: 12px 9px;
+	padding: 11px 9px;
 	border-radius: 14.3734px;
+	border: 0;
 
 	cursor: pointer;
 	transition: background-color 0.3s ease-in;

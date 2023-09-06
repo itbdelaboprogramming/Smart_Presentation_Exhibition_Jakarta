@@ -576,7 +576,7 @@ function removeAnnotation(obj, label) {
 }
 
 // Function to reset the state of the 3D model and annotations
-function resetModelAndAnnotations(obj, label) {
+function resetModelAndAnnotations(obj) {
 	// explode_button.classList.contains("active");
 	explode_button.classList.remove("active");
 
@@ -592,11 +592,11 @@ function resetModelAndAnnotations(obj, label) {
 	removeAnnotation(obj, "J");
 	removeAnnotation(obj, "K");
 
-	removeAnnotation(scene, "A");
-	removeAnnotation(scene, "B");
-	removeAnnotation(scene, "C");
-	removeAnnotation(scene, "D");
-	removeAnnotation(scene, "E");
+	// removeAnnotation(scene, "A");
+	// removeAnnotation(scene, "B");
+	// removeAnnotation(scene, "C");
+	// removeAnnotation(scene, "D");
+	// removeAnnotation(scene, "E");
 }
 
 function SR100C_v1(obj) {
@@ -684,17 +684,7 @@ function SR100C_v1(obj) {
 		});
 
 		// SR100 Annotation
-		removeAnnotation(obj, "A");
-		removeAnnotation(obj, "B");
-		removeAnnotation(obj, "C");
-		removeAnnotation(obj, "D");
-		removeAnnotation(obj, "E");
-		removeAnnotation(obj, "F");
-		removeAnnotation(obj, "G");
-		removeAnnotation(obj, "H");
-		removeAnnotation(obj, "I");
-		removeAnnotation(obj, "J");
-		removeAnnotation(obj, "K");
+		resetModelAndAnnotations(obj);
 
 		gsap.to(camera.position, {
 			duration: 2.8,
@@ -730,44 +720,24 @@ function SRユニット_v1(obj) {
 				});
 			}
 		});
-		createAnnotation2(
-			"Belt.png",
-			new THREE.Vector3(0.2, 0.2, 1.4),
-			0.4,
-			0.14,
-			1,
-			"A"
-		);
-		createAnnotation2(
-			"Motor.png",
-			new THREE.Vector3(-0.8, 2, 0.4),
-			0.4,
-			0.14,
-			1,
-			"B"
-		);
-		createAnnotation2(
-			"Motor_casing.png",
-			new THREE.Vector3(-0.8, 2.8, 0.7),
-			0.4,
-			0.14,
-			1,
+		// createAnnotation2("Belt.png",new THREE.Vector3(0.2, 0.2, 1.4), 0.4, 0.14, 1, "A");
+		createAnnotation(obj, "Belt", new THREE.Vector3(0.2, 0.9, 1.1), "A");
+		// createAnnotation2("Motor.png", new THREE.Vector3(-0.8, 2, 0.4), 0.4, 0.14, 1, "B");
+		createAnnotation(obj, "Motor", new THREE.Vector3(-0.9, 2.9, 0.2), "B");
+		// createAnnotation2("Motor_casing.png", new THREE.Vector3(-0.8, 2.8, 0.7), 0.4, 0.14, 1, "C");
+		createAnnotation(
+			obj,
+			"Motor Casing",
+			new THREE.Vector3(-0.9, 3.7, 0.2),
 			"C"
 		);
-		createAnnotation2(
-			"Platform.png",
-			new THREE.Vector3(3, 0.1, 1.3),
-			0.4,
-			0.14,
-			1,
-			"D"
-		);
-		createAnnotation2(
-			"vsi.png",
-			new THREE.Vector3(1.2, 0.9, 1.3),
-			0.46,
-			0.21,
-			1,
+		// createAnnotation2("Platform.png", new THREE.Vector3(3, 0.1, 1.3), 0.4, 0.14, 1, "D");
+		createAnnotation(obj, "Platform", new THREE.Vector3(2.9, 1, 1.2), "D");
+		// createAnnotation2("vsi.png", new THREE.Vector3(1.2, 0.9, 1.3), 0.46, 0.21, 1, "E" );
+		createAnnotation(
+			obj,
+			"VSI SR100 Gyropactor",
+			new THREE.Vector3(1.2, 1.8, 1.2),
 			"E"
 		);
 		gsap.to(camera.position, {
@@ -798,7 +768,8 @@ function SRユニット_v1(obj) {
 				});
 			}
 		});
-		resetModelAndAnnotations(scene);
+		// resetModelAndAnnotations(scene);
+		resetModelAndAnnotations(obj);
 		gsap.to(camera.position, {
 			duration: 1.1,
 			x: 6,
