@@ -165,7 +165,9 @@
             </div>
 
             <div class="container-bottom-left">
-                <button class="explode-button" id="explode-button"> Explode/Cut </button>
+                <Button class="menu-container-blue-explode" id="explode-button">
+                    Explode/Cut
+                </Button>
                 <div class="menu-container-blue-information">
                     <img src="./assets/Information-Button.png">
                 </div>

@@ -12,7 +12,8 @@ import {
 
 // ----------------------------------- Explode 3D File -----------------------------------
 
-const explode_button = document.querySelector(".explode-button");
+// const explode_button = document.querySelector(".explode-button");
+const explode_button = document.getElementById("explode-button");
 let product_list_text = "VSI Gyropactor";
 const moved_mesh = [
 	"Mirror61",

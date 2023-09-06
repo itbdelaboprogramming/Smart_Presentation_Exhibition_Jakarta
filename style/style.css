@@ -212,17 +212,6 @@ canvas {
 }
 
 /* -------------------------------------------- EXPLODE 3D FILE -------------------------------------------- */
-.explode-button {
-	font-family: "Inter";
-	font-style: normal;
-	font-weight: 500;
-	font-size: 13.9249px;
-	line-height: 21px;
-
-	text-align: center;
-}
-
-/* -------------------------------------------- EXPLODE 3D FILE -------------------------------------------- */
 .move-cam-button {
 	font-family: "Inter";
 	font-style: normal;
@@ -1067,4 +1056,32 @@ canvas {
 #loadingBar {
 	height: 5%;
 	width: 30%;
+}
+
+/* ----------------------------------------- FOR BUTTON EXPLODE/CUT ---------------------------------------- */
+.menu-container-blue-explode {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: #189ab4;
+	padding: 12px 9px;
+	border-radius: 14.3734px;
+
+	cursor: pointer;
+	transition: background-color 0.3s ease-in;
+
+	font-family: "Inter";
+	font-style: normal;
+	font-weight: 600;
+	font-size: 13.9249px;
+	line-height: 21px;
+	color: rgb(255, 255, 255);
+}
+
+.menu-container-blue-explode:hover {
+	box-shadow: 0px 4px 4px var(--onhover-color);
+}
+
+.menu-container-blue-explode.active {
+	background-color: #74e7d4;
 }
