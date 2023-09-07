@@ -870,11 +870,17 @@ function SandManufacturingPlant(obj) {
 		createAnnotation(obj, "Surge Bin", new THREE.Vector3(4, 8, 0), "C");
 		createAnnotation(
 			obj,
-			"Impact Crusher (VSI)",
+			"Vertical Shaft Impact (VSI) Crusher",
 			new THREE.Vector3(-1, 5, 19),
 			"D"
 		);
 		createAnnotation(obj, "Vibro Feeder", new THREE.Vector3(1, 4.5, 0), "E");
+		createAnnotation(
+			obj,
+			"Primary Jaw Crusher",
+			new THREE.Vector3(20, 7, -7),
+			"F"
+		);
 
 		orbitControls.target.set(-1, 3, 19);
 		document.getElementById("explode-button").disabled = true;
