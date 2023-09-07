@@ -260,6 +260,17 @@ var audio_speech_3 = new Audio("./audio/Play.ht - Full Plant.wav");
 
 var sound = audio_speech;
 
+function musicPlayer() {
+	audio.addEventListener("ended", function () {
+		// Delay the next call to musicPlayer by 30000 milliseconds
+		setTimeout(() => {
+			musicPlayer();
+		}, 30000);
+	});
+
+	audio.play();
+}
+
 function audioPlayer() {
 	if (change_audio === "model_name_1") {
 		sound = audio_speech;
@@ -461,7 +472,7 @@ toggle_music.addEventListener("click", () => {
 	toggle_music.classList.toggle("active");
 
 	if (toggle_music.classList.contains("active")) {
-		audio.play();
+		musicPlayer();
 	} else {
 		audio.pause();
 	}
