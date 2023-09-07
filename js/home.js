@@ -881,6 +881,9 @@ function SandManufacturingPlant(obj) {
 			new THREE.Vector3(20, 7, -7),
 			"F"
 		);
+		createAnnotation(obj, "Stockpile 1", new THREE.Vector3(-2, 8, -22), "G");
+		createAnnotation(obj, "Stockpile 2", new THREE.Vector3(-17, 8, -1), "H");
+		createAnnotation(obj, "Stockpile 3", new THREE.Vector3(-8.5, 6, 12), "I");
 
 		orbitControls.target.set(-1, 3, 19);
 		document.getElementById("explode-button").disabled = true;
