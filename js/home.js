@@ -721,7 +721,7 @@ function SRユニット_v1(obj) {
 			}
 		});
 		// createAnnotation2("Belt.png",new THREE.Vector3(0.2, 0.2, 1.4), 0.4, 0.14, 1, "A");
-		createAnnotation(obj, "Belt", new THREE.Vector3(0.2, 0.9, 1.1), "A");
+		createAnnotation(obj, "Belt", new THREE.Vector3(-0.5, 0.2, 0.1), "A");
 		// createAnnotation2("Motor.png", new THREE.Vector3(-0.8, 2, 0.4), 0.4, 0.14, 1, "B");
 		createAnnotation(obj, "Motor", new THREE.Vector3(-0.9, 2.9, 0.2), "B");
 		// createAnnotation2("Motor_casing.png", new THREE.Vector3(-0.8, 2.8, 0.7), 0.4, 0.14, 1, "C");
