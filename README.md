@@ -48,8 +48,6 @@ https://github.com/itbdelaboprogramming/Smart_Presentation.git
 
 2. Open website using XAMPP
 
-Or access the deployed website through https://nakayamairon.com/vsi_expo_jakarta/vsi_smart_presentation/
-
 ## Project Status
 
 ![Repo Status](https://img.shields.io/badge/repo%20status-active-green)
